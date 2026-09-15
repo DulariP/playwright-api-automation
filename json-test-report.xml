@@ -1,0 +1,77 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="3.139381">
+<testsuite name="negative\createBookingWithoutFirstname.spec.ts" timestamp="2026-09-15T08:51:23.216Z" hostname="chromium" tests="1" failures="1" skipped="0" time="2.21" errors="0">
+<testcase name="Create booking without firstname" classname="negative\createBookingWithoutFirstname.spec.ts" time="2.21">
+<system-out>
+<![CDATA[
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: [32m''[39m,
+  lastname: [32m'Test'[39m,
+  totalprice: [33m100[39m,
+  depositpaid: [33mtrue[39m,
+  bookingdates: { checkin: [32m'2027-01-01'[39m, checkout: [32m'2027-01-05'[39m },
+  additionalneeds: [32m'Breakfast'[39m
+}
+=================================
+
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: [33m460[39m,
+  booking: {
+    firstname: [32m''[39m,
+    lastname: [32m'Test'[39m,
+    totalprice: [33m100[39m,
+    depositpaid: [33mtrue[39m,
+    bookingdates: { checkin: [32m'2027-01-01'[39m, checkout: [32m'2027-01-05'[39m },
+    additionalneeds: [32m'Breakfast'[39m
+  }
+}
+==================================
+
+Response Status: [33m200[39m
+Response Body: {
+  "bookingid": 460,
+  "booking": {
+    "firstname": "",
+    "lastname": "Test",
+    "totalprice": 100,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-01-01",
+      "checkout": "2027-01-05"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
+
+[[ATTACHMENT|test-results\negative-createBookingWith-bebc3-e-booking-without-firstname-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBeFalsy()" type="expect.toBeFalsy">
+<![CDATA[  [chromium] › negative\createBookingWithoutFirstname.spec.ts:3:5 › Create booking without firstname 
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      20 |   console.log("Response Status:", result.status);
+      21 |   console.log("Response Body:", JSON.stringify(result.body, null, 2));
+    > 22 |   expect(result.ok).toBeFalsy();
+         |                     ^
+      23 |   expect(result.status).toBeGreaterThanOrEqual(400);
+      24 | });
+      25 | // the Restful Booker API does not validate required fields. It accepts an empty string and creates the booking.
+        at D:\Dulari\API Automation\Api Automation\tests\api\negative\createBookingWithoutFirstname.spec.ts:22:21
+
+    Error Context: ..\..\test-results\negative-createBookingWith-bebc3-e-booking-without-firstname-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

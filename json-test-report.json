@@ -1,0 +1,219 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Dulari\\API Automation\\Api Automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/api/negative/createBookingWithoutFirstName.spec.ts"
+    ],
+    "configFile": "D:\\Dulari\\API Automation\\Api Automation\\playwright.config.ts",
+    "rootDir": "D:/Dulari/API Automation/Api Automation/tests/api",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Dulari/API Automation/Api Automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Dulari/API Automation/Api Automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "api-test-report",
+          "open": "always"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "json-test-report.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "json-test-report.xml"
+        }
+      ],
+      [
+        "D:\\Dulari\\API Automation\\Api Automation\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        {
+          "outputFolder": "allure-results"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "negative\\createBookingWithoutFirstname.spec.ts",
+      "file": "negative/createBookingWithoutFirstname.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Create booking without firstname",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2210,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeFalsy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mtrue\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeFalsy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mtrue\u001b[39m\n    at D:\\Dulari\\API Automation\\Api Automation\\tests\\api\\negative\\createBookingWithoutFirstname.spec.ts:22:21",
+                    "location": {
+                      "file": "D:\\Dulari\\API Automation\\Api Automation\\tests\\api\\negative\\createBookingWithoutFirstname.spec.ts",
+                      "column": 21,
+                      "line": 22
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 20 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m\"Response Status:\"\u001b[39m\u001b[33m,\u001b[39m result\u001b[33m.\u001b[39mstatus)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m\"Response Body:\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(result\u001b[33m.\u001b[39mbody\u001b[33m,\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m \u001b[35m2\u001b[39m))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m   expect(result\u001b[33m.\u001b[39mok)\u001b[33m.\u001b[39mtoBeFalsy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m   expect(result\u001b[33m.\u001b[39mstatus)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m400\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m \u001b[90m// the Restful Booker API does not validate required fields. It accepts an empty string and creates the booking.\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Dulari\\API Automation\\Api Automation\\tests\\api\\negative\\createBookingWithoutFirstname.spec.ts",
+                        "column": 21,
+                        "line": 22
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeFalsy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mtrue\u001b[39m\n\n\u001b[0m \u001b[90m 20 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m\"Response Status:\"\u001b[39m\u001b[33m,\u001b[39m result\u001b[33m.\u001b[39mstatus)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m   console\u001b[33m.\u001b[39mlog(\u001b[32m\"Response Body:\"\u001b[39m\u001b[33m,\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(result\u001b[33m.\u001b[39mbody\u001b[33m,\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m \u001b[35m2\u001b[39m))\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m   expect(result\u001b[33m.\u001b[39mok)\u001b[33m.\u001b[39mtoBeFalsy()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m   expect(result\u001b[33m.\u001b[39mstatus)\u001b[33m.\u001b[39mtoBeGreaterThanOrEqual(\u001b[35m400\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 25 |\u001b[39m \u001b[90m// the Restful Booker API does not validate required fields. It accepts an empty string and creates the booking.\u001b[39m\u001b[0m\n\u001b[2m    at D:\\Dulari\\API Automation\\Api Automation\\tests\\api\\negative\\createBookingWithoutFirstname.spec.ts:22:21\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "\n========== API REQUEST ==========\n"
+                    },
+                    {
+                      "text": "Method : POST\n"
+                    },
+                    {
+                      "text": "URL    : https://restful-booker.herokuapp.com/booking\n"
+                    },
+                    {
+                      "text": "Body:\n"
+                    },
+                    {
+                      "text": "{\n  firstname: \u001b[32m''\u001b[39m,\n  lastname: \u001b[32m'Test'\u001b[39m,\n  totalprice: \u001b[33m100\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-01-01'\u001b[39m, checkout: \u001b[32m'2027-01-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "=================================\n\n"
+                    },
+                    {
+                      "text": "\n========== API RESPONSE ==========\n"
+                    },
+                    {
+                      "text": "Status : 200\n"
+                    },
+                    {
+                      "text": "Body:\n"
+                    },
+                    {
+                      "text": "{\n  bookingid: \u001b[33m460\u001b[39m,\n  booking: {\n    firstname: \u001b[32m''\u001b[39m,\n    lastname: \u001b[32m'Test'\u001b[39m,\n    totalprice: \u001b[33m100\u001b[39m,\n    depositpaid: \u001b[33mtrue\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-01-01'\u001b[39m, checkout: \u001b[32m'2027-01-05'\u001b[39m },\n    additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n  }\n}\n"
+                    },
+                    {
+                      "text": "==================================\n\n"
+                    },
+                    {
+                      "text": "Response Status: \u001b[33m200\u001b[39m\n"
+                    },
+                    {
+                      "text": "Response Body: {\n  \"bookingid\": 460,\n  \"booking\": {\n    \"firstname\": \"\",\n    \"lastname\": \"Test\",\n    \"totalprice\": 100,\n    \"depositpaid\": true,\n    \"bookingdates\": {\n      \"checkin\": \"2027-01-01\",\n      \"checkout\": \"2027-01-05\"\n    },\n    \"additionalneeds\": \"Breakfast\"\n  }\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-15T08:51:23.914Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "API Request",
+                      "contentType": "application/json",
+                      "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIiIsCiAgICAibGFzdG5hbWUiOiAiVGVzdCIsCiAgICAidG90YWxwcmljZSI6IDEwMCwKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTAxLTAxIiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDEtMDUiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJCcmVha2Zhc3QiCiAgfQp9"
+                    },
+                    {
+                      "name": "API Response",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogNDYwLAogICAgImJvb2tpbmciOiB7CiAgICAgICJmaXJzdG5hbWUiOiAiIiwKICAgICAgImxhc3RuYW1lIjogIlRlc3QiLAogICAgICAidG90YWxwcmljZSI6IDEwMCwKICAgICAgImRlcG9zaXRwYWlkIjogdHJ1ZSwKICAgICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgICAiY2hlY2tpbiI6ICIyMDI3LTAxLTAxIiwKICAgICAgICAiY2hlY2tvdXQiOiAiMjAyNy0wMS0wNSIKICAgICAgfSwKICAgICAgImFkZGl0aW9uYWxuZWVkcyI6ICJCcmVha2Zhc3QiCiAgICB9CiAgfQp9"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Dulari\\API Automation\\Api Automation\\test-results\\negative-createBookingWith-bebc3-e-booking-without-firstname-chromium\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Dulari\\API Automation\\Api Automation\\tests\\api\\negative\\createBookingWithoutFirstname.spec.ts",
+                    "column": 21,
+                    "line": 22
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "171622c74569f5b40703-c3f136a597557a6f6b78",
+          "file": "negative/createBookingWithoutFirstname.spec.ts",
+          "line": 3,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-15T08:51:23.182Z",
+    "duration": 3139.3810000000003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
