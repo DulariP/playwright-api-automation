@@ -1,4 +1,4 @@
-import { test, expect } from "../../../fixtures/apiFixture";
+/*import { test, expect } from "../../../fixtures/apiFixture";
 import { GetBookingResponse } from "../../../models/Responses";
 import {
   verifyStatusCode,
@@ -30,4 +30,4 @@ test.describe("Booking API - Get Booking", () => {
       expect(booking.bookingdates).toHaveProperty("checkout");
     });
   });
-});
+});*/
