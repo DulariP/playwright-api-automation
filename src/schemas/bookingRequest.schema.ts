@@ -1,9 +1,18 @@
 export const bookingRequestSchema = {
   type: "object",
 
-  required: ["firstname", "lastname", "totalprice", "bookingdates"],
+  additionalProperties: false,
 
-  properties: { 
+  required: [
+    "firstname",
+    "lastname",
+    "totalprice",
+    "depositpaid",
+    "bookingdates",
+    "additionalneeds",
+  ],
+
+  properties: {
     firstname: {
       type: "string",
     },
@@ -16,9 +25,30 @@ export const bookingRequestSchema = {
       type: "number",
     },
 
+    depositpaid: {
+      type: "boolean",
+    },
+
     bookingdates: {
       type: "object",
+
+      additionalProperties: false,
+
       required: ["checkin", "checkout"],
+
+      properties: {
+        checkin: {
+          type: "string",
+        },
+
+        checkout: {
+          type: "string",
+        },
+      },
+    },
+
+    additionalneeds: {
+      type: "string",
     },
   },
 };
