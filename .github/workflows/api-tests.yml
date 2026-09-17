@@ -36,11 +36,12 @@ jobs:
          PASSWORD: ${{ secrets.PASSWORD }}
         run: npm run test:qa
 
-      - name: Upload Playwright report
+      - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-${{ github.run_number }}
           path: |
             playwright-report/
             test-results/
+          retention-days: 30
