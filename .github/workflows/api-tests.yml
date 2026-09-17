@@ -30,10 +30,6 @@ jobs:
         run: npm ci
 
       - name: Run API tests
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
         run: npm run test:qa
 
       - name: Upload Playwright report
