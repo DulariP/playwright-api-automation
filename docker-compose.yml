@@ -2,4 +2,13 @@ services:
   api-tests:
     image: api-automation
     container_name: playwright-api-tests
+
+    environment:
+      TEST_ENV: qa
+      CI: true
+
     command: npm run test:qa
+
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./allure-results:/app/allure-results

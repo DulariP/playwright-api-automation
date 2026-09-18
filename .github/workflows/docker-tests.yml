@@ -1,4 +1,4 @@
-name: Playwright API Automation Docker Tests
+name: Docker Playwright API Tests
 
 on:
   push:
@@ -23,10 +23,16 @@ jobs:
 
 
       - name: Build Docker image
-        run: |
-          docker build -t api-automation .
+        run: docker build -t api-automation .
 
 
-      - name: Run Playwright API tests
-        run: |
-          docker run api-automation
+      - name: Run Docker tests
+        run: docker compose up --abort-on-container-exit
+
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
