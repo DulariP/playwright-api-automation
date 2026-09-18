@@ -65,7 +65,7 @@ export default defineConfig({
     
     baseURL: process.env.BASE_URL,
     trace: 'on-first-retry',
-    headless: false,
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'on',
   },

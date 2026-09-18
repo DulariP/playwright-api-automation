@@ -1,11 +1,11 @@
-import { test, expect } from "../../../fixtures/apiFixture";
-import { generateBookingData } from "../../../test-data/bookingData";
+import { test, expect } from "../../fixtures/apiFixture";
+import { generateBookingData } from "../../test-data/bookingData";
 import {
   verifyStatusCode,
   verifyResponseContains,
   verifyBooking,
-} from "../../../helpers/apiAssertions";
-import { validateBookingPayload } from "../../../helpers/bookingValidator";
+} from "../../helpers/apiAssertions";
+import { validateBookingPayload } from "../../helpers/bookingValidator";
 
 test.describe("Booking API - Create Booking", () => {
   test("Create booking and verify details", async ({ bookingApi }) => {
@@ -36,4 +36,30 @@ test.describe("Booking API - Create Booking", () => {
       verifyBooking(getResult.body, bookingData);
     });
   });
+/*
+    test("Create booking without firstname", async ({ bookingApi }) => {
+    const invalidBooking = {
+      firstname: "",
+      lastname: "Test",
+      totalprice: 100,
+      depositpaid: true,
+      bookingdates: {
+        checkin: "2027-01-01",
+
+        checkout: "2027-01-05",
+      },
+      additionalneeds: "Breakfast",
+    };
+
+    await test.step("Send create booking request without firstname", async () => {
+      const result = await bookingApi.createBooking(invalidBooking, {
+        expectedStatus: 400,
+      });
+
+      console.log("Response Status:", result.status);
+      console.log("Response Body:", JSON.stringify(result.body, null, 2));
+      expect(result.ok).toBeFalsy();
+      expect(result.status).toBeGreaterThanOrEqual(400);
+    });
+  });*/
 });

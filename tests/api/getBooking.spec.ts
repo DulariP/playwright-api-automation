@@ -1,11 +1,12 @@
-/*import { test, expect } from "../../../fixtures/apiFixture";
-import { GetBookingResponse } from "../../../models/Responses";
+import { test, expect } from "../../fixtures/apiFixture";
+import { GetBookingResponse } from "../../models/Responses";
 import {
   verifyStatusCode,
   verifyResponseContains,
-} from "../../../helpers/apiAssertions";
+} from "../../helpers/apiAssertions";
 
 test.describe("Booking API - Get Booking", () => {
+  /*
   test("Get booking details by ID", async ({ bookingApi }) => {
     const bookingId = 1;
 
@@ -29,5 +30,19 @@ test.describe("Booking API - Get Booking", () => {
       expect(booking.bookingdates).toHaveProperty("checkin");
       expect(booking.bookingdates).toHaveProperty("checkout");
     });
-  });
-});*/
+  });*/
+
+    test("Get booking with invalid ID", async ({ bookingApi }) => {
+      const invalidBookingId = 99999999;
+  
+      await test.step("Request booking with invalid ID", async () => {
+        const result = await bookingApi.getBooking(invalidBookingId, {
+          expectedStatus: 404,
+        });
+  
+        verifyStatusCode(result.status, 404);
+        expect(result.body).toBeTruthy();
+        console.log("Invalid Booking Response:", result.body);
+      });
+    });
+});

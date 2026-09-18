@@ -3,11 +3,12 @@ name: Playwright API Tests
 on:
   push:
     branches:
-      - feature/ci-cd-clean
+      - feature/**
+      - main
 
   pull_request:
     branches:
-      - feature/ci-cd-clean
+      - main
 
 jobs:
   api_tests_qa:

@@ -1,93 +1,334 @@
-# playwright-api-automation
+# Playwright API Automation Framework
 
+[![Playwright API Tests](https://github.com/DulariP/playwright-api-automation/actions/workflows/api-tests.yml/badge.svg)](https://github.com/DulariP/playwright-api-automation/actions/workflows/api-tests.yml)
 
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript\&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?logo=playwright\&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js\&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions\&logoColor=white)
 
-## Getting started
+A scalable API automation framework built with **TypeScript**, **Playwright**, and **GitHub Actions** following modern automation engineering best practices. The framework demonstrates reusable API design, centralized authentication, environment-based execution, reporting, and CI/CD integration.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+---
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+# Table of Contents
 
-## Add your files
+* Project Overview
+* Features
+* Tech Stack
+* Framework Architecture
+* Project Structure
+* Installation
+* Environment Configuration
+* Running Tests
+* Reports
+* Continuous Integration
+* GitHub Secrets
+* Framework Highlights
+* Skills Demonstrated
+* Future Improvements
+* Author
+* License
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+---
 
+# Project Overview
+
+This project automates REST API testing against the **Restful Booker API** using Playwright's API testing capabilities. It follows a clean, maintainable architecture with reusable API clients, fixtures, helper utilities, centralized authentication, schema validation, and dynamic test data generation.
+
+The framework is designed to be:
+
+* Easy to maintain
+* Easy to scale
+* CI/CD ready
+* Suitable for real-world API automation projects
+
+---
+
+# Features
+
+* REST API automation with Playwright
+* TypeScript-based framework
+* Reusable API Client architecture
+* Centralized authentication management
+* Positive & Negative API scenarios
+* Complete CRUD API validation
+* Dynamic test data using Faker
+* JSON Schema Validation
+* Request & Response logging
+* Environment-based execution
+* Playwright HTML Reports
+* Allure Reports
+* JSON Report
+* JUnit XML Report
+* GitHub Actions CI/CD
+* GitHub Secrets integration
+* Automatic artifact publishing
+* Retry support in CI
+
+---
+
+# Tech Stack
+
+* TypeScript
+* Playwright
+* Node.js
+* Faker
+* Dotenv
+* Allure Playwright
+* GitHub Actions
+* Git
+* REST API
+
+---
+
+# Framework Architecture
+
+```text
+                    Playwright Tests
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+     Fixtures         Test Data        Utilities
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                      API Layer
+                           │
+            ┌──────────────┼──────────────┐
+            │              │              │
+        Base API       Auth API      Booking API
+                           │
+                     Authentication
+                           │
+                           ▼
+                  Restful Booker API
+
+Reports
+├── HTML Report
+├── Allure Report
+├── JSON Report
+└── JUnit Report
+
+GitHub Actions
+        │
+GitHub Secrets
+        │
+Continuous Integration
 ```
-cd existing_repo
-git remote add origin https://gitlab-web.calcey.com/calceytechnologies/qa/playwright-api-automation.git
-git branch -M main
-git push -uf origin main
+
+---
+
+# Project Structure
+
+```text
+.
+├── api/
+├── config/
+├── environments/
+├── fixtures/
+├── helpers/
+├── models/
+├── schemas/
+├── test-data/
+├── tests/
+│   └── api/
+├── utils/
+├── playwright.config.ts
+├── package.json
+└── README.md
 ```
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://gitlab-web.calcey.com/calceytechnologies/qa/playwright-api-automation/-/settings/integrations)
+# Installation
 
-## Collaborate with your team
+Clone the repository:
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+```bash
+git clone https://github.com/DulariP/playwright-api-automation.git
+cd playwright-api-automation
+```
 
-## Test and Deploy
+Install dependencies:
 
-Use the built-in continuous integration in GitLab.
+```bash
+npm install
+```
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Install Playwright browsers:
 
-***
+```bash
+npx playwright install
+```
 
-# Editing this README
+---
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+# Environment Configuration
 
-## Suggestions for a good README
+Create an environment file:
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+```text
+environments/qa.env
+```
 
-## Name
-Choose a self-explaining name for your project.
+Example:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+```env
+BASE_URL=https://restful-booker.herokuapp.com
+USERNAME=admin
+PASSWORD=password123
+```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+> **Note:** Local development uses `.env` files, while GitHub Actions uses **GitHub Repository Secrets**.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+---
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+# Running Tests
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Run all API tests:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+```bash
+npm run test:qa
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Run a specific test:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```bash
+npx playwright test tests/api/positive/auth.spec.ts
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Run tests in headed mode:
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+```bash
+npx playwright test --headed
+```
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Run in debug mode:
 
-## License
-For open source projects, say how it is licensed.
+```bash
+npx playwright test --debug
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+---
+
+# Reports
+
+After execution the framework generates:
+
+* Playwright HTML Report
+* Allure Report
+* JSON Report
+* JUnit XML Report
+
+Open the Playwright report:
+
+```bash
+npx playwright show-report api-test-report
+```
+
+Open the Allure report:
+
+```bash
+allure serve allure-results
+```
+
+---
+
+# Continuous Integration
+
+The project includes a GitHub Actions pipeline that automatically:
+
+* Checks out the repository
+* Installs dependencies
+* Injects GitHub Secrets
+* Executes Playwright API tests
+* Generates reports
+* Uploads reports as workflow artifacts
+
+Workflow file:
+
+```text
+.github/workflows/api-tests.yml
+```
+
+---
+
+# GitHub Secrets
+
+The CI pipeline uses GitHub Repository Secrets instead of committing credentials.
+
+Required secrets:
+
+* BASE_URL
+* USERNAME
+* PASSWORD
+
+---
+
+# Framework Highlights
+
+* Reusable Base API class
+* Centralized authentication
+* Environment-specific configuration
+* Dynamic test data generation
+* JSON schema validation
+* Request & Response logging
+* Custom Playwright fixtures
+* API response verification
+* Retry support
+* HTML & Allure reporting
+* GitHub Actions CI/CD
+* Secure secret management
+
+---
+
+# Skills Demonstrated
+
+This project demonstrates practical experience with:
+
+* API Automation Testing
+* TypeScript
+* Playwright API Testing
+* REST API Testing
+* Authentication Testing
+* CRUD API Validation
+* JSON Schema Validation
+* Test Framework Design
+* Git & GitHub
+* GitHub Actions
+* CI/CD Pipelines
+* GitHub Secrets
+* Test Reporting
+* Environment Configuration
+
+---
+
+# Future Improvements
+
+* Docker support
+* Parallel environment execution
+* Scheduled nightly pipeline
+* Slack/MS Teams notifications
+* Docker Compose
+* Performance testing integration
+* Code quality checks (ESLint & Prettier)
+* SonarQube integration
+* API coverage reporting
+
+---
+
+# Author
+
+**Dulari Pemachandra**
+
+QA Lead | API Automation Engineer
+
+GitHub: https://github.com/DulariP
+
+---
+
+# License
+
+This project is intended for learning, portfolio demonstration, and automation engineering best practices.
+ 

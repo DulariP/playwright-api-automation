@@ -1,0 +1,32 @@
+name: Playwright API Automation Docker Tests
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+
+  api-tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Build Docker image
+        run: |
+          docker build -t api-automation .
+
+
+      - name: Run Playwright API tests
+        run: |
+          docker run api-automation

@@ -1,13 +1,13 @@
-import { expect, test } from "../../../fixtures/apiFixture";
+import { expect, test } from "../../fixtures/apiFixture";
 import {
   generateBookingData,
   generateName,
-} from "../../../test-data/bookingData";
+} from "../../test-data/bookingData";
 import {
   verifyStatusCode,
   verifyResponseContains,
   verifyBooking,
-} from "../../../helpers/apiAssertions";
+} from "../../helpers/apiAssertions";
 
 test.describe("Booking API - Complete CRUD Lifecycle", () => {
   test("Create, Update, Patch and Delete booking flow", async ({
@@ -79,6 +79,23 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
         expectedStatus: 404,
       });
       verifyStatusCode(deletedResult.status, 404);
+    });
+  });
+
+  test("Update booking without authentication", async ({ bookingApi }) => {
+    const bookingId = 1;
+    const updatePayload = generateBookingData();
+
+    await test.step("Send update request without authentication", async () => {
+      const result = await bookingApi.updateBookingWithoutAuth(
+        bookingId,
+        updatePayload,
+        {
+          expectedStatus: 403,
+        },
+      );
+      verifyStatusCode(result.status, 403);
+      expect(result.body).toContain("Forbidden");
     });
   });
 });

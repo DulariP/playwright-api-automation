@@ -1,0 +1,5 @@
+services:
+  api-tests:
+    image: api-automation
+    container_name: playwright-api-tests
+    command: npm run test:qa
