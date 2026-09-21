@@ -27,6 +27,11 @@ jobs:
 
 
       - name: Run Docker tests
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
+          BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+
         run: docker compose up --abort-on-container-exit --force-recreate
 
 

@@ -1,9 +1,12 @@
 services:
   api-tests:
+
     image: api-automation
 
-    env_file:
-      - environments/qa.env
+    environment:
+      BASE_URL: ${BASE_URL}
+      BOOKER_USERNAME: ${BOOKER_USERNAME}
+      BOOKER_PASSWORD: ${BOOKER_PASSWORD}
 
     volumes:
       - ./allure-results:/app/allure-results
