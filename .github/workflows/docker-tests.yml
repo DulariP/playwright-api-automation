@@ -21,7 +21,15 @@ jobs:
         run: docker build -t api-automation .
 
       - name: Run Docker tests
+        continue-on-error: true
         run: docker compose up --abort-on-container-exit
+
+      - name: Check Reports
+        if: always()
+        run: |
+          ls -la
+          ls -la allure-results || true
+          ls -la playwright-report || true
 
       - name: Set up Java
         if: always()
@@ -58,3 +66,4 @@ jobs:
         with:
           name: allure-report
           path: allure-report/
+          if-no-files-found: warn

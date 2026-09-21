@@ -1,13 +1,8 @@
 services:
   api-tests:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
-    container_name: playwright-api-tests
-
-    command: npm run test:qa
+    image: api-automation
 
     volumes:
-      - ./playwright-report:/app/playwright-report
       - ./allure-results:/app/allure-results
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results

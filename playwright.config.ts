@@ -34,7 +34,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["html", { outputFolder: "api-test-report", open: "never" }],
+    ["html", { outputFolder: "playwright-report", open: "never" }],
     ["list"],
     // ['dot'],
     ["json", { outputFile: "json-test-report.json" }],
