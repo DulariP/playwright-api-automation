@@ -10,30 +10,26 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
 
 jobs:
   api-tests:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-
       - name: Build Docker image
         run: docker build -t api-automation .
-
 
       - name: Run Docker tests
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
-
         run: docker compose up --abort-on-container-exit --force-recreate
-
 
       - name: Check Generated Test Reports
         if: always()
@@ -47,7 +43,6 @@ jobs:
           echo "Playwright Report:"
           ls -la playwright-report || true
 
-
       - name: Set up Java
         if: always()
         uses: actions/setup-java@v4
@@ -55,23 +50,26 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-
       - name: Install Allure Commandline
         if: always()
         run: npm install -g allure-commandline
-
 
       - name: Generate Allure HTML Report
         if: always()
         run: npm run allure:generate
 
-
-      - name: Verify Allure HTML Report
+      - name: Verify Allure Report Contents
         if: always()
         run: |
-          echo "Allure HTML Report:"
-          ls -la allure-report || true
+          echo "Allure Report:"
+          ls -R allure-report || true
 
+      - name: Deploy Allure Report to GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
 
       - name: Upload Test Reports
         if: always()
