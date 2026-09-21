@@ -2,7 +2,12 @@ services:
   api-tests:
     image: api-automation
 
+    env_file:
+      - environments/qa.env
+
     volumes:
       - ./allure-results:/app/allure-results
       - ./playwright-report:/app/playwright-report
       - ./test-results:/app/test-results
+
+    command: npm run test:qa
