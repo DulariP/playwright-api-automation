@@ -24,6 +24,16 @@ jobs:
         continue-on-error: true
         run: docker compose up --abort-on-container-exit --force-recreate
 
+      - name: Debug Docker Container Reports
+        if: always()
+        run: |
+          docker ps -a
+          docker logs $(docker ps -aq | head -1) || true
+          echo "Workspace:"
+          ls -la
+          echo "Allure:"
+          ls -la allure-results || true
+
       - name: Check Reports
         if: always()
         run: |
