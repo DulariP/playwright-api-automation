@@ -13,8 +13,8 @@ console.log("BASE_URL AFTER DOTENV:", process.env.BASE_URL);
 
 export const ENV = {
   BASE_URL: process.env.BASE_URL!,
-  USERNAME: process.env.USERNAME!,
-  PASSWORD: process.env.PASSWORD!,
+  BOOKER_USERNAME: process.env.BOOKER_USERNAME!,
+  BOOKER_PASSWORD: process.env.BOOKER_PASSWORD!,
 };
 
 console.log("FINAL ENV:", ENV);

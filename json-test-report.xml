@@ -1,103 +1,27 @@
-<testsuites id="" name="" tests="8" failures="1" skipped="0" errors="0" time="8.206223">
-<testsuite name="negative\createBookingWithoutFirstname.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="1" skipped="0" time="3.289" errors="0">
-<testcase name="Booking API - Negative Create Booking Tests › Create booking without firstname" classname="negative\createBookingWithoutFirstname.spec.ts" time="3.289">
+<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="6.356796">
+<testsuite name="auth.spec.ts" timestamp="2026-09-21T13:54:44.349Z" hostname="chromium" tests="2" failures="0" skipped="0" time="2.462" errors="0">
+<testcase name="Authentication API › Generate authentication token" classname="auth.spec.ts" time="1.368">
 <system-out>
 <![CDATA[
 ========== API REQUEST ==========
 Method : POST
-URL    : https://restful-booker.herokuapp.com/booking
+URL    : https://restful-booker.herokuapp.com/auth
 Body:
-{
-  firstname: [32m''[39m,
-  lastname: [32m'Test'[39m,
-  totalprice: [33m100[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-01-01'[39m, checkout: [32m'2027-01-05'[39m },
-  additionalneeds: [32m'Breakfast'[39m
-}
+{ username: [32m'admin'[39m, password: [32m'password123'[39m }
 =================================
 
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
-{
-  bookingid: [33m3816[39m,
-  booking: {
-    firstname: [32m''[39m,
-    lastname: [32m'Test'[39m,
-    totalprice: [33m100[39m,
-    depositpaid: [33mtrue[39m,
-    bookingdates: { checkin: [32m'2027-01-01'[39m, checkout: [32m'2027-01-05'[39m },
-    additionalneeds: [32m'Breakfast'[39m
-  }
-}
+{ token: [32m'376d6bd66950880'[39m }
 ==================================
 
-Response Status: [33m200[39m
-Response Body: {
-  "bookingid": 3816,
-  "booking": {
-    "firstname": "",
-    "lastname": "Test",
-    "totalprice": 100,
-    "depositpaid": true,
-    "bookingdates": {
-      "checkin": "2027-01-01",
-      "checkout": "2027-01-05"
-    },
-    "additionalneeds": "Breakfast"
-  }
-}
-
-[[ATTACHMENT|test-results\negative-createBookingWith-591d1-e-booking-without-firstname-chromium\error-context.md]]
-]]>
-</system-out>
-<failure message="expect(received).toBeFalsy()" type="expect.toBeFalsy">
-<![CDATA[  [chromium] › negative\createBookingWithoutFirstname.spec.ts:4:7 › Booking API - Negative Create Booking Tests › Create booking without firstname › Send create booking request without firstname 
-
-    Error: expect(received).toBeFalsy()
-
-    Received: true
-
-      23 |       console.log("Response Status:", result.status);
-      24 |       console.log("Response Body:", JSON.stringify(result.body, null, 2));
-    > 25 |       expect(result.ok).toBeFalsy();
-         |                         ^
-      26 |       expect(result.status).toBeGreaterThanOrEqual(400);
-      27 |     });
-      28 |   });
-        at D:\Dulari\API Automation\Api Automation\tests\api\negative\createBookingWithoutFirstname.spec.ts:25:25
-        at D:\Dulari\API Automation\Api Automation\tests\api\negative\createBookingWithoutFirstname.spec.ts:18:5
-
-    Error Context: ..\..\test-results\negative-createBookingWith-591d1-e-booking-without-firstname-chromium\error-context.md
-]]>
-</failure>
-</testcase>
-</testsuite>
-<testsuite name="negative\getInvalidBooking.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.246" errors="0">
-<testcase name="Booking API - Negative GET Tests › Get booking with invalid ID" classname="negative\getInvalidBooking.spec.ts" time="3.246">
-<system-out>
-<![CDATA[
-========== API REQUEST ==========
-Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/99999999
-=================================
-
-
-========== API RESPONSE ==========
-Status : 404
-Body:
-[32m'Not Found'[39m
-==================================
-
-Invalid Booking Response: Not Found
+Token generated successfully
 ]]>
 </system-out>
 </testcase>
-</testsuite>
-<testsuite name="negative\invalidLogin.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.263" errors="0">
-<testcase name="Authentication API - Negative Tests › Login with invalid credentials" classname="negative\invalidLogin.spec.ts" time="3.263">
+<testcase name="Authentication API › Login with invalid credentials" classname="auth.spec.ts" time="1.094">
 <system-out>
 <![CDATA[
 ========== API REQUEST ==========
@@ -122,60 +46,8 @@ Response Body: {
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="negative\updateWithoutAuth.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.153" errors="0">
-<testcase name="Booking API - Negative Update Tests › Update booking without authentication" classname="negative\updateWithoutAuth.spec.ts" time="1.153">
-<system-out>
-<![CDATA[
-========== API REQUEST ==========
-Method : PUT
-URL    : https://restful-booker.herokuapp.com/booking/1
-Body:
-{
-  firstname: [32m'Addison'[39m,
-  lastname: [32m'Cruickshank'[39m,
-  totalprice: [33m778[39m,
-  depositpaid: [33mfalse[39m,
-  bookingdates: { checkin: [32m'2027-07-14'[39m, checkout: [32m'2027-09-04'[39m },
-  additionalneeds: [32m'Lunch'[39m
-}
-=================================
-
-
-========== API RESPONSE ==========
-Status : 403
-Body:
-[32m'Forbidden'[39m
-==================================
-
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="positive\auth.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.106" errors="0">
-<testcase name="Authentication API › Generate authentication token" classname="positive\auth.spec.ts" time="1.106">
-<system-out>
-<![CDATA[
-========== API REQUEST ==========
-Method : POST
-URL    : https://restful-booker.herokuapp.com/auth
-Body:
-{ username: [32m'admin'[39m, password: [32m'password123'[39m }
-=================================
-
-
-========== API RESPONSE ==========
-Status : 200
-Body:
-{ token: [32m'6e1abc2812153ec'[39m }
-==================================
-
-Token generated successfully
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="positive\createBooking.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.495" errors="0">
-<testcase name="Booking API - Create Booking › Create booking and verify details" classname="positive\createBooking.spec.ts" time="1.495">
+<testsuite name="createBooking.spec.ts" timestamp="2026-09-21T13:54:44.349Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.588" errors="0">
+<testcase name="Booking API - Create Booking › Create booking and verify details" classname="createBooking.spec.ts" time="1.588">
 <system-out>
 <![CDATA[
 ========== API REQUEST ==========
@@ -183,11 +55,92 @@ Method : POST
 URL    : https://restful-booker.herokuapp.com/booking
 Body:
 {
-  firstname: [32m'Vince'[39m,
-  lastname: [32m'Walter'[39m,
-  totalprice: [33m968[39m,
+  firstname: [32m'Cordell'[39m,
+  lastname: [32m'Shields'[39m,
+  totalprice: [33m579[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-06-04'[39m, checkout: [32m'2027-07-18'[39m },
+  bookingdates: { checkin: [32m'2027-09-16'[39m, checkout: [32m'2027-01-22'[39m },
+  additionalneeds: [32m'Breakfast'[39m
+}
+=================================
+
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: [33m2183[39m,
+  booking: {
+    firstname: [32m'Cordell'[39m,
+    lastname: [32m'Shields'[39m,
+    totalprice: [33m579[39m,
+    depositpaid: [33mtrue[39m,
+    bookingdates: { checkin: [32m'2027-09-16'[39m, checkout: [32m'2027-01-22'[39m },
+    additionalneeds: [32m'Breakfast'[39m
+  }
+}
+==================================
+
+Created Booking ID: 2183
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/2183
+=================================
+
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: [32m'Cordell'[39m,
+  lastname: [32m'Shields'[39m,
+  totalprice: [33m579[39m,
+  depositpaid: [33mtrue[39m,
+  bookingdates: { checkin: [32m'2027-09-16'[39m, checkout: [32m'2027-01-22'[39m },
+  additionalneeds: [32m'Breakfast'[39m
+}
+==================================
+
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="getBooking.spec.ts" timestamp="2026-09-21T13:54:44.349Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.353" errors="0">
+<testcase name="Booking API - Get Booking › Get booking with invalid ID" classname="getBooking.spec.ts" time="1.353">
+<system-out>
+<![CDATA[
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/99999999
+=================================
+
+
+========== API RESPONSE ==========
+Status : 404
+Body:
+[32m'Not Found'[39m
+==================================
+
+Invalid Booking Response: Not Found
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="updateBooking.spec.ts" timestamp="2026-09-21T13:54:44.349Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.488" errors="0">
+<testcase name="Booking API - Complete CRUD Lifecycle › Create, Update, Patch and Delete booking flow" classname="updateBooking.spec.ts" time="3.341">
+<system-out>
+<![CDATA[
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: [32m'Hailey'[39m,
+  lastname: [32m'Buckridge'[39m,
+  totalprice: [33m428[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2026-11-03'[39m, checkout: [32m'2027-03-19'[39m },
   additionalneeds: [32m'Extra Bed'[39m
 }
 =================================
@@ -197,109 +150,31 @@ Body:
 Status : 200
 Body:
 {
-  bookingid: [33m3834[39m,
+  bookingid: [33m2185[39m,
   booking: {
-    firstname: [32m'Vince'[39m,
-    lastname: [32m'Walter'[39m,
-    totalprice: [33m968[39m,
-    depositpaid: [33mtrue[39m,
-    bookingdates: { checkin: [32m'2027-06-04'[39m, checkout: [32m'2027-07-18'[39m },
+    firstname: [32m'Hailey'[39m,
+    lastname: [32m'Buckridge'[39m,
+    totalprice: [33m428[39m,
+    depositpaid: [33mfalse[39m,
+    bookingdates: { checkin: [32m'2026-11-03'[39m, checkout: [32m'2027-03-19'[39m },
     additionalneeds: [32m'Extra Bed'[39m
   }
 }
 ==================================
 
-Created Booking ID: 3834
+Created Booking ID: 2185
+🔑 Generating new authentication token
 
 ========== API REQUEST ==========
-Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/3834
-=================================
-
-
-========== API RESPONSE ==========
-Status : 200
+Method : PUT
+URL    : https://restful-booker.herokuapp.com/booking/2185
 Body:
 {
-  firstname: [32m'Vince'[39m,
-  lastname: [32m'Walter'[39m,
-  totalprice: [33m968[39m,
+  firstname: [32m'Austyn'[39m,
+  lastname: [32m'Kuhlman'[39m,
+  totalprice: [33m853[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-06-04'[39m, checkout: [32m'2027-07-18'[39m },
-  additionalneeds: [32m'Extra Bed'[39m
-}
-==================================
-
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="positive\getBooking.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.109" errors="0">
-<testcase name="Booking API - Get Booking › Get booking details by ID" classname="positive\getBooking.spec.ts" time="1.109">
-<system-out>
-<![CDATA[
-========== API REQUEST ==========
-Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/1
-=================================
-
-
-========== API RESPONSE ==========
-Status : 200
-Body:
-{
-  firstname: [32m'Mark'[39m,
-  lastname: [32m'Smith'[39m,
-  totalprice: [33m498[39m,
-  depositpaid: [33mfalse[39m,
-  bookingdates: { checkin: [32m'2018-02-16'[39m, checkout: [32m'2026-09-07'[39m },
-  additionalneeds: [32m'Breakfast'[39m
-}
-==================================
-
-Retrieved Booking ID: 1
-Response Status: [33m200[39m
-Response Headers: {
-  [32m'content-length'[39m: [32m'170'[39m,
-  [32m'content-type'[39m: [32m'application/json; charset=utf-8'[39m,
-  date: [32m'Wed, 16 Sep 2026 04:58:11 GMT'[39m,
-  etag: [32m'W/"aa-KZ9SFzMGDNWrrzs4Mmc0fZm8fCo"'[39m,
-  nel: [32m'{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}'[39m,
-  [32m'report-to'[39m: [32m'{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=Df8dFdAsn1kxm%2BQ8HYqSMlfM3dQmRHRMIiAFBnmjkGY%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1789534691"}],"max_age":3600}'[39m,
-  [32m'reporting-endpoints'[39m: [32m'heroku-nel="https://nel.heroku.com/reports?s=Df8dFdAsn1kxm%2BQ8HYqSMlfM3dQmRHRMIiAFBnmjkGY%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1789534691"'[39m,
-  server: [32m'Heroku'[39m,
-  via: [32m'1.1 heroku-router'[39m,
-  [32m'x-powered-by'[39m: [32m'Express'[39m
-}
-Response Body: {
-  "firstname": "Mark",
-  "lastname": "Smith",
-  "totalprice": 498,
-  "depositpaid": false,
-  "bookingdates": {
-    "checkin": "2018-02-16",
-    "checkout": "2026-09-07"
-  },
-  "additionalneeds": "Breakfast"
-}
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="positive\updateBooking.spec.ts" timestamp="2026-09-16T04:58:04.642Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.011" errors="0">
-<testcase name="Booking API - Complete CRUD Lifecycle › Create, Update, Patch and Delete booking flow" classname="positive\updateBooking.spec.ts" time="3.011">
-<system-out>
-<![CDATA[
-========== API REQUEST ==========
-Method : POST
-URL    : https://restful-booker.herokuapp.com/booking
-Body:
-{
-  firstname: [32m'Keaton'[39m,
-  lastname: [32m'Fisher'[39m,
-  totalprice: [33m490[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-02-19'[39m, checkout: [32m'2026-12-28'[39m },
+  bookingdates: { checkin: [32m'2027-04-15'[39m, checkout: [32m'2027-04-01'[39m },
   additionalneeds: [32m'Dinner'[39m
 }
 =================================
@@ -309,53 +184,19 @@ Body:
 Status : 200
 Body:
 {
-  bookingid: [33m3829[39m,
-  booking: {
-    firstname: [32m'Keaton'[39m,
-    lastname: [32m'Fisher'[39m,
-    totalprice: [33m490[39m,
-    depositpaid: [33mtrue[39m,
-    bookingdates: { checkin: [32m'2027-02-19'[39m, checkout: [32m'2026-12-28'[39m },
-    additionalneeds: [32m'Dinner'[39m
-  }
-}
-==================================
-
-Created Booking ID: 3829
-🔑 Generating new authentication token
-
-========== API REQUEST ==========
-Method : PUT
-URL    : https://restful-booker.herokuapp.com/booking/3829
-Body:
-{
-  firstname: [32m'Eulalia'[39m,
-  lastname: [32m'Rath'[39m,
-  totalprice: [33m873[39m,
+  firstname: [32m'Austyn'[39m,
+  lastname: [32m'Kuhlman'[39m,
+  totalprice: [33m853[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-04-01'[39m, checkout: [32m'2026-11-24'[39m },
-  additionalneeds: [32m'Breakfast'[39m
-}
-=================================
-
-
-========== API RESPONSE ==========
-Status : 200
-Body:
-{
-  firstname: [32m'Eulalia'[39m,
-  lastname: [32m'Rath'[39m,
-  totalprice: [33m873[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-04-01'[39m, checkout: [32m'2026-11-24'[39m },
-  additionalneeds: [32m'Breakfast'[39m
+  bookingdates: { checkin: [32m'2027-04-15'[39m, checkout: [32m'2027-04-01'[39m },
+  additionalneeds: [32m'Dinner'[39m
 }
 ==================================
 
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/3829
+URL    : https://restful-booker.herokuapp.com/booking/2185
 =================================
 
 
@@ -363,12 +204,12 @@ URL    : https://restful-booker.herokuapp.com/booking/3829
 Status : 200
 Body:
 {
-  firstname: [32m'Eulalia'[39m,
-  lastname: [32m'Rath'[39m,
-  totalprice: [33m873[39m,
+  firstname: [32m'Austyn'[39m,
+  lastname: [32m'Kuhlman'[39m,
+  totalprice: [33m853[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-04-01'[39m, checkout: [32m'2026-11-24'[39m },
-  additionalneeds: [32m'Breakfast'[39m
+  bookingdates: { checkin: [32m'2027-04-15'[39m, checkout: [32m'2027-04-01'[39m },
+  additionalneeds: [32m'Dinner'[39m
 }
 ==================================
 
@@ -376,9 +217,9 @@ Body:
 
 ========== API REQUEST ==========
 Method : PATCH
-URL    : https://restful-booker.herokuapp.com/booking/3829
+URL    : https://restful-booker.herokuapp.com/booking/2185
 Body:
-{ firstname: [32m'Ova'[39m, lastname: [32m'Schuster'[39m }
+{ firstname: [32m'Nathan'[39m, lastname: [32m'Nader'[39m }
 =================================
 
 
@@ -386,19 +227,19 @@ Body:
 Status : 200
 Body:
 {
-  firstname: [32m'Ova'[39m,
-  lastname: [32m'Schuster'[39m,
-  totalprice: [33m873[39m,
+  firstname: [32m'Nathan'[39m,
+  lastname: [32m'Nader'[39m,
+  totalprice: [33m853[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-04-01'[39m, checkout: [32m'2026-11-24'[39m },
-  additionalneeds: [32m'Breakfast'[39m
+  bookingdates: { checkin: [32m'2027-04-15'[39m, checkout: [32m'2027-04-01'[39m },
+  additionalneeds: [32m'Dinner'[39m
 }
 ==================================
 
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/3829
+URL    : https://restful-booker.herokuapp.com/booking/2185
 =================================
 
 
@@ -406,12 +247,12 @@ URL    : https://restful-booker.herokuapp.com/booking/3829
 Status : 200
 Body:
 {
-  firstname: [32m'Ova'[39m,
-  lastname: [32m'Schuster'[39m,
-  totalprice: [33m873[39m,
+  firstname: [32m'Nathan'[39m,
+  lastname: [32m'Nader'[39m,
+  totalprice: [33m853[39m,
   depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-04-01'[39m, checkout: [32m'2026-11-24'[39m },
-  additionalneeds: [32m'Breakfast'[39m
+  bookingdates: { checkin: [32m'2027-04-15'[39m, checkout: [32m'2027-04-01'[39m },
+  additionalneeds: [32m'Dinner'[39m
 }
 ==================================
 
@@ -419,7 +260,7 @@ Body:
 
 ========== API REQUEST ==========
 Method : DELETE
-URL    : https://restful-booker.herokuapp.com/booking/3829
+URL    : https://restful-booker.herokuapp.com/booking/2185
 =================================
 
 
@@ -432,7 +273,7 @@ Body:
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/3829
+URL    : https://restful-booker.herokuapp.com/booking/2185
 =================================
 
 
@@ -440,6 +281,33 @@ URL    : https://restful-booker.herokuapp.com/booking/3829
 Status : 404
 Body:
 [32m'Not Found'[39m
+==================================
+
+]]>
+</system-out>
+</testcase>
+<testcase name="Booking API - Complete CRUD Lifecycle › Update booking without authentication" classname="updateBooking.spec.ts" time="1.147">
+<system-out>
+<![CDATA[
+========== API REQUEST ==========
+Method : PUT
+URL    : https://restful-booker.herokuapp.com/booking/1
+Body:
+{
+  firstname: [32m'Chadd'[39m,
+  lastname: [32m'Baumbach'[39m,
+  totalprice: [33m772[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-02-09'[39m, checkout: [32m'2026-11-07'[39m },
+  additionalneeds: [32m'Dinner'[39m
+}
+=================================
+
+
+========== API RESPONSE ==========
+Status : 403
+Body:
+[32m'Forbidden'[39m
 ==================================
 
 ]]>
