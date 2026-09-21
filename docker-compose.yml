@@ -1,11 +1,10 @@
 services:
   api-tests:
-    image: api-automation
-    container_name: playwright-api-tests
+    build:
+      context: .
+      dockerfile: Dockerfile
 
-    environment:
-      TEST_ENV: qa
-      CI: true
+    container_name: playwright-api-tests
 
     command: npm run test:qa
 
