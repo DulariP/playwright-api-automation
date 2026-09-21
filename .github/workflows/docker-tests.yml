@@ -22,7 +22,7 @@ jobs:
 
       - name: Run Docker tests
         continue-on-error: true
-        run: docker compose up --abort-on-container-exit
+        run: docker compose up --abort-on-container-exit --force-recreate
 
       - name: Check Reports
         if: always()
