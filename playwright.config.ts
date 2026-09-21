@@ -1,11 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
 
 const env = process.env.TEST_ENV || "qa";
 
 dotenv.config({
   path: `environments/${env}.env`,
-  override: false
+  override: false,
 });
 
 /**
@@ -20,11 +20,10 @@ dotenv.config({
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-
-    expect: {
-    timeout: 4 * 60 * 1000
+  expect: {
+    timeout: 4 * 60 * 1000,
   },
-  testDir: './tests/api',
+  testDir: "./tests/api",
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,50 +33,44 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-    reporter: [
-  ['html', { outputFolder: "api-test-report", open: 'never' }],
-  ['list'],
- // ['dot'], 
-  ['json', {outputFile : 'json-test-report.json'}],
-  ['junit', {outputFile : 'json-test-report.xml'}],
-    [
-    "allure-playwright",
-    {
-      outputFolder: "allure-results",
-    },
+  reporter: [
+    ["html", { outputFolder: "api-test-report", open: "never" }],
+    ["list"],
+    // ['dot'],
+    ["json", { outputFile: "json-test-report.json" }],
+    ["junit", { outputFile: "json-test-report.xml" }],
+    ["allure-playwright"],
   ],
-
-],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        browserName: 'chromium',
+    browserName: "chromium",
     launchOptions: {
       args: [
-        '--disable-save-password-bubble',
-        '--disable-autofill',
-        '--disable-autofill-keyboard-accessory-view',
+        "--disable-save-password-bubble",
+        "--disable-autofill",
+        "--disable-autofill-keyboard-accessory-view",
       ],
     },
-    
+
     baseURL: process.env.BASE_URL,
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
     headless: true,
-    screenshot: 'only-on-failure',
-    video: 'on',
+    screenshot: "only-on-failure",
+    video: "on",
   },
 
   /* Configure projects for major browsers */
-  
+
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
-/*
+    /*
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
