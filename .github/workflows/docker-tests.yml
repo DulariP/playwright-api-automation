@@ -10,14 +10,11 @@ on:
     branches:
       - main
 
-
 permissions:
   contents: write
 
-
 jobs:
   api-tests:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,14 +24,11 @@ jobs:
           - staging
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
-
       - name: Build Docker image
         run: docker build -t api-automation .
-
 
       - name: Run Docker tests
         env:
@@ -47,43 +41,64 @@ jobs:
           echo "Running environment: $TEST_ENV"
           docker compose up --abort-on-container-exit --force-recreate
 
-      - name: Check Generated Reports
+      - name: Check Allure Results
         if: always()
         run: |
-          echo "Allure Results:"
+          echo "Environment: ${{ matrix.environment }}"
           ls -la allure-results || true
 
-          echo "Playwright Report:"
-          ls -la playwright-report || true
+      - name: Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.environment }}
+          path: allure-results/
+          retention-days: 30
 
+  generate-allure-report:
+    needs: api-tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download QA Allure Results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-qa
+          path: allure-results
+
+      - name: Download Staging Allure Results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-staging
+          path: allure-results
+
+      - name: Check Merged Results
+        run: |
+          echo "Merged Allure Results:"
+          ls -la allure-results
 
       - name: Setup Java
-        if: always()
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-
       - name: Install Allure
-        if: always()
         run: npm install -g allure-commandline
 
-
-      - name: Generate Allure Report
-        if: always()
+      - name: Generate Allure HTML Report
         run: npm run allure:generate
 
-
       - name: Verify Allure Report
-        if: always()
         run: |
-          echo "Generated Allure Report:"
+          echo "Allure HTML:"
           ls -la allure-report
 
-
       - name: Deploy Allure Report to GitHub Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -91,16 +106,11 @@ jobs:
           publish_branch: gh-pages
           force_orphan: true
 
-
-      - name: Upload Test Reports
-        if: always()
+      - name: Upload Final Reports
         uses: actions/upload-artifact@v4
         with:
-          name: automation-test-reports
+          name: combined-allure-report
           path: |
-            playwright-report/
-            test-results/
             allure-results/
             allure-report/
           retention-days: 30
-          if-no-files-found: warn
