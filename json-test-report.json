@@ -110,7 +110,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3496,
+                      "duration": 1351,
                       "errors": [],
                       "stdout": [
                         {
@@ -141,7 +141,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{ token: \u001b[32m'81f4ea07bf8034f'\u001b[39m }\n"
+                          "text": "{ token: \u001b[32m'f40e6fa05591ac8'\u001b[39m }\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -155,24 +155,24 @@
                       "steps": [
                         {
                           "title": "Prepare authentication credentials",
-                          "duration": 7
+                          "duration": 5
                         },
                         {
                           "title": "Generate authentication token",
-                          "duration": 3391
+                          "duration": 1243
                         },
                         {
                           "title": "Verify generated token",
-                          "duration": 5
+                          "duration": 2
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:34.423Z",
+                      "startTime": "2026-09-22T13:44:42.205Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
@@ -182,7 +182,7 @@
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAidG9rZW4iOiAiODFmNGVhMDdiZjgwMzRmIgogIH0KfQ=="
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAidG9rZW4iOiAiZjQwZTZmYTA1NTkxYWM4IgogIH0KfQ=="
                         }
                       ]
                     }
@@ -211,7 +211,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1204,
+                      "duration": 1132,
                       "errors": [],
                       "stdout": [
                         {
@@ -259,20 +259,20 @@
                       "steps": [
                         {
                           "title": "Send login request with invalid credentials",
-                          "duration": 1188
+                          "duration": 1119
                         },
                         {
                           "title": "Verify authentication failure response",
-                          "duration": 3
+                          "duration": 2
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:37.991Z",
+                      "startTime": "2026-09-22T13:44:43.616Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
@@ -328,7 +328,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 2723,
+                      "duration": 1599,
                       "errors": [],
                       "stdout": [
                         {
@@ -344,7 +344,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Jasen'\u001b[39m,\n  lastname: \u001b[32m'Herzog'\u001b[39m,\n  totalprice: \u001b[33m893\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-29'\u001b[39m, checkout: \u001b[32m'2027-03-06'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Cade'\u001b[39m,\n  lastname: \u001b[32m'Cole'\u001b[39m,\n  totalprice: \u001b[33m669\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-03-30'\u001b[39m, checkout: \u001b[32m'2026-11-28'\u001b[39m },\n  additionalneeds: \u001b[32m'Dinner'\u001b[39m\n}\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -359,13 +359,13 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  bookingid: \u001b[33m3667\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Jasen'\u001b[39m,\n    lastname: \u001b[32m'Herzog'\u001b[39m,\n    totalprice: \u001b[33m893\u001b[39m,\n    depositpaid: \u001b[33mfalse\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-05-29'\u001b[39m, checkout: \u001b[32m'2027-03-06'\u001b[39m },\n    additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n  }\n}\n"
+                          "text": "{\n  bookingid: \u001b[33m2176\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Cade'\u001b[39m,\n    lastname: \u001b[32m'Cole'\u001b[39m,\n    totalprice: \u001b[33m669\u001b[39m,\n    depositpaid: \u001b[33mfalse\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-03-30'\u001b[39m, checkout: \u001b[32m'2026-11-28'\u001b[39m },\n    additionalneeds: \u001b[32m'Dinner'\u001b[39m\n  }\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
                         },
                         {
-                          "text": "Created Booking ID: 3667\n"
+                          "text": "Created Booking ID: 2176\n"
                         },
                         {
                           "text": "\n========== API REQUEST ==========\n"
@@ -374,7 +374,7 @@
                           "text": "Method : GET\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3667\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2176\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -389,7 +389,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Jasen'\u001b[39m,\n  lastname: \u001b[32m'Herzog'\u001b[39m,\n  totalprice: \u001b[33m893\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-29'\u001b[39m, checkout: \u001b[32m'2027-03-06'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Cade'\u001b[39m,\n  lastname: \u001b[32m'Cole'\u001b[39m,\n  totalprice: \u001b[33m669\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-03-30'\u001b[39m, checkout: \u001b[32m'2026-11-28'\u001b[39m },\n  additionalneeds: \u001b[32m'Dinner'\u001b[39m\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -404,40 +404,40 @@
                         },
                         {
                           "title": "Create new booking",
-                          "duration": 2329
+                          "duration": 1221
                         },
                         {
                           "title": "Verify created booking using GET",
-                          "duration": 321
+                          "duration": 307
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:34.645Z",
+                      "startTime": "2026-09-22T13:44:42.446Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkphc2VuIiwKICAgICJsYXN0bmFtZSI6ICJIZXJ6b2ciLAogICAgInRvdGFscHJpY2UiOiA4OTMsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDUtMjkiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNy0wMy0wNiIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkV4dHJhIEJlZCIKICB9Cn0="
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNhZGUiLAogICAgImxhc3RuYW1lIjogIkNvbGUiLAogICAgInRvdGFscHJpY2UiOiA2NjksCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDMtMzAiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNi0xMS0yOCIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkRpbm5lciIKICB9Cn0="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogMzY2NywKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIkphc2VuIiwKICAgICAgImxhc3RuYW1lIjogIkhlcnpvZyIsCiAgICAgICJ0b3RhbHByaWNlIjogODkzLAogICAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTI5IiwKICAgICAgICAiY2hlY2tvdXQiOiAiMjAyNy0wMy0wNiIKICAgICAgfSwKICAgICAgImFkZGl0aW9uYWxuZWVkcyI6ICJFeHRyYSBCZWQiCiAgICB9CiAgfQp9"
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogMjE3NiwKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIkNhZGUiLAogICAgICAibGFzdG5hbWUiOiAiQ29sZSIsCiAgICAgICJ0b3RhbHByaWNlIjogNjY5LAogICAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgICAiY2hlY2tpbiI6ICIyMDI3LTAzLTMwIiwKICAgICAgICAiY2hlY2tvdXQiOiAiMjAyNi0xMS0yOCIKICAgICAgfSwKICAgICAgImFkZGl0aW9uYWxuZWVkcyI6ICJEaW5uZXIiCiAgICB9CiAgfQp9"
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM2NjciCn0="
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzYiCn0="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkphc2VuIiwKICAgICJsYXN0bmFtZSI6ICJIZXJ6b2ciLAogICAgInRvdGFscHJpY2UiOiA4OTMsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDUtMjkiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNy0wMy0wNiIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkV4dHJhIEJlZCIKICB9Cn0="
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNhZGUiLAogICAgImxhc3RuYW1lIjogIkNvbGUiLAogICAgInRvdGFscHJpY2UiOiA2NjksCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDMtMzAiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNi0xMS0yOCIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkRpbm5lciIKICB9Cn0="
                         }
                       ]
                     }
@@ -483,7 +483,7 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 1642,
+                      "duration": 1379,
                       "errors": [],
                       "stdout": [
                         {
@@ -522,16 +522,16 @@
                       "steps": [
                         {
                           "title": "Request booking with invalid ID",
-                          "duration": 1562
+                          "duration": 1259
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:34.426Z",
+                      "startTime": "2026-09-22T13:44:42.192Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
@@ -587,7 +587,7 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 11317,
+                      "duration": 3568,
                       "errors": [],
                       "stdout": [
                         {
@@ -603,7 +603,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Kristin'\u001b[39m,\n  lastname: \u001b[32m'Rempel'\u001b[39m,\n  totalprice: \u001b[33m575\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-09-16'\u001b[39m, checkout: \u001b[32m'2027-09-13'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Coralie'\u001b[39m,\n  lastname: \u001b[32m'Gusikowski'\u001b[39m,\n  totalprice: \u001b[33m352\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-01'\u001b[39m, checkout: \u001b[32m'2027-04-18'\u001b[39m },\n  additionalneeds: \u001b[32m'Dinner'\u001b[39m\n}\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -618,13 +618,13 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  bookingid: \u001b[33m3719\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Kristin'\u001b[39m,\n    lastname: \u001b[32m'Rempel'\u001b[39m,\n    totalprice: \u001b[33m575\u001b[39m,\n    depositpaid: \u001b[33mfalse\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-09-16'\u001b[39m, checkout: \u001b[32m'2027-09-13'\u001b[39m },\n    additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n  }\n}\n"
+                          "text": "{\n  bookingid: \u001b[33m2177\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Coralie'\u001b[39m,\n    lastname: \u001b[32m'Gusikowski'\u001b[39m,\n    totalprice: \u001b[33m352\u001b[39m,\n    depositpaid: \u001b[33mtrue\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-05-01'\u001b[39m, checkout: \u001b[32m'2027-04-18'\u001b[39m },\n    additionalneeds: \u001b[32m'Dinner'\u001b[39m\n  }\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
                         },
                         {
-                          "text": "Created Booking ID: 3719\n"
+                          "text": "Created Booking ID: 2177\n"
                         },
                         {
                           "text": "🔑 Generating new authentication token\n"
@@ -636,13 +636,13 @@
                           "text": "Method : PUT\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Garett'\u001b[39m,\n  lastname: \u001b[32m'Ebert'\u001b[39m,\n  totalprice: \u001b[33m954\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-07-29'\u001b[39m, checkout: \u001b[32m'2026-12-14'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Bernita'\u001b[39m,\n  lastname: \u001b[32m'Orn'\u001b[39m,\n  totalprice: \u001b[33m487\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-21'\u001b[39m, checkout: \u001b[32m'2027-07-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -657,7 +657,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Garett'\u001b[39m,\n  lastname: \u001b[32m'Ebert'\u001b[39m,\n  totalprice: \u001b[33m954\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-07-29'\u001b[39m, checkout: \u001b[32m'2026-12-14'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Bernita'\u001b[39m,\n  lastname: \u001b[32m'Orn'\u001b[39m,\n  totalprice: \u001b[33m487\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-21'\u001b[39m, checkout: \u001b[32m'2027-07-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -669,7 +669,7 @@
                           "text": "Method : GET\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -684,7 +684,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Garett'\u001b[39m,\n  lastname: \u001b[32m'Ebert'\u001b[39m,\n  totalprice: \u001b[33m954\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-07-29'\u001b[39m, checkout: \u001b[32m'2026-12-14'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Bernita'\u001b[39m,\n  lastname: \u001b[32m'Orn'\u001b[39m,\n  totalprice: \u001b[33m487\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-21'\u001b[39m, checkout: \u001b[32m'2027-07-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -699,13 +699,13 @@
                           "text": "Method : PATCH\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{ firstname: \u001b[32m'Myra'\u001b[39m, lastname: \u001b[32m'Reilly'\u001b[39m }\n"
+                          "text": "{ firstname: \u001b[32m'Robert'\u001b[39m, lastname: \u001b[32m'Treutel'\u001b[39m }\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -720,7 +720,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Myra'\u001b[39m,\n  lastname: \u001b[32m'Reilly'\u001b[39m,\n  totalprice: \u001b[33m954\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-07-29'\u001b[39m, checkout: \u001b[32m'2026-12-14'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Robert'\u001b[39m,\n  lastname: \u001b[32m'Treutel'\u001b[39m,\n  totalprice: \u001b[33m487\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-21'\u001b[39m, checkout: \u001b[32m'2027-07-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -732,7 +732,7 @@
                           "text": "Method : GET\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -747,7 +747,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Myra'\u001b[39m,\n  lastname: \u001b[32m'Reilly'\u001b[39m,\n  totalprice: \u001b[33m954\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-07-29'\u001b[39m, checkout: \u001b[32m'2026-12-14'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Robert'\u001b[39m,\n  lastname: \u001b[32m'Treutel'\u001b[39m,\n  totalprice: \u001b[33m487\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-21'\u001b[39m, checkout: \u001b[32m'2027-07-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "==================================\n\n"
@@ -762,7 +762,7 @@
                           "text": "Method : DELETE\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -789,7 +789,7 @@
                           "text": "Method : GET\n"
                         },
                         {
-                          "text": "URL    : https://restful-booker.herokuapp.com/booking/3719\n"
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/2177\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -815,95 +815,95 @@
                       "steps": [
                         {
                           "title": "Create booking",
-                          "duration": 8452
+                          "duration": 1251
                         },
                         {
                           "title": "Update booking using PUT",
-                          "duration": 636
+                          "duration": 607
                         },
                         {
                           "title": "Verify updated booking using GET",
-                          "duration": 318
-                        },
-                        {
-                          "title": "Partial update booking using PATCH",
-                          "duration": 319
-                        },
-                        {
-                          "title": "Verify PATCH changes are persisted",
-                          "duration": 330
-                        },
-                        {
-                          "title": "Delete booking",
                           "duration": 324
                         },
                         {
+                          "title": "Partial update booking using PATCH",
+                          "duration": 392
+                        },
+                        {
+                          "title": "Verify PATCH changes are persisted",
+                          "duration": 311
+                        },
+                        {
+                          "title": "Delete booking",
+                          "duration": 308
+                        },
+                        {
                           "title": "Verify deleted booking cannot be retrieved",
-                          "duration": 840
+                          "duration": 303
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:34.682Z",
+                      "startTime": "2026-09-22T13:44:42.457Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIktyaXN0aW4iLAogICAgImxhc3RuYW1lIjogIlJlbXBlbCIsCiAgICAidG90YWxwcmljZSI6IDU3NSwKICAgICJkZXBvc2l0cGFpZCI6IGZhbHNlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNy0wOS0xNiIsCiAgICAgICJjaGVja291dCI6ICIyMDI3LTA5LTEzIgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiRXh0cmEgQmVkIgogIH0KfQ=="
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNvcmFsaWUiLAogICAgImxhc3RuYW1lIjogIkd1c2lrb3dza2kiLAogICAgInRvdGFscHJpY2UiOiAzNTIsCiAgICAiZGVwb3NpdHBhaWQiOiB0cnVlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNy0wNS0wMSIsCiAgICAgICJjaGVja291dCI6ICIyMDI3LTA0LTE4IgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiRGlubmVyIgogIH0KfQ=="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogMzcxOSwKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIktyaXN0aW4iLAogICAgICAibGFzdG5hbWUiOiAiUmVtcGVsIiwKICAgICAgInRvdGFscHJpY2UiOiA1NzUsCiAgICAgICJkZXBvc2l0cGFpZCI6IGZhbHNlLAogICAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAgICJjaGVja2luIjogIjIwMjctMDktMTYiLAogICAgICAgICJjaGVja291dCI6ICIyMDI3LTA5LTEzIgogICAgICB9LAogICAgICAiYWRkaXRpb25hbG5lZWRzIjogIkV4dHJhIEJlZCIKICAgIH0KICB9Cn0="
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogMjE3NywKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIkNvcmFsaWUiLAogICAgICAibGFzdG5hbWUiOiAiR3VzaWtvd3NraSIsCiAgICAgICJ0b3RhbHByaWNlIjogMzUyLAogICAgICAiZGVwb3NpdHBhaWQiOiB0cnVlLAogICAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAgICJjaGVja2luIjogIjIwMjctMDUtMDEiLAogICAgICAgICJjaGVja291dCI6ICIyMDI3LTA0LTE4IgogICAgICB9LAogICAgICAiYWRkaXRpb25hbG5lZWRzIjogIkRpbm5lciIKICAgIH0KICB9Cn0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM3MTkiLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJHYXJldHQiLAogICAgImxhc3RuYW1lIjogIkViZXJ0IiwKICAgICJ0b3RhbHByaWNlIjogOTU0LAogICAgImRlcG9zaXRwYWlkIjogdHJ1ZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDctMjkiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNi0xMi0xNCIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkV4dHJhIEJlZCIKICB9Cn0="
+                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzciLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJCZXJuaXRhIiwKICAgICJsYXN0bmFtZSI6ICJPcm4iLAogICAgInRvdGFscHJpY2UiOiA0ODcsCiAgICAiZGVwb3NpdHBhaWQiOiB0cnVlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNy0wNS0yMSIsCiAgICAgICJjaGVja291dCI6ICIyMDI3LTA3LTE2IgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiTHVuY2giCiAgfQp9"
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkdhcmV0dCIsCiAgICAibGFzdG5hbWUiOiAiRWJlcnQiLAogICAgInRvdGFscHJpY2UiOiA5NTQsCiAgICAiZGVwb3NpdHBhaWQiOiB0cnVlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNy0wNy0yOSIsCiAgICAgICJjaGVja291dCI6ICIyMDI2LTEyLTE0IgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiRXh0cmEgQmVkIgogIH0KfQ=="
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkJlcm5pdGEiLAogICAgImxhc3RuYW1lIjogIk9ybiIsCiAgICAidG90YWxwcmljZSI6IDQ4NywKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTIxIiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDctMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM3MTkiCn0="
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzciCn0="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkdhcmV0dCIsCiAgICAibGFzdG5hbWUiOiAiRWJlcnQiLAogICAgInRvdGFscHJpY2UiOiA5NTQsCiAgICAiZGVwb3NpdHBhaWQiOiB0cnVlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNy0wNy0yOSIsCiAgICAgICJjaGVja291dCI6ICIyMDI2LTEyLTE0IgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiRXh0cmEgQmVkIgogIH0KfQ=="
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkJlcm5pdGEiLAogICAgImxhc3RuYW1lIjogIk9ybiIsCiAgICAidG90YWxwcmljZSI6IDQ4NywKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTIxIiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDctMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiUEFUQ0giLAogICJ1cmwiOiAiaHR0cHM6Ly9yZXN0ZnVsLWJvb2tlci5oZXJva3VhcHAuY29tL2Jvb2tpbmcvMzcxOSIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIk15cmEiLAogICAgImxhc3RuYW1lIjogIlJlaWxseSIKICB9Cn0="
+                          "body": "ewogICJtZXRob2QiOiAiUEFUQ0giLAogICJ1cmwiOiAiaHR0cHM6Ly9yZXN0ZnVsLWJvb2tlci5oZXJva3VhcHAuY29tL2Jvb2tpbmcvMjE3NyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIlJvYmVydCIsCiAgICAibGFzdG5hbWUiOiAiVHJldXRlbCIKICB9Cn0="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIk15cmEiLAogICAgImxhc3RuYW1lIjogIlJlaWxseSIsCiAgICAidG90YWxwcmljZSI6IDk1NCwKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA3LTI5IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjYtMTItMTQiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJFeHRyYSBCZWQiCiAgfQp9"
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIlJvYmVydCIsCiAgICAibGFzdG5hbWUiOiAiVHJldXRlbCIsCiAgICAidG90YWxwcmljZSI6IDQ4NywKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTIxIiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDctMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM3MTkiCn0="
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzciCn0="
                         },
                         {
                           "name": "API Response",
                           "contentType": "application/json",
-                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIk15cmEiLAogICAgImxhc3RuYW1lIjogIlJlaWxseSIsCiAgICAidG90YWxwcmljZSI6IDk1NCwKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA3LTI5IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjYtMTItMTQiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJFeHRyYSBCZWQiCiAgfQp9"
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIlJvYmVydCIsCiAgICAibGFzdG5hbWUiOiAiVHJldXRlbCIsCiAgICAidG90YWxwcmljZSI6IDQ4NywKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTIxIiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDctMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiREVMRVRFIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM3MTkiCn0="
+                          "body": "ewogICJtZXRob2QiOiAiREVMRVRFIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzciCn0="
                         },
                         {
                           "name": "API Response",
@@ -913,7 +913,7 @@
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzM3MTkiCn0="
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzIxNzciCn0="
                         },
                         {
                           "name": "API Response",
@@ -947,7 +947,7 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 2044,
+                      "duration": 1161,
                       "errors": [],
                       "stdout": [
                         {
@@ -963,7 +963,7 @@
                           "text": "Body:\n"
                         },
                         {
-                          "text": "{\n  firstname: \u001b[32m'Bernita'\u001b[39m,\n  lastname: \u001b[32m'Monahan'\u001b[39m,\n  totalprice: \u001b[33m187\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-06-10'\u001b[39m, checkout: \u001b[32m'2027-06-09'\u001b[39m },\n  additionalneeds: \u001b[32m'Extra Bed'\u001b[39m\n}\n"
+                          "text": "{\n  firstname: \u001b[32m'Retta'\u001b[39m,\n  lastname: \u001b[32m'Williamson'\u001b[39m,\n  totalprice: \u001b[33m704\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2026-11-23'\u001b[39m, checkout: \u001b[32m'2027-09-10'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
                         },
                         {
                           "text": "=================================\n\n"
@@ -989,21 +989,21 @@
                       "steps": [
                         {
                           "title": "Send update request without authentication",
-                          "duration": 2021
+                          "duration": 1147
                         }
                       ],
-                      "startTime": "2026-09-22T12:47:46.050Z",
+                      "startTime": "2026-09-22T13:44:46.080Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "Allure Metadata (metadata)",
                           "contentType": "application/vnd.allure.message+json",
-                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJzdGFnaW5nIn1dfX0="
                         },
                         {
                           "name": "API Request",
                           "contentType": "application/json",
-                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzEiLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJCZXJuaXRhIiwKICAgICJsYXN0bmFtZSI6ICJNb25haGFuIiwKICAgICJ0b3RhbHByaWNlIjogMTg3LAogICAgImRlcG9zaXRwYWlkIjogdHJ1ZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDYtMTAiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNy0wNi0wOSIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkV4dHJhIEJlZCIKICB9Cn0="
+                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzEiLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJSZXR0YSIsCiAgICAibGFzdG5hbWUiOiAiV2lsbGlhbXNvbiIsCiAgICAidG90YWxwcmljZSI6IDcwNCwKICAgICJkZXBvc2l0cGFpZCI6IGZhbHNlLAogICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgImNoZWNraW4iOiAiMjAyNi0xMS0yMyIsCiAgICAgICJjaGVja291dCI6ICIyMDI3LTA5LTEwIgogICAgfSwKICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiTHVuY2giCiAgfQp9"
                         },
                         {
                           "name": "API Response",
@@ -1028,8 +1028,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-09-22T12:47:33.006Z",
-    "duration": 15682.088,
+    "startTime": "2026-09-22T13:44:41.001Z",
+    "duration": 6374.316,
     "expected": 6,
     "skipped": 0,
     "unexpected": 0,

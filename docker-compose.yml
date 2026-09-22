@@ -13,4 +13,9 @@ services:
       - ./playwright-report:/app/playwright-report
       - ./test-results:/app/test-results
 
-    command: npm test
+    command: >
+      sh -c "
+      npm test;
+      echo 'Allure results:';
+      ls -la /app/allure-results
+      "
