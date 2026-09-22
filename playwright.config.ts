@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
+import { createAllureEnvironment } from "./utils/allureEnvironment";
+
+createAllureEnvironment();
 
 const env = process.env.TEST_ENV || "qa";
 
