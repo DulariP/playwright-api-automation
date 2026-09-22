@@ -29,47 +29,47 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+
         run: docker compose up --abort-on-container-exit --force-recreate
 
-      - name: Check Generated Test Reports
+      - name: Check Generated Reports
         if: always()
         run: |
-          echo "Workspace:"
-          ls -la
-
           echo "Allure Results:"
           ls -la allure-results || true
 
           echo "Playwright Report:"
           ls -la playwright-report || true
 
-      - name: Set up Java
+      - name: Setup Java
         if: always()
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Install Allure Commandline
+      - name: Install Allure
         if: always()
         run: npm install -g allure-commandline
 
-      - name: Generate Allure HTML Report
+      - name: Generate Allure Report
         if: always()
         run: npm run allure:generate
 
-      - name: Verify Allure Report Contents
+      - name: Verify Allure Report
         if: always()
         run: |
-          echo "Allure Report:"
-          ls -R allure-report || true
+          echo "Generated Allure Report:"
+          ls -la allure-report
 
       - name: Deploy Allure Report to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          publish_branch: gh-pages
+          force_orphan: true
 
       - name: Upload Test Reports
         if: always()
