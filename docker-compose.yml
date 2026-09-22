@@ -1,9 +1,9 @@
 services:
   api-tests:
-
     image: api-automation
 
     environment:
+      TEST_ENV: ${TEST_ENV:-qa}
       BASE_URL: ${BASE_URL}
       BOOKER_USERNAME: ${BOOKER_USERNAME}
       BOOKER_PASSWORD: ${BOOKER_PASSWORD}
@@ -13,4 +13,4 @@ services:
       - ./playwright-report:/app/playwright-report
       - ./test-results:/app/test-results
 
-    command: npm run test:qa
+    command: npm test

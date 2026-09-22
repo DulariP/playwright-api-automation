@@ -10,27 +10,42 @@ on:
     branches:
       - main
 
+
 permissions:
   contents: write
 
+
 jobs:
   api-tests:
+
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        environment:
+          - qa
+          - staging
+
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
 
       - name: Build Docker image
         run: docker build -t api-automation .
 
+
       - name: Run Docker tests
         env:
+          TEST_ENV: ${{ matrix.environment }}
           BASE_URL: ${{ secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
 
-        run: docker compose up --abort-on-container-exit --force-recreate
+        run: |
+          echo "Running environment: $TEST_ENV"
+          docker compose up --abort-on-container-exit --force-recreate
 
       - name: Check Generated Reports
         if: always()
@@ -41,6 +56,7 @@ jobs:
           echo "Playwright Report:"
           ls -la playwright-report || true
 
+
       - name: Setup Java
         if: always()
         uses: actions/setup-java@v4
@@ -48,19 +64,23 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+
       - name: Install Allure
         if: always()
         run: npm install -g allure-commandline
 
+
       - name: Generate Allure Report
         if: always()
         run: npm run allure:generate
+
 
       - name: Verify Allure Report
         if: always()
         run: |
           echo "Generated Allure Report:"
           ls -la allure-report
+
 
       - name: Deploy Allure Report to GitHub Pages
         if: always()
@@ -70,6 +90,7 @@ jobs:
           publish_dir: ./allure-report
           publish_branch: gh-pages
           force_orphan: true
+
 
       - name: Upload Test Reports
         if: always()
