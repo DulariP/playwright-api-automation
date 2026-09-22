@@ -1,6 +1,7 @@
 import { test as base } from "@playwright/test";
 import { BookingApi } from "../api/BookingApi";
 import { AuthApi } from "../api/AuthApi";
+import { label } from "allure-js-commons";
 
 type ApiFixtures = {
   bookingApi: BookingApi;
@@ -17,6 +18,10 @@ export const test = base.extend<ApiFixtures>({
     const authApi = new AuthApi(request);
     await use(authApi);
   },
+});
+
+test.beforeEach(async () => {
+  await label("Environment", process.env.TEST_ENV || "qa");
 });
 
 export { expect } from "@playwright/test";

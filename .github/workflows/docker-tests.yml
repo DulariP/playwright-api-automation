@@ -14,7 +14,9 @@ permissions:
   contents: write
 
 jobs:
+
   api-tests:
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,62 +26,57 @@ jobs:
           - staging
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
 
       - name: Build Docker image
         run: docker build -t api-automation .
 
-      - name: Run Docker tests
+      - name: Run Docker Tests
         env:
           TEST_ENV: ${{ matrix.environment }}
           BASE_URL: ${{ secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
-
         run: |
-          echo "Running environment: $TEST_ENV"
+          echo "Running $TEST_ENV"
           docker compose up --abort-on-container-exit --force-recreate
-
-      - name: Check Allure Results
-        if: always()
-        run: |
-          echo "Environment: ${{ matrix.environment }}"
-          ls -la allure-results || true
 
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-${{ matrix.environment }}
-          path: allure-results/
+          path: allure-results
           retention-days: 30
 
   generate-allure-report:
+
     needs: api-tests
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Download QA Allure Results
+      - uses: actions/checkout@v4
+
+      - name: Download QA Results
         uses: actions/download-artifact@v4
         with:
           name: allure-results-qa
-          path: allure-results
+          path: qa-results
 
-      - name: Download Staging Allure Results
+      - name: Download Staging Results
         uses: actions/download-artifact@v4
         with:
           name: allure-results-staging
-          path: allure-results
+          path: staging-results
 
-      - name: Check Merged Results
+      - name: Merge Results
         run: |
-          echo "Merged Allure Results:"
-          ls -la allure-results
+          mkdir allure-results
+          cp -r qa-results/* allure-results/
+          cp -r staging-results/* allure-results/
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -90,27 +87,19 @@ jobs:
       - name: Install Allure
         run: npm install -g allure-commandline
 
-      - name: Generate Allure HTML Report
-        run: npm run allure:generate
+      - name: Generate Allure Report
+        run: allure generate allure-results --clean -o allure-report
 
-      - name: Verify Allure Report
-        run: |
-          echo "Allure HTML:"
-          ls -la allure-report
-
-      - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
-          force_orphan: true
-
-      - name: Upload Final Reports
+      - name: Upload Final Report
         uses: actions/upload-artifact@v4
         with:
           name: combined-allure-report
-          path: |
-            allure-results/
-            allure-report/
-          retention-days: 30
+          path: allure-report
+
+      - name: Deploy Report
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
+          publish_branch: gh-pages
+          force_orphan: true
