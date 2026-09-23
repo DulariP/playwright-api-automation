@@ -13,8 +13,11 @@ on:
 permissions:
   contents: write
 
+
 jobs:
+
   api-tests:
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,12 +26,16 @@ jobs:
           - qa
           - staging
 
+
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
       - name: Build Docker image
         run: docker build -t api-automation .
+
 
       - name: Run Playwright Tests
         env:
@@ -36,9 +43,11 @@ jobs:
           BASE_URL: ${{ secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+
         run: |
           echo "Running tests for $TEST_ENV"
           docker compose up --abort-on-container-exit --force-recreate
+
 
       - name: Verify Allure Results
         if: always()
@@ -46,6 +55,7 @@ jobs:
           echo "Listing allure-results..."
           ls -la
           ls -la allure-results || true
+
 
       - name: Upload Allure Results
         if: always()
@@ -55,14 +65,22 @@ jobs:
           path: allure-results
           retention-days: 30
 
+
+
   publish-report:
+
     needs: api-tests
 
     runs-on: ubuntu-latest
 
+
     steps:
+
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+
 
       ###################################################
       # Download QA Results
@@ -74,6 +92,8 @@ jobs:
           name: allure-results-qa
           path: qa-results
 
+
+
       ###################################################
       # Download Staging Results
       ###################################################
@@ -83,6 +103,8 @@ jobs:
         with:
           name: allure-results-staging
           path: staging-results
+
+
 
       ###################################################
       # Install Java
@@ -94,12 +116,16 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+
+
       ###################################################
       # Install Allure
       ###################################################
 
       - name: Install Allure
         run: npm install -g allure-commandline
+
+
 
       ###################################################
       # Generate QA Report
@@ -109,6 +135,8 @@ jobs:
         run: |
           allure generate qa-results --clean -o qa
 
+
+
       ###################################################
       # Generate Staging Report
       ###################################################
@@ -116,6 +144,8 @@ jobs:
       - name: Generate Staging Report
         run: |
           allure generate staging-results --clean -o staging
+
+
 
       ###################################################
       # Prepare GitHub Pages
@@ -127,6 +157,84 @@ jobs:
           cp -R qa public/
           cp -R staging public/
 
+
+
+      ###################################################
+      # Create Landing Page
+      ###################################################
+
+      - name: Create Landing Page
+        run: |
+          cat <<EOF > public/index.html
+          <!DOCTYPE html>
+          <html>
+
+          <head>
+            <title>API Automation Reports</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                margin: 40px;
+              }
+
+              h1 {
+                margin-bottom: 30px;
+              }
+
+              li {
+                margin: 15px;
+              }
+
+              a {
+                font-size: 20px;
+              }
+            </style>
+          </head>
+
+
+          <body>
+
+            <h1>
+              Playwright API Automation Reports
+            </h1>
+
+
+            <ul>
+
+              <li>
+                <a href="./qa/">
+                  QA Report
+                </a>
+              </li>
+
+
+              <li>
+                <a href="./staging/">
+                  Staging Report
+                </a>
+              </li>
+
+            </ul>
+
+
+          </body>
+
+          </html>
+          EOF
+
+
+
+      ###################################################
+      # Verify Pages Structure
+      ###################################################
+
+      - name: Verify Pages Content
+        run: |
+          echo "Generated GitHub Pages files:"
+          find public -maxdepth 2 -type f
+
+
+
       ###################################################
       # Upload HTML Report
       ###################################################
@@ -136,6 +244,8 @@ jobs:
         with:
           name: allure-html
           path: public
+
+
 
       ###################################################
       # Deploy to GitHub Pages
