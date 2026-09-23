@@ -15,9 +15,10 @@ services:
 
     command: >
       sh -c "
-      echo '====================================';
-      echo 'Running tests for environment:' $TEST_ENV;
-      echo '====================================';
+      echo "================================="
+      echo "Running Regression Tests"
+      echo "Environment: $TEST_ENV"
+      echo "================================="
 
       npx playwright test;
 
