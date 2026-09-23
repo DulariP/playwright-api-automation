@@ -15,7 +15,17 @@ services:
 
     command: >
       sh -c "
-      npm test;
-      echo 'Allure results:';
-      ls -la /app/allure-results
+      echo '====================================';
+      echo 'Running tests for environment:' $TEST_ENV;
+      echo '====================================';
+
+      npx playwright test;
+
+      echo '';
+      echo 'Generated Allure Results';
+      ls -la /app/allure-results || true;
+
+      echo '';
+      echo 'Generated Playwright Report';
+      ls -la /app/playwright-report || true;
       "
