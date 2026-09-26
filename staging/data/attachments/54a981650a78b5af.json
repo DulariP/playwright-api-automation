@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Loma",
+    "lastname": "Bechtelar",
+    "totalprice": 977,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-01",
+      "checkout": "2027-12-18"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

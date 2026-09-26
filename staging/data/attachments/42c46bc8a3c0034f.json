@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5262,
+    "booking": {
+      "firstname": "Loma",
+      "lastname": "Bechtelar",
+      "totalprice": 977,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-04-01",
+        "checkout": "2027-12-18"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Maxwell",
+    "lastname": "Bartell",
+    "totalprice": 136,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-10-19",
+      "checkout": "2027-07-05"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

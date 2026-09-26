@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Anandhi",
+    "lastname": "TestUser",
+    "totalprice": 111,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-01-01",
+      "checkout": "2026-01-01"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

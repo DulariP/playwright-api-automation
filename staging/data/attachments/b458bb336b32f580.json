@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/5262",
+  "body": {
+    "firstname": "Terence",
+    "lastname": "Prosacco",
+    "totalprice": 346,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-03-26",
+      "checkout": "2027-09-15"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

@@ -1,0 +1,10 @@
+Request Payload validation failed
+[
+  {
+    instancePath: '/depositpaid',
+    schemaPath: '#/properties/depositpaid/type',
+    keyword: 'type',
+    params: { type: 'boolean' },
+    message: 'must be boolean'
+  }
+]

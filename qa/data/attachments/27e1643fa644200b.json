@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5220,
+    "booking": {
+      "firstname": "Callie",
+      "lastname": "Oberbrunner",
+      "totalprice": 379,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-01-18",
+        "checkout": "2027-06-19"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}

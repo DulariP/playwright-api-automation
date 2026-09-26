@@ -1,0 +1,4 @@
+{
+  "method": "DELETE",
+  "url": "https://restful-booker.herokuapp.com/booking/5220"
+}

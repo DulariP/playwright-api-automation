@@ -1,0 +1,59 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: 'Loma',
+  lastname: 'Bechtelar',
+  totalprice: 977,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-04-01', checkout: '2027-12-18' },
+  additionalneeds: 'Dinner'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: 5262,
+  booking: {
+    firstname: 'Loma',
+    lastname: 'Bechtelar',
+    totalprice: 977,
+    depositpaid: false,
+    bookingdates: { checkin: '2027-04-01', checkout: '2027-12-18' },
+    additionalneeds: 'Dinner'
+  }
+}
+==================================
+
+Created Booking ID: 5262
+🔑 Generating new authentication token
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : PUT
+URL    : https://restful-booker.herokuapp.com/booking/5262
+Body:
+{
+  firstname: 'Terence',
+  lastname: 'Prosacco',
+  totalprice: 346,
+  depositpaid: true,
+  bookingdates: { checkin: '2027-03-26', checkout: '2027-09-15' },
+  additionalneeds: 'Breakfast'
+}
+=================================
+
+
+========== API RESPONSE ==========
+Status : 405
+Body:
+'Method Not Allowed'
+==================================
+
