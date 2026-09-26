@@ -1,8 +1,9 @@
-<testsuites id="" name="" tests="6" failures="0" skipped="0" errors="0" time="6.374315999999999">
-<testsuite name="auth.spec.ts" timestamp="2026-09-22T13:44:41.207Z" hostname="chromium" tests="2" failures="0" skipped="0" time="2.483" errors="0">
-<testcase name="Authentication API › Generate authentication token" classname="auth.spec.ts" time="1.351">
+<testsuites id="" name="" tests="10" failures="0" skipped="0" errors="0" time="7.886921999999999">
+<testsuite name="auth.spec.ts" timestamp="2026-09-26T16:45:16.746Z" hostname="chromium" tests="2" failures="0" skipped="0" time="3.954" errors="0">
+<testcase name="Authentication API › Generate authentication token" classname="auth.spec.ts" time="2.794">
 <system-out>
-<![CDATA[
+<![CDATA[Request Payload validation passed
+
 ========== API REQUEST ==========
 Method : POST
 URL    : https://restful-booker.herokuapp.com/auth
@@ -14,16 +15,21 @@ Body:
 ========== API RESPONSE ==========
 Status : 200
 Body:
-{ token: [32m'f40e6fa05591ac8'[39m }
+{ token: [32m'2010a035aaede89'[39m }
 ==================================
 
+Response Status: [33m200[39m
+Response Body: {
+  "token": "2010a035aaede89"
+}
 Token generated successfully
 ]]>
 </system-out>
 </testcase>
-<testcase name="Authentication API › Login with invalid credentials" classname="auth.spec.ts" time="1.132">
+<testcase name="Authentication API › Login with invalid credentials" classname="auth.spec.ts" time="1.16">
 <system-out>
-<![CDATA[
+<![CDATA[Request Payload validation passed
+
 ========== API REQUEST ==========
 Method : POST
 URL    : https://restful-booker.herokuapp.com/auth
@@ -46,68 +52,167 @@ Response Body: {
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="createBooking.spec.ts" timestamp="2026-09-22T13:44:41.207Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.599" errors="0">
-<testcase name="Booking API - Create Booking › Create booking and verify details" classname="createBooking.spec.ts" time="1.599">
+<testsuite name="createBooking.spec.ts" timestamp="2026-09-26T16:45:16.746Z" hostname="chromium" tests="4" failures="0" skipped="0" time="1.875" errors="0">
+<testcase name="Booking API - Create Booking › Create booking and verify details" classname="createBooking.spec.ts" time="1.854">
 <system-out>
-<![CDATA[
+<![CDATA[Request Payload validation passed
+
 ========== API REQUEST ==========
 Method : POST
 URL    : https://restful-booker.herokuapp.com/booking
 Body:
 {
-  firstname: [32m'Cade'[39m,
-  lastname: [32m'Cole'[39m,
-  totalprice: [33m669[39m,
+  firstname: [32m'Neoma'[39m,
+  lastname: [32m'Greenholt'[39m,
+  totalprice: [33m394[39m,
   depositpaid: [33mfalse[39m,
-  bookingdates: { checkin: [32m'2027-03-30'[39m, checkout: [32m'2026-11-28'[39m },
-  additionalneeds: [32m'Dinner'[39m
+  bookingdates: { checkin: [32m'2027-03-12'[39m, checkout: [32m'2028-01-18'[39m },
+  additionalneeds: [32m'Breakfast'[39m
 }
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  bookingid: [33m2176[39m,
+  bookingid: [33m2518[39m,
   booking: {
-    firstname: [32m'Cade'[39m,
-    lastname: [32m'Cole'[39m,
-    totalprice: [33m669[39m,
+    firstname: [32m'Neoma'[39m,
+    lastname: [32m'Greenholt'[39m,
+    totalprice: [33m394[39m,
     depositpaid: [33mfalse[39m,
-    bookingdates: { checkin: [32m'2027-03-30'[39m, checkout: [32m'2026-11-28'[39m },
-    additionalneeds: [32m'Dinner'[39m
+    bookingdates: { checkin: [32m'2027-03-12'[39m, checkout: [32m'2028-01-18'[39m },
+    additionalneeds: [32m'Breakfast'[39m
   }
 }
 ==================================
 
-Created Booking ID: 2176
+Created Booking ID: 2518
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/2176
+URL    : https://restful-booker.herokuapp.com/booking/2518
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  firstname: [32m'Cade'[39m,
-  lastname: [32m'Cole'[39m,
-  totalprice: [33m669[39m,
+  firstname: [32m'Neoma'[39m,
+  lastname: [32m'Greenholt'[39m,
+  totalprice: [33m394[39m,
   depositpaid: [33mfalse[39m,
-  bookingdates: { checkin: [32m'2027-03-30'[39m, checkout: [32m'2026-11-28'[39m },
-  additionalneeds: [32m'Dinner'[39m
+  bookingdates: { checkin: [32m'2027-03-12'[39m, checkout: [32m'2028-01-18'[39m },
+  additionalneeds: [32m'Breakfast'[39m
 }
 ==================================
 
 ]]>
 </system-out>
 </testcase>
+<testcase name="Booking API - Create Booking › Should fail when total price is not a number" classname="createBooking.spec.ts" time="0.006">
+<system-err>
+<![CDATA[Request Payload validation failed
+[
+  {
+    instancePath: [32m'/totalprice'[39m,
+    schemaPath: [32m'#/properties/totalprice/type'[39m,
+    keyword: [32m'type'[39m,
+    params: { type: [32m'number'[39m },
+    message: [32m'must be number'[39m
+  }
+]
+]]>
+</system-err>
+</testcase>
+<testcase name="Booking API - Create Booking › Should fail when depositpaid is invalid" classname="createBooking.spec.ts" time="0.007">
+<system-err>
+<![CDATA[Request Payload validation failed
+[
+  {
+    instancePath: [32m'/depositpaid'[39m,
+    schemaPath: [32m'#/properties/depositpaid/type'[39m,
+    keyword: [32m'type'[39m,
+    params: { type: [32m'boolean'[39m },
+    message: [32m'must be boolean'[39m
+  }
+]
+]]>
+</system-err>
+</testcase>
+<testcase name="Booking API - Create Booking › Should fail when payload contains unknown fields" classname="createBooking.spec.ts" time="0.008">
+<system-err>
+<![CDATA[Request Payload validation failed
+[
+  {
+    instancePath: [32m''[39m,
+    schemaPath: [32m'#/additionalProperties'[39m,
+    keyword: [32m'additionalProperties'[39m,
+    params: { additionalProperty: [32m'unexpectedField'[39m },
+    message: [32m'must NOT have additional properties'[39m
+  }
+]
+]]>
+</system-err>
+</testcase>
 </testsuite>
-<testsuite name="getBooking.spec.ts" timestamp="2026-09-22T13:44:41.207Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.379" errors="0">
-<testcase name="Booking API - Get Booking › Get booking with invalid ID" classname="getBooking.spec.ts" time="1.379">
+<testsuite name="getBooking.spec.ts" timestamp="2026-09-26T16:45:16.746Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.141" errors="0">
+<testcase name="Booking API - Get Booking › Get booking details by ID" classname="getBooking.spec.ts" time="2.903">
+<system-out>
+<![CDATA[
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/1
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: [32m'Anandhi'[39m,
+  lastname: [32m'TestUser'[39m,
+  totalprice: [33m111[39m,
+  depositpaid: [33mtrue[39m,
+  bookingdates: { checkin: [32m'2026-01-01'[39m, checkout: [32m'2026-01-01'[39m },
+  additionalneeds: [32m'Breakfast'[39m
+}
+==================================
+
+Retrieved Booking ID: 1
+Response Status: [33m200[39m
+Response Headers: {
+  [32m'content-length'[39m: [32m'175'[39m,
+  [32m'content-type'[39m: [32m'application/json; charset=utf-8'[39m,
+  date: [32m'Sat, 26 Sep 2026 16:45:22 GMT'[39m,
+  etag: [32m'W/"af-Hcf4ULu03rq7jrrMrGrDoEhPxmw"'[39m,
+  nel: [32m'{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}'[39m,
+  [32m'report-to'[39m: [32m'{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=6dKHMnKGMi8lMMI34701K0IhF93P45d0%2F5qcZQa%2BKr4%3D\\u0026sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add\\u0026ts=1790441122"}],"max_age":3600}'[39m,
+  [32m'reporting-endpoints'[39m: [32m'heroku-nel="https://nel.heroku.com/reports?s=6dKHMnKGMi8lMMI34701K0IhF93P45d0%2F5qcZQa%2BKr4%3D&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&ts=1790441122"'[39m,
+  server: [32m'Heroku'[39m,
+  via: [32m'1.1 heroku-router'[39m,
+  [32m'x-powered-by'[39m: [32m'Express'[39m
+}
+Response Body: {
+  "firstname": "Anandhi",
+  "lastname": "TestUser",
+  "totalprice": 111,
+  "depositpaid": true,
+  "bookingdates": {
+    "checkin": "2026-01-01",
+    "checkout": "2026-01-01"
+  },
+  "additionalneeds": "Breakfast"
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Booking API - Get Booking › Get booking with invalid ID" classname="getBooking.spec.ts" time="1.238">
 <system-out>
 <![CDATA[
 ========== API REQUEST ==========
@@ -127,132 +232,140 @@ Invalid Booking Response: Not Found
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="updateBooking.spec.ts" timestamp="2026-09-22T13:44:41.207Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.729" errors="0">
-<testcase name="Booking API - Complete CRUD Lifecycle › Create, Update, Patch and Delete booking flow" classname="updateBooking.spec.ts" time="3.568">
+<testsuite name="updateBooking.spec.ts" timestamp="2026-09-26T16:45:16.746Z" hostname="chromium" tests="2" failures="0" skipped="0" time="4.958" errors="0">
+<testcase name="Booking API - Complete CRUD Lifecycle › Create, Update, Patch and Delete booking flow" classname="updateBooking.spec.ts" time="3.722">
 <system-out>
-<![CDATA[
+<![CDATA[Request Payload validation passed
+
 ========== API REQUEST ==========
 Method : POST
 URL    : https://restful-booker.herokuapp.com/booking
 Body:
 {
-  firstname: [32m'Coralie'[39m,
-  lastname: [32m'Gusikowski'[39m,
-  totalprice: [33m352[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-01'[39m, checkout: [32m'2027-04-18'[39m },
-  additionalneeds: [32m'Dinner'[39m
+  firstname: [32m'Kassandra'[39m,
+  lastname: [32m'Corkery'[39m,
+  totalprice: [33m776[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-07-04'[39m, checkout: [32m'2027-12-12'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  bookingid: [33m2177[39m,
+  bookingid: [33m2517[39m,
   booking: {
-    firstname: [32m'Coralie'[39m,
-    lastname: [32m'Gusikowski'[39m,
-    totalprice: [33m352[39m,
-    depositpaid: [33mtrue[39m,
-    bookingdates: { checkin: [32m'2027-05-01'[39m, checkout: [32m'2027-04-18'[39m },
-    additionalneeds: [32m'Dinner'[39m
+    firstname: [32m'Kassandra'[39m,
+    lastname: [32m'Corkery'[39m,
+    totalprice: [33m776[39m,
+    depositpaid: [33mfalse[39m,
+    bookingdates: { checkin: [32m'2027-07-04'[39m, checkout: [32m'2027-12-12'[39m },
+    additionalneeds: [32m'Extra Bed'[39m
   }
 }
 ==================================
 
-Created Booking ID: 2177
+Created Booking ID: 2517
 🔑 Generating new authentication token
+Request Payload validation passed
 
 ========== API REQUEST ==========
 Method : PUT
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 Body:
 {
-  firstname: [32m'Bernita'[39m,
-  lastname: [32m'Orn'[39m,
-  totalprice: [33m487[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-21'[39m, checkout: [32m'2027-07-16'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Rosalie'[39m,
+  lastname: [32m'Lowe'[39m,
+  totalprice: [33m350[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-01-17'[39m, checkout: [32m'2027-05-18'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  firstname: [32m'Bernita'[39m,
-  lastname: [32m'Orn'[39m,
-  totalprice: [33m487[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-21'[39m, checkout: [32m'2027-07-16'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Rosalie'[39m,
+  lastname: [32m'Lowe'[39m,
+  totalprice: [33m350[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-01-17'[39m, checkout: [32m'2027-05-18'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 ==================================
 
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  firstname: [32m'Bernita'[39m,
-  lastname: [32m'Orn'[39m,
-  totalprice: [33m487[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-21'[39m, checkout: [32m'2027-07-16'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Rosalie'[39m,
+  lastname: [32m'Lowe'[39m,
+  totalprice: [33m350[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-01-17'[39m, checkout: [32m'2027-05-18'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 ==================================
 
 ♻️ Using cached authentication token
+Request Payload validation passed
 
 ========== API REQUEST ==========
 Method : PATCH
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 Body:
-{ firstname: [32m'Robert'[39m, lastname: [32m'Treutel'[39m }
+{ firstname: [32m'Arlo'[39m, lastname: [32m'Gerlach-Russel'[39m }
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  firstname: [32m'Robert'[39m,
-  lastname: [32m'Treutel'[39m,
-  totalprice: [33m487[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-21'[39m, checkout: [32m'2027-07-16'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Arlo'[39m,
+  lastname: [32m'Gerlach-Russel'[39m,
+  totalprice: [33m350[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-01-17'[39m, checkout: [32m'2027-05-18'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 ==================================
 
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 200
 Body:
 {
-  firstname: [32m'Robert'[39m,
-  lastname: [32m'Treutel'[39m,
-  totalprice: [33m487[39m,
-  depositpaid: [33mtrue[39m,
-  bookingdates: { checkin: [32m'2027-05-21'[39m, checkout: [32m'2027-07-16'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Arlo'[39m,
+  lastname: [32m'Gerlach-Russel'[39m,
+  totalprice: [33m350[39m,
+  depositpaid: [33mfalse[39m,
+  bookingdates: { checkin: [32m'2027-01-17'[39m, checkout: [32m'2027-05-18'[39m },
+  additionalneeds: [32m'Extra Bed'[39m
 }
 ==================================
 
@@ -260,9 +373,10 @@ Body:
 
 ========== API REQUEST ==========
 Method : DELETE
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 =================================
 
+Response Payload validation passed
 
 ========== API RESPONSE ==========
 Status : 201
@@ -273,7 +387,7 @@ Body:
 
 ========== API REQUEST ==========
 Method : GET
-URL    : https://restful-booker.herokuapp.com/booking/2177
+URL    : https://restful-booker.herokuapp.com/booking/2517
 =================================
 
 
@@ -286,20 +400,21 @@ Body:
 ]]>
 </system-out>
 </testcase>
-<testcase name="Booking API - Complete CRUD Lifecycle › Update booking without authentication" classname="updateBooking.spec.ts" time="1.161">
+<testcase name="Booking API - Complete CRUD Lifecycle › Update booking without authentication" classname="updateBooking.spec.ts" time="1.236">
 <system-out>
-<![CDATA[
+<![CDATA[Request Payload validation passed
+
 ========== API REQUEST ==========
 Method : PUT
 URL    : https://restful-booker.herokuapp.com/booking/1
 Body:
 {
-  firstname: [32m'Retta'[39m,
-  lastname: [32m'Williamson'[39m,
-  totalprice: [33m704[39m,
-  depositpaid: [33mfalse[39m,
-  bookingdates: { checkin: [32m'2026-11-23'[39m, checkout: [32m'2027-09-10'[39m },
-  additionalneeds: [32m'Lunch'[39m
+  firstname: [32m'Margarette'[39m,
+  lastname: [32m'Konopelski'[39m,
+  totalprice: [33m641[39m,
+  depositpaid: [33mtrue[39m,
+  bookingdates: { checkin: [32m'2027-04-14'[39m, checkout: [32m'2027-12-14'[39m },
+  additionalneeds: [32m'Dinner'[39m
 }
 =================================
 

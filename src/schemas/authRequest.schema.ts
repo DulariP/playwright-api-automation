@@ -1,0 +1,19 @@
+export const authRequestSchema = {
+  type: "object",
+
+  additionalProperties: false,
+
+  required: ["username", "password"],
+
+  properties: {
+    username: {
+      type: "string",
+      minLength: 1,
+    },
+
+    password: {
+      type: "string",
+      minLength: 1,
+    },
+  },
+};

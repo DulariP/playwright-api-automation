@@ -1,4 +1,7 @@
-export interface AuthResponse {
-  token?: string;
-  reason?: string;
+export interface AuthSuccessResponse {
+  token: string;
+}
+
+export interface AuthErrorResponse {
+  reason: string;
 }
