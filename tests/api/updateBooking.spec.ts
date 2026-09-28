@@ -20,7 +20,7 @@ import { deleteBookingContract } from "../../src/contracts/booking/deleteBooking
 import { errorResponseSchema } from "../../src/schemas/errorResponse.schema";
 
 test.describe("Booking API - Complete CRUD Lifecycle", () => {
-  test("Create, Update, Patch and Delete booking flow", async ({
+  test("@regression Create, Update, Patch and Delete booking flow", async ({
     bookingApi,
   }) => {
     const originalBooking = BookingFactory.create();
@@ -34,12 +34,15 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
         await bookingApi.createBooking(originalBooking);
 
       verifyStatusCode(createResult.status, 200);
+
       validateContract(createResult, createBookingContract);
+
       verifyResponseContains(createResult.body, "bookingid");
 
       bookingId = createResult.body.bookingid;
 
       verifyBooking(createResult.body.booking, originalBooking);
+
       console.log(`Created Booking ID: ${bookingId}`);
     });
 
@@ -48,7 +51,9 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
         await bookingApi.updateBooking(bookingId, updatedBooking);
 
       verifyStatusCode(updateResult.status, 200);
+
       validateContract(updateResult, updateBookingContract);
+
       verifyBooking(updateResult.body, updatedBooking);
     });
 
@@ -57,7 +62,9 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
         await bookingApi.getBooking(bookingId);
 
       verifyStatusCode(getResult.status, 200);
+
       validateContract(getResult, getBookingContract);
+
       verifyBooking(getResult.body, updatedBooking);
     });
 
@@ -68,8 +75,11 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
       );
 
       verifyStatusCode(patchResult.status, 200);
+
       validateContract(patchResult, patchBookingContract);
+
       expect(patchResult.body.firstname).toBe(patchData.firstname);
+
       expect(patchResult.body.lastname).toBe(patchData.lastname);
     });
 
@@ -77,12 +87,19 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
       const result = await bookingApi.getBooking(bookingId);
 
       verifyStatusCode(result.status, 200);
+
       const booking = result.body;
+
       expect(booking.firstname).toBe(patchData.firstname);
+
       expect(booking.lastname).toBe(patchData.lastname);
+
       expect(booking.totalprice).toBe(updatedBooking.totalprice);
+
       expect(booking.depositpaid).toBe(updatedBooking.depositpaid);
+
       expect(booking.bookingdates).toEqual(updatedBooking.bookingdates);
+
       expect(booking.additionalneeds).toBe(updatedBooking.additionalneeds);
     });
 
@@ -90,6 +107,7 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
       const deleteResult = await bookingApi.deleteBooking(bookingId);
 
       verifyStatusCode(deleteResult.status, 201);
+
       validateContract(deleteResult, deleteBookingContract);
     });
 
@@ -98,13 +116,18 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
         expectedStatus: 404,
         responseSchema: errorResponseSchema,
       });
+
       verifyStatusCode(deletedResult.status, 404);
     });
   });
 
-  test("Update booking without authentication", async ({ bookingApi }) => {
+  test("@regression Update booking without authentication", async ({
+    bookingApi,
+  }) => {
     const bookingId = 1;
+
     const updatePayload = BookingFactory.create();
+
     const result = await bookingApi.updateBookingWithoutAuth(
       bookingId,
       updatePayload,
@@ -114,6 +137,7 @@ test.describe("Booking API - Complete CRUD Lifecycle", () => {
     );
 
     verifyStatusCode(result.status, 403);
+
     expect(result.body).toContain("Forbidden");
   });
 });

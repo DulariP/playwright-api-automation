@@ -10,7 +10,7 @@ import { getBookingContract } from "../../src/contracts/booking/getBooking.contr
 import { errorResponseSchema } from "../../src/schemas/errorResponse.schema";
 
 test.describe("Booking API - Get Booking", () => {
-  test("Get booking details by ID", async ({ bookingApi }) => {
+  test("@smoke Get booking details by ID", async ({ bookingApi }) => {
     const bookingId = 1;
 
     let result: ApiResult<GetBookingResponse>;
@@ -20,9 +20,9 @@ test.describe("Booking API - Get Booking", () => {
       result = await bookingApi.getBooking(bookingId);
 
       verifyStatusCode(result.status, 200);
+
       expect(result.ok).toBeTruthy();
 
-      // Contract Validation
       validateContract(result, getBookingContract);
 
       booking = result.body;
@@ -35,15 +35,18 @@ test.describe("Booking API - Get Booking", () => {
 
     await test.step("Validate booking response fields", async () => {
       verifyResponseContains(booking, "firstname");
+
       verifyResponseContains(booking, "lastname");
+
       verifyResponseContains(booking, "bookingdates");
 
       expect(booking.bookingdates).toHaveProperty("checkin");
+
       expect(booking.bookingdates).toHaveProperty("checkout");
     });
   });
 
-  test("Get booking with invalid ID", async ({ bookingApi }) => {
+  test("@regression Get booking with invalid ID", async ({ bookingApi }) => {
     const invalidBookingId = 99999999;
 
     let result: ApiResult<GetBookingResponse>;
@@ -51,10 +54,11 @@ test.describe("Booking API - Get Booking", () => {
     await test.step("Request booking with invalid ID", async () => {
       result = await bookingApi.getBooking(invalidBookingId, {
         expectedStatus: 404,
-        responseSchema:errorResponseSchema,
+        responseSchema: errorResponseSchema,
       });
 
       verifyStatusCode(result.status, 404);
+
       expect(result.body).toBeTruthy();
 
       console.log("Invalid Booking Response:", result.body);

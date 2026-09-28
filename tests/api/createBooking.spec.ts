@@ -12,7 +12,7 @@ import { validateContract } from "../../helpers/contractValidator";
 import { createBookingContract } from "../../src/contracts/booking/createBooking.contract";
 
 test.describe("Booking API - Create Booking", () => {
-  test("Create booking and verify details", async ({ bookingApi }) => {
+  test("@smoke Create booking and verify details", async ({ bookingApi }) => {
     const bookingData = BookingFactory.create();
 
     let bookingId: number;
@@ -26,9 +26,9 @@ test.describe("Booking API - Create Booking", () => {
       createResult = await bookingApi.createBooking(bookingData);
 
       verifyStatusCode(createResult.status, 200);
+
       expect(createResult.ok).toBeTruthy();
 
-      // Contract Validation
       validateContract(createResult, createBookingContract);
 
       const createdBooking = createResult.body;
@@ -48,13 +48,14 @@ test.describe("Booking API - Create Booking", () => {
       const getResult = await bookingApi.getBooking(bookingId);
 
       verifyStatusCode(getResult.status, 200);
+
       expect(getResult.ok).toBeTruthy();
 
       verifyBooking(getResult.body, bookingData);
     });
   });
 
-  test("Should fail when total price is not a number", async ({
+  test("@regression Should fail when total price is not a number", async ({
     bookingApi,
   }) => {
     const invalidBooking = BookingFactory.invalidPrice();
@@ -64,7 +65,9 @@ test.describe("Booking API - Create Booking", () => {
     );
   });
 
-  test("Should fail when depositpaid is invalid", async ({ bookingApi }) => {
+  test("@regression Should fail when depositpaid is invalid", async ({
+    bookingApi,
+  }) => {
     const invalidBooking = BookingFactory.invalidDepositPaid();
 
     await expect(bookingApi.createBooking(invalidBooking)).rejects.toThrow(
@@ -72,7 +75,7 @@ test.describe("Booking API - Create Booking", () => {
     );
   });
 
-  test("Should fail when payload contains unknown fields", async ({
+  test("@regression Should fail when payload contains unknown fields", async ({
     bookingApi,
   }) => {
     const invalidBooking = BookingFactory.withExtraField();

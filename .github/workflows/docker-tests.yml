@@ -19,14 +19,14 @@ permissions:
   contents: write
 
 jobs:
-  api-tests:
-    runs-on: ubuntu-latest
+  ########################################################
+  # SMOKE TESTS
+  ########################################################
 
-    strategy:
-      matrix:
-        environment:
-          - qa
-          - staging
+  smoke-tests:
+    name: Smoke Tests
+
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -35,34 +35,45 @@ jobs:
       - name: Build Docker image
         run: docker build -t api-automation .
 
-      - name: Run Playwright Tests
+      - name: Run Smoke Tests
+
         env:
-          TEST_ENV: ${{ matrix.environment }}
+          TEST_ENV: qa
+
           BASE_URL: ${{ secrets.BASE_URL }}
+
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
+
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
 
         run: |
-          echo "Running tests for $TEST_ENV"
-          docker compose up --abort-on-container-exit --force-recreate
 
-      - name: Verify Allure Results
-        if: always()
-        run: |
-          echo "Listing allure-results..."
-          ls -la
-          ls -la allure-results || true
+          echo "Running Smoke Tests"
 
-      - name: Upload Allure Results
+          docker compose run \
+          -e TEST_ENV=$TEST_ENV \
+          api-tests \
+          npx playwright test --grep @smoke
+
+      - name: Upload Smoke Allure Results
+
         if: always()
+
         uses: actions/upload-artifact@v4
+
         with:
-          name: allure-results-${{ matrix.environment }}
+          name: smoke-allure-results
+
           path: allure-results
+
           retention-days: 30
 
-  publish-report:
-    needs: api-tests
+  ########################################################
+  # REGRESSION TESTS
+  ########################################################
+
+  regression-tests:
+    name: Regression Tests
 
     runs-on: ubuntu-latest
 
@@ -70,179 +81,348 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      ###################################################
-      # Download QA Results
-      ###################################################
+      - name: Build Docker image
+
+        run: docker build -t api-automation .
+
+      - name: Run Regression Tests
+
+        env:
+          TEST_ENV: qa
+
+          BASE_URL: ${{ secrets.BASE_URL }}
+
+          BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
+
+          BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+
+        run: |
+
+
+          echo "Running Regression Tests"
+
+
+          docker compose run \
+          -e TEST_ENV=$TEST_ENV \
+          api-tests \
+          npx playwright test --grep @regression
+
+      - name: Upload Regression Allure Results
+
+        if: always()
+
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: regression-allure-results
+
+          path: allure-results
+
+          retention-days: 30
+
+  ########################################################
+  # EXISTING QA/STAGING MATRIX EXECUTION
+  ########################################################
+
+  api-tests:
+    name: QA & Staging Docker Tests
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        environment:
+          - qa
+
+          - staging
+
+    steps:
+      - name: Checkout repository
+
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+
+        run: docker build -t api-automation .
+
+      - name: Run Playwright Tests
+
+        env:
+          TEST_ENV: ${{ matrix.environment }}
+
+          BASE_URL: ${{ secrets.BASE_URL }}
+
+          BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
+
+          BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
+
+        run: |
+
+
+          echo "Running tests for $TEST_ENV"
+
+
+          docker compose up \
+          --abort-on-container-exit \
+          --force-recreate
+
+      - name: Verify Allure Results
+
+        if: always()
+
+        run: |
+
+
+          echo "Listing allure-results..."
+
+
+          ls -la
+
+
+          ls -la allure-results || true
+
+      - name: Upload Allure Results
+
+        if: always()
+
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: allure-results-${{ matrix.environment }}
+
+          path: allure-results
+
+          retention-days: 30
+
+  ########################################################
+  # ALLURE REPORT PUBLISHING
+  ########################################################
+
+  publish-report:
+    needs:
+      - api-tests
+      - smoke-tests
+      - regression-tests
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+
+        uses: actions/checkout@v4
+
+      ########################################################
+      # DOWNLOAD EXISTING REPORTS
+      ########################################################
 
       - name: Download QA Results
+
         uses: actions/download-artifact@v4
+
         with:
           name: allure-results-qa
+
           path: qa-results
 
-      ###################################################
-      # Download Staging Results
-      ###################################################
-
       - name: Download Staging Results
+
         uses: actions/download-artifact@v4
+
         with:
           name: allure-results-staging
+
           path: staging-results
 
-      ###################################################
-      # Install Java
-      ###################################################
+      - name: Download Smoke Results
+
+        uses: actions/download-artifact@v4
+
+        with:
+          name: smoke-allure-results
+
+          path: smoke-results
+
+      - name: Download Regression Results
+
+        uses: actions/download-artifact@v4
+
+        with:
+          name: regression-allure-results
+
+          path: regression-results
+
+      ########################################################
+      # ALLURE GENERATION
+      ########################################################
 
       - name: Setup Java
+
         uses: actions/setup-java@v4
+
         with:
           distribution: temurin
+
           java-version: "17"
 
-      ###################################################
-      # Install Allure
-      ###################################################
-
       - name: Install Allure
+
         run: npm install -g allure-commandline
 
-      ###################################################
-      # Generate QA Report
-      ###################################################
-
       - name: Generate QA Report
-        run: |
-          allure generate qa-results --clean -o qa
 
-      ###################################################
-      # Generate Staging Report
-      ###################################################
+        run: allure generate qa-results --clean -o qa
 
       - name: Generate Staging Report
-        run: |
-          allure generate staging-results --clean -o staging
 
-      ###################################################
-      # Prepare GitHub Pages
-      ###################################################
+        run: allure generate staging-results --clean -o staging
+
+      - name: Generate Smoke Report
+
+        run: allure generate smoke-results --clean -o smoke
+
+      - name: Generate Regression Report
+
+        run: allure generate regression-results --clean -o regression
+
+      ########################################################
+      # GITHUB PAGES
+      ########################################################
 
       - name: Prepare Pages
+
         run: |
+
+
           mkdir public
+
+
           cp -R qa public/
+
           cp -R staging public/
 
-      ###################################################
-      # Create Landing Page
-      ###################################################
+          cp -R smoke public/
+
+          cp -R regression public/
 
       - name: Create Landing Page
+
         run: |
+
+
           cat <<EOF > public/index.html
-          <!DOCTYPE html>
+
+
           <html>
 
           <head>
-            <title>API Automation Reports</title>
-            <style>
-              body {
-                font-family: Arial, sans-serif;
-                margin: 40px;
-              }
 
-              h1 {
-                margin-bottom: 30px;
-              }
+          <title>
+          API Automation Reports
+          </title>
 
-              li {
-                margin: 15px;
-              }
 
-              a {
-                font-size: 20px;
-              }
-            </style>
           </head>
 
 
           <body>
 
-            <h1>
-              Playwright API Automation Reports
-            </h1>
+
+          <h1>
+          Playwright API Automation Reports
+          </h1>
 
 
-            <ul>
-
-              <li>
-                <a href="./qa/">
-                  QA Report
-                </a>
-              </li>
+          <ul>
 
 
-              <li>
-                <a href="./staging/">
-                  Staging Report
-                </a>
-              </li>
+          <li>
+          <a href="./qa/">
+          QA Report
+          </a>
+          </li>
 
-            </ul>
+
+          <li>
+          <a href="./staging/">
+          Staging Report
+          </a>
+          </li>
+
+
+          <li>
+          <a href="./smoke/">
+          Smoke Report
+          </a>
+          </li>
+
+
+          <li>
+          <a href="./regression/">
+          Regression Report
+          </a>
+          </li>
+
+
+          </ul>
 
 
           </body>
 
+
           </html>
+
+
           EOF
 
-      ###################################################
-      # Verify Pages Structure
-      ###################################################
-
-      - name: Verify Pages Content
-        run: |
-          echo "Generated GitHub Pages files:"
-          find public -maxdepth 2 -type f
-
-      ###################################################
-      # Upload HTML Report
-      ###################################################
-
-      - name: Upload Report Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-html
-          path: public
-
-      ###################################################
-      # Deploy to GitHub Pages
-      ###################################################
-
       - name: Deploy Reports
+
         uses: peaceiris/actions-gh-pages@v4
+
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
           publish_dir: public
+
           publish_branch: gh-pages
+
           force_orphan: true
 
+      ########################################################
+      # EMAIL
+      ########################################################
+
       - name: Send Email Notification
+
         if: always()
+
         uses: dawidd6/action-send-mail@v3
+
         with:
           server_address: smtp.gmail.com
+
           server_port: 465
+
           username: ${{ secrets.EMAIL_USERNAME }}
+
           password: ${{ secrets.EMAIL_PASSWORD }}
+
           subject: API Automation Pipeline Result
+
           to: your-email@example.com
+
           from: API Automation CI/CD
+
           body: |
+
+
             API Automation Pipeline Completed.
 
+
             Status:
+
             ${{ job.status }}
 
+
             Reports:
+
             https://dularip.github.io/playwright-api-automation/
