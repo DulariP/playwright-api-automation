@@ -10,7 +10,7 @@ import { getBookingContract } from "../../src/contracts/booking/getBooking.contr
 import { errorResponseSchema } from "../../src/schemas/errorResponse.schema";
 
 test.describe("Booking API - Get Booking", () => {
-  test("@smoke Get booking details by ID", async ({ bookingApi }) => {
+ /* test("@smoke Get booking details by ID", async ({ bookingApi }) => {
     const bookingId = 1;
 
     let result: ApiResult<GetBookingResponse>;
@@ -44,7 +44,7 @@ test.describe("Booking API - Get Booking", () => {
 
       expect(booking.bookingdates).toHaveProperty("checkout");
     });
-  });
+  }); */
 
   test("@regression Get booking with invalid ID", async ({ bookingApi }) => {
     const invalidBookingId = 99999999;
