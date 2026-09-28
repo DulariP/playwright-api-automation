@@ -5,6 +5,7 @@ import { AuthManager } from "../helpers/AuthManager";
 import { throwApiError } from "../helpers/apiErrorHandler";
 import { RequestOptions } from "../models/RequestOptions";
 import { attachApiLog } from "../helpers/reportHelper";
+import { validateSchema } from "../helpers/schemaValidator";
 
 export class BaseApi {
   protected request: APIRequestContext;
@@ -37,12 +38,24 @@ export class BaseApi {
     options: RequestOptions = {},
     retry = true,
   ): Promise<ApiResult<T>> {
-    const { requiresAuth = false, expectedStatus } = options;
+    const {
+      requiresAuth = false,
+      expectedStatus,
+      requestSchema,
+      responseSchema,
+    } = options;
 
     let headers: Record<string, string> | undefined;
 
     if (requiresAuth) {
       headers = await this.getAuthHeaders();
+    }
+
+    // ===========================
+    // Validate Request Payload
+    // ===========================
+    if (requestSchema && data) {
+      validateSchema(requestSchema, data, "Request Payload");
     }
 
     logRequest(method, url, data);
@@ -91,6 +104,14 @@ export class BaseApi {
     }
 
     const body = await this.parseResponse(response);
+
+    // ===========================
+    // Validate Response Payload
+    // ===========================
+    if (responseSchema && response.ok()) {
+      validateSchema(responseSchema, body, "Response Payload");
+    }
+
     logResponse(response, body);
 
     await attachApiLog("API Response", {
@@ -102,6 +123,7 @@ export class BaseApi {
       console.log("Token expired. Refreshing...");
 
       AuthManager.clearToken();
+
       return this.executeRequest<T>(method, url, data, options, false);
     }
 

@@ -1,30 +1,49 @@
 import { BaseApi } from "./BaseApi";
 import { API_ENDPOINTS } from "../constants/apiEndpoints";
 import { Auth } from "../models/Auth";
-import { AuthResponse } from "../models/Responses";
+import { AuthSuccessResponse } from "../models/Responses";
+import { RequestOptions } from "../models/RequestOptions";
+import { authRequestSchema } from "../src/schemas/authRequest.schema";
+import { authResponseSchema } from "../src/schemas/authResponse.schema";
 
 export class AuthApi extends BaseApi {
-  async getToken(auth: Auth): Promise<string> {
-    const { response, body } = await this.post<AuthResponse>(
-      API_ENDPOINTS.AUTH,
-      auth,
+  async getToken(
+    auth: Auth,
+    options?: RequestOptions,
+  ): Promise<string> {
+    const result = await this.login<AuthSuccessResponse>(
+      auth.username,
+      auth.password,
+      {
+        responseSchema: authResponseSchema,
+        ...options,
+      },
     );
 
-    if (!response.ok()) { 
-      throw new Error(`Authentication failed. Status: ${response.status()}`);
+    if (!result.response.ok()) {
+      throw new Error(
+        `Authentication failed. Status: ${result.response.status()}`,
+      );
     }
 
-    if (!body.token) {
-      throw new Error("Token was not returned from authentication API");
-    }
-
-    return body.token;
+    return result.body.token;
   }
 
-  async login(username: string, password: string) {
-    return this.post<AuthResponse>(API_ENDPOINTS.AUTH, {
-      username,
-      password,
-    });
+  async login<T>(
+    username: string,
+    password: string,
+    options?: RequestOptions,
+  ) {
+    return this.post<T>(
+      API_ENDPOINTS.AUTH,
+      {
+        username,
+        password,
+      },
+      {
+        requestSchema: authRequestSchema,
+        ...options,
+      },
+    );
   }
 }

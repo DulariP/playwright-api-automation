@@ -1,22 +1,27 @@
 import { APIRequestContext } from "@playwright/test";
-import { getAuthData } from "../test-data/authData";
 import { TokenInfo } from "../models/TokenInfo";
 import { AuthResponse } from "../models/Responses";
 import { API_ENDPOINTS } from "../constants/apiEndpoints";
+import { AuthFactory } from "../src/factories/AuthFactory";
 
 export class AuthManager {
   private static tokenInfo: TokenInfo | null = null;
+
   private static readonly TOKEN_EXPIRY = 30 * 60 * 1000; // 30 minutes
 
   static async getToken(request: APIRequestContext): Promise<string> {
     if (this.tokenInfo && !this.isExpired()) {
       console.log("♻️ Using cached authentication token");
+
       return this.tokenInfo.token;
     }
 
     console.log("🔑 Generating new authentication token");
+
+    const authData = AuthFactory.validLogin();
+
     const response = await request.post(API_ENDPOINTS.AUTH, {
-      data: getAuthData(),
+      data: authData,
     });
 
     if (!response.ok()) {
@@ -24,28 +29,33 @@ export class AuthManager {
     }
 
     const body = (await response.json()) as AuthResponse;
-    const token = body.token;
 
-    if (!token) {
+    if (!body.token) {
       throw new Error("Token was not returned from authentication API");
     }
 
+    const now = Date.now();
+
     this.tokenInfo = {
-      token,
-      generatedAt: Date.now(),
-      expiresAt: Date.now() + this.TOKEN_EXPIRY,
+      token: body.token,
+
+      generatedAt: now,
+
+      expiresAt: now + this.TOKEN_EXPIRY,
     };
-    return token;
+
+    return body.token;
   }
 
   private static isExpired(): boolean {
     if (!this.tokenInfo) {
       return true;
     }
+
     return Date.now() > this.tokenInfo.expiresAt;
   }
 
-  static clearToken() {
+  static clearToken(): void {
     this.tokenInfo = null;
   }
 }

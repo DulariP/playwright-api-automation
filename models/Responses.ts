@@ -1,8 +1,11 @@
 import { Booking } from "./Booking";
 
-export interface AuthResponse {
-  token?: string;
-  reason?: string;
+export interface AuthSuccessResponse {
+  token: string;
+}
+
+export interface AuthErrorResponse {
+  reason: string;
 }
 
 export interface CreateBookingResponse {
@@ -11,5 +14,7 @@ export interface CreateBookingResponse {
 }
 
 export interface UpdateBookingResponse extends Booking {}
+
 export interface GetBookingResponse extends Booking {}
+
 export interface DeleteBookingResponse {}
