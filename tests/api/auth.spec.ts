@@ -30,13 +30,10 @@ test.describe("Authentication API", () => {
 
     await test.step("Verify generated token", async () => {
       console.log("Response Status:", result.status);
-
       console.log("Response Body:", JSON.stringify(result.body, null, 2));
-
       expect(result.body.token).toBeTruthy();
       expect(typeof result.body.token).toBe("string");
       expect(result.body.token.length).toBeGreaterThan(0);
-
       console.log("Token generated successfully");
     });
   });
@@ -59,11 +56,8 @@ test.describe("Authentication API", () => {
 
     await test.step("Verify authentication failure response", async () => {
       console.log("Response Status:", result.status);
-
       console.log("Response Body:", JSON.stringify(result.body, null, 2));
-
       expect(result.status).toBe(200);
-
       expect(result.body.reason).toBe("Bad credentials");
     });
   });

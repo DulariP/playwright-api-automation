@@ -24,23 +24,15 @@ test.describe("Booking API - Create Booking", () => {
 
     await test.step("Create new booking", async () => {
       createResult = await bookingApi.createBooking(bookingData);
-
       verifyStatusCode(createResult.status, 200);
-
       expect(createResult.ok).toBeTruthy();
-
       validateContract(createResult, createBookingContract);
 
       const createdBooking = createResult.body;
-
       verifyResponseContains(createdBooking, "bookingid");
-
       expect(createdBooking.bookingid).toBeDefined();
-
       bookingId = createdBooking.bookingid;
-
       console.log(`Created Booking ID: ${bookingId}`);
-
       verifyBooking(createdBooking.booking, bookingData);
     });
 
@@ -48,9 +40,7 @@ test.describe("Booking API - Create Booking", () => {
       const getResult = await bookingApi.getBooking(bookingId);
 
       verifyStatusCode(getResult.status, 200);
-
       expect(getResult.ok).toBeTruthy();
-
       verifyBooking(getResult.body, bookingData);
     });
   });
