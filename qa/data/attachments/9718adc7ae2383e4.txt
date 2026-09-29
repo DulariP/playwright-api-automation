@@ -1,0 +1,10 @@
+Request Payload validation failed
+[
+  {
+    instancePath: '/totalprice',
+    schemaPath: '#/properties/totalprice/type',
+    keyword: 'type',
+    params: { type: 'number' },
+    message: 'must be number'
+  }
+]

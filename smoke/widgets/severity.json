@@ -1,0 +1,1 @@
+[{"uid":"178e83a2fb235b0","name":"@smoke Generate authentication token","time":{"start":1790663825925,"stop":1790663826383,"duration":458},"status":"passed","severity":"normal"},{"uid":"fe53e27108941721","name":"@smoke Create booking and verify details","time":{"start":1790663826122,"stop":1790663826629,"duration":507},"status":"passed","severity":"normal"}]

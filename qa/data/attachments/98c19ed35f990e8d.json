@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 3467,
+    "booking": {
+      "firstname": "Waylon",
+      "lastname": "Bergstrom",
+      "totalprice": 916,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-09",
+        "checkout": "2027-06-25"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

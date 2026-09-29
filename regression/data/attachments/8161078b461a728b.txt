@@ -1,0 +1,14 @@
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/99999999
+=================================
+
+
+========== API RESPONSE ==========
+Status : 404
+Body:
+'Not Found'
+==================================
+
+Invalid Booking Response: Not Found
