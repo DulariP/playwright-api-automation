@@ -435,10 +435,9 @@ jobs:
 
         run: |
 
+          TOTAL=$(node -e "const s=require('./reports/summary.json'); console.log(s.total)")
 
-          TOTAL=$(node scripts/getTestCount.js total)
-
-          FAILED=$(node scripts/getTestCount.js failed)
+          FAILED=$(node -e "const s=require('./reports/summary.json'); console.log(s.failed)")
 
 
           if [ "$FAILED" -eq "0" ]
@@ -449,7 +448,6 @@ jobs:
 
 
           else
-
 
             echo "subject=❌ API Automation Pipeline FAILED | $FAILED Tests Failed" >> $GITHUB_OUTPUT
 
