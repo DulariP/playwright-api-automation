@@ -18,7 +18,7 @@ interface Summary {
   }[];
 }
 
-const REPORT_DIR = path.join(process.cwd(), "combined-results");
+const REPORT_DIR = path.join(process.cwd(), "reports");
 
 const OUTPUT_DIR = path.join(process.cwd(), "reports");
 
@@ -28,12 +28,44 @@ if (!fs.existsSync(OUTPUT_DIR)) {
   });
 }
 
-function getReportFiles(): string[] {
-  if (!fs.existsSync(REPORT_DIR)) {
-    throw new Error("combined-results folder not found");
+/**
+ * Find JSON Playwright reports recursively
+ *
+ * Expected structure:
+ *
+ * reports/
+ *   smoke/
+ *       smoke-report.json
+ *   regression/
+ *       regression-report.json
+ *   qa/
+ *       qa-report.json
+ *   staging/
+ *       staging-report.json
+ */
+function getReportFiles(directory: string = REPORT_DIR): string[] {
+  if (!fs.existsSync(directory)) {
+    throw new Error("reports folder not found");
   }
 
-  return fs.readdirSync(REPORT_DIR).filter((file) => file.endsWith(".json"));
+  let files: string[] = [];
+
+  fs.readdirSync(directory).forEach((file) => {
+    const fullPath = path.join(directory, file);
+
+    const stat = fs.statSync(fullPath);
+
+    if (stat.isDirectory()) {
+      files = files.concat(getReportFiles(fullPath));
+    } else if (
+      file.endsWith(".json") &&
+      !["summary.json", "package-lock.json"].includes(file)
+    ) {
+      files.push(fullPath);
+    }
+  });
+
+  return files;
 }
 
 function readReports() {
@@ -43,11 +75,17 @@ function readReports() {
     throw new Error("No JSON reports found");
   }
 
-  return files.map((file) => ({
-    environment: file.replace("-report.json", ""),
+  return files.map((filePath) => {
+    const fileName = path.basename(filePath);
 
-    data: JSON.parse(fs.readFileSync(path.join(REPORT_DIR, file), "utf-8")),
-  }));
+    const environment = fileName.replace("-report.json", "");
+
+    return {
+      environment,
+
+      data: JSON.parse(fs.readFileSync(filePath, "utf-8")),
+    };
+  });
 }
 
 function analyseTests(reports: any[]): Summary {
@@ -96,7 +134,7 @@ function analyseTests(reports: any[]): Summary {
   }
 
   reports.forEach((report) => {
-    report.data.suites.forEach((suite: any) =>
+    report.data.suites?.forEach((suite: any) =>
       processSuite(suite, report.environment),
     );
   });
@@ -129,7 +167,6 @@ Failed      : ${summary.failed}
 Skipped     : ${summary.skipped}
 
 
-
 `;
 
   if (summary.failed > 0) {
@@ -150,7 +187,6 @@ Environment:
 ${failure.environment}
 
 Reason:
-
 ${failure.reason}
 
 
@@ -166,7 +202,6 @@ Reports
 GitHub Pages:
 
 https://dularip.github.io/playwright-api-automation/
-
 
 `;
 
