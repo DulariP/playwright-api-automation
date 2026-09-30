@@ -480,6 +480,4 @@ jobs:
           body: file://reports/email.txt
 
           attachments: |
-
-
-            reports/output/API_Test_Report.pdf
+            reports/API_Test_Report.pdf
