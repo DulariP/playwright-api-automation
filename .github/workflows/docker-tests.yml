@@ -59,16 +59,14 @@ jobs:
           echo "Report: $REPORT_FILE"
           echo "================================="
 
-
-
           docker compose run \
           -e TEST_ENV=$TEST_ENV \
           -e REPORT_FILE=$REPORT_FILE \
           -e BASE_URL=$BASE_URL \
           -e BOOKER_USERNAME=$BOOKER_USERNAME \
           -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-          api-tests \
-          npx playwright test --grep @smoke
+          -e TEST_ARGS="--grep @smoke" \
+          api-tests
 
       - name: Upload Smoke Results
 
@@ -84,7 +82,7 @@ jobs:
 
             allure-results
 
-            smoke-report.json
+            reports/smoke-report.json
 
           retention-days: 30
 
@@ -128,16 +126,14 @@ jobs:
           echo "Report: $REPORT_FILE"
           echo "================================="
 
-
-
           docker compose run \
           -e TEST_ENV=$TEST_ENV \
           -e REPORT_FILE=$REPORT_FILE \
           -e BASE_URL=$BASE_URL \
           -e BOOKER_USERNAME=$BOOKER_USERNAME \
           -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-          api-tests \
-          npx playwright test --grep @regression
+          -e TEST_ARGS="--grep @regression" \
+          api-tests
 
       - name: Upload Regression Results
 
@@ -153,7 +149,7 @@ jobs:
 
             allure-results
 
-            regression-report.json
+            reports/regression-report.json
 
           retention-days: 30
 
@@ -199,34 +195,19 @@ jobs:
 
         run: |
 
-
           echo "================================="
-
           echo "Running API Tests"
-
           echo "Environment: $TEST_ENV"
-
           echo "Report: $REPORT_FILE"
-
           echo "================================="
-
-
 
           docker compose run \
-
-          -e TEST_ENV=$TEST_ENV \
-
-          -e REPORT_FILE=$REPORT_FILE \
-
-          -e BASE_URL=$BASE_URL \
-
-          -e BOOKER_USERNAME=$BOOKER_USERNAME \
-
-          -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-
-          api-tests \
-
-          npx playwright test
+           -e TEST_ENV=$TEST_ENV \
+           -e REPORT_FILE=$REPORT_FILE \
+           -e BASE_URL=$BASE_URL \
+           -e BOOKER_USERNAME=$BOOKER_USERNAME \
+           -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
+           api-tests
 
       - name: Upload API Test Results
 
@@ -241,7 +222,7 @@ jobs:
 
             allure-results
 
-            ${{ matrix.environment }}-report.json
+            reports/${{ matrix.environment }}-report.json
 
           if-no-files-found: warn
 
