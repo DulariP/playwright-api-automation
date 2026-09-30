@@ -354,29 +354,16 @@ jobs:
 
           npm run generate-report
 
+
       ########################################################
-      # GENERATE PDF REPORT
+      # GENERATE REPORTS
       ########################################################
 
-      - name: Generate PDF Report
+      - name: Generate Reports
 
         run: |
 
-
-          node scripts/generatePdfReport.js
-
-      ########################################################
-      # GENERATE EMAIL CONTENT
-      ########################################################
-
-      - name: Generate Email Content
-
-        id: email
-
-        run: |
-
-
-          node scripts/generateEmailReport.js
+          npm run generate-report
 
       ########################################################
       # INSTALL ALLURE
