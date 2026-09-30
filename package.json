@@ -1,7 +1,7 @@
 {
   "name": "automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright API Automation Framework",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
@@ -9,18 +9,30 @@
     "test:staging": "cross-env TEST_ENV=staging npx playwright test",
     "test:smoke": "cross-env TEST_ENV=qa npx playwright test --grep @smoke",
     "test:regression": "cross-env TEST_ENV=qa npx playwright test --grep @regression",
+    "test:report:qa": "cross-env TEST_ENV=qa npx playwright test --reporter=line,json=report.json",
+    "test:report:smoke": "cross-env TEST_ENV=qa npx playwright test --grep @smoke --reporter=line,json=smoke-report.json",
+    "test:report:regression": "cross-env TEST_ENV=qa npx playwright test --grep @regression --reporter=line,json=regression-report.json",
+    "generate-report": "ts-node scripts/reportGenerator.ts",
     "allure:generate": "allure generate ./allure-results --clean -o allure-report",
     "allure:open": "allure open ./allure-report"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "playwright",
+    "api automation",
+    "typescript",
+    "rest api testing"
+  ],
+  "author": "Dulari",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.9",
+    "@types/pdfkit": "^0.17.4",
     "allure-commandline": "^2.46.1",
     "allure-playwright": "^3.12.0",
     "cross-env": "^10.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "dependencies": {
@@ -28,6 +40,7 @@
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "dotenv": "^17.4.2",
+    "pdfkit": "^0.17.2",
     "zod": "^4.6.5"
   }
 }

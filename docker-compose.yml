@@ -4,29 +4,58 @@ services:
 
     environment:
       TEST_ENV: ${TEST_ENV:-qa}
+
       BASE_URL: ${BASE_URL}
+
       BOOKER_USERNAME: ${BOOKER_USERNAME}
+
       BOOKER_PASSWORD: ${BOOKER_PASSWORD}
+
+      REPORT_FILE: ${REPORT_FILE:-report.json}
 
     volumes:
       - ./allure-results:/app/allure-results
+
       - ./playwright-report:/app/playwright-report
+
       - ./test-results:/app/test-results
 
+      - ./combined-results:/app/combined-results
+
     command: >
-     sh -c '
-      echo "================================="
-      echo "Running Regression Tests"
-      echo "Environment: $TEST_ENV"
+
+      sh -c '
+
       echo "================================="
 
-      npx playwright test
+      echo "Running $TEST_ENV Tests"
+
+      echo "Report File: $REPORT_FILE"
+
+      echo "================================="
+
+
+      REPORT_FILE=$REPORT_FILE npx playwright test
+
 
       echo ""
+
       echo "Generated Allure Results"
+
       ls -la /app/allure-results || true
 
+
       echo ""
+
       echo "Generated Playwright Report"
+
       ls -la /app/playwright-report || true
-     '
+
+
+      echo ""
+
+      echo "Generated JSON Report"
+
+      ls -la /app/$REPORT_FILE || true
+
+      '

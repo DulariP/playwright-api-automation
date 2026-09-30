@@ -34,11 +34,30 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ["html", { outputFolder: "playwright-report", open: "never" }],
+    [
+      "html",
+      {
+        outputFolder: "playwright-report",
+        open: "never",
+      },
+    ],
+
     ["list"],
-    // ['dot'],
-    ["json", { outputFile: "json-test-report.json" }],
-    ["junit", { outputFile: "json-test-report.xml" }],
+
+    [
+      "json",
+      {
+        outputFile: process.env.REPORT_FILE || "json-test-report.json",
+      },
+    ],
+
+    [
+      "junit",
+      {
+        outputFile: process.env.REPORT_FILE_XML || "json-test-report.xml",
+      },
+    ],
+
     ["allure-playwright"],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
