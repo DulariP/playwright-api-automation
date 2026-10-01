@@ -11,6 +11,7 @@ on:
       - main
 
   schedule:
+    # 5:00 PM Sri Lanka time (UTC+5:30) = 11:30 UTC
     - cron: "30 11 * * *"
 
   workflow_dispatch:
@@ -22,37 +23,25 @@ jobs:
   ########################################################
   # SMOKE TESTS
   ########################################################
-
   smoke-tests:
     name: Smoke Tests
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v4
 
       - name: Build Docker image
-
         run: docker build -t api-automation .
 
       - name: Run Smoke Tests
-
         env:
           TEST_ENV: qa
-
           REPORT_FILE: smoke-report.json
-
           BASE_URL: ${{ secrets.BASE_URL }}
-
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
-
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
-
         run: |
-
-
           echo "================================="
           echo "Running Smoke Tests"
           echo "Environment: $TEST_ENV"
@@ -60,66 +49,47 @@ jobs:
           echo "================================="
 
           docker compose run \
-          -e TEST_ENV=$TEST_ENV \
-          -e REPORT_FILE=$REPORT_FILE \
-          -e BASE_URL=$BASE_URL \
-          -e BOOKER_USERNAME=$BOOKER_USERNAME \
-          -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-          -e TEST_ARGS="--grep @smoke" \
-          api-tests
+            -e TEST_ENV="$TEST_ENV" \
+            -e REPORT_FILE="$REPORT_FILE" \
+            -e BASE_URL="$BASE_URL" \
+            -e BOOKER_USERNAME="$BOOKER_USERNAME" \
+            -e BOOKER_PASSWORD="$BOOKER_PASSWORD" \
+            -e TEST_ARGS="--grep @smoke" \
+            api-tests
 
       - name: Upload Smoke Results
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: smoke-results
-
           path: |
-
-
             reports/smoke-report.json
-
             allure-results
-
+          if-no-files-found: warn
           retention-days: 30
 
   ########################################################
   # REGRESSION TESTS
   ########################################################
-
   regression-tests:
     name: Regression Tests
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v4
 
       - name: Build Docker image
-
         run: docker build --no-cache -t api-automation .
 
       - name: Run Regression Tests
-
         env:
           TEST_ENV: qa
-
           REPORT_FILE: regression-report.json
-
           BASE_URL: ${{ secrets.BASE_URL }}
-
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
-
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
-
         run: |
-
-
           echo "================================="
           echo "Running Regression Tests"
           echo "Environment: $TEST_ENV"
@@ -127,74 +97,56 @@ jobs:
           echo "================================="
 
           docker compose run \
-          -e TEST_ENV=$TEST_ENV \
-          -e REPORT_FILE=$REPORT_FILE \
-          -e BASE_URL=$BASE_URL \
-          -e BOOKER_USERNAME=$BOOKER_USERNAME \
-          -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-          -e TEST_ARGS="--grep @regression" \
-          api-tests
+            -e TEST_ENV="$TEST_ENV" \
+            -e REPORT_FILE="$REPORT_FILE" \
+            -e BASE_URL="$BASE_URL" \
+            -e BOOKER_USERNAME="$BOOKER_USERNAME" \
+            -e BOOKER_PASSWORD="$BOOKER_PASSWORD" \
+            -e TEST_ARGS="--grep @regression" \
+            api-tests
 
       - name: Upload Regression Results
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: regression-results
-
           path: |
-
-
             reports/regression-report.json
-
             allure-results
-
+          if-no-files-found: warn
           retention-days: 30
 
   ########################################################
-  # QA / STAGING TESTS
+  # QA / STAGING TESTS (full suite)
   ########################################################
-
   api-tests:
     name: API Tests - ${{ matrix.environment }}
-
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
-
       matrix:
         environment:
           - qa
-
           - staging
 
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v4
 
       - name: Build Docker image
-
         run: docker build --no-cache -t api-automation .
 
       - name: Run API Tests
-
         env:
           TEST_ENV: ${{ matrix.environment }}
-
           REPORT_FILE: ${{ matrix.environment }}-report.json
-
-          BASE_URL: ${{ secrets.BASE_URL }}
-
+          # Staging uses STAGING_BASE_URL if you define that secret,
+          # otherwise it falls back to BASE_URL (same behaviour as before).
+          BASE_URL: ${{ matrix.environment == 'staging' && secrets.STAGING_BASE_URL || secrets.BASE_URL }}
           BOOKER_USERNAME: ${{ secrets.BOOKER_USERNAME }}
-
           BOOKER_PASSWORD: ${{ secrets.BOOKER_PASSWORD }}
-
         run: |
-
           echo "================================="
           echo "Running API Tests"
           echo "Environment: $TEST_ENV"
@@ -202,403 +154,182 @@ jobs:
           echo "================================="
 
           docker compose run \
-           -e TEST_ENV=$TEST_ENV \
-           -e REPORT_FILE=$REPORT_FILE \
-           -e BASE_URL=$BASE_URL \
-           -e BOOKER_USERNAME=$BOOKER_USERNAME \
-           -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
-           api-tests
+            -e TEST_ENV="$TEST_ENV" \
+            -e REPORT_FILE="$REPORT_FILE" \
+            -e BASE_URL="$BASE_URL" \
+            -e BOOKER_USERNAME="$BOOKER_USERNAME" \
+            -e BOOKER_PASSWORD="$BOOKER_PASSWORD" \
+            api-tests
 
-      - name: Debug QA Job Files
-
+      - name: List generated files
+        if: always()
         run: |
-
-          echo "===== Current Directory ====="
-          pwd
-
-          echo ""
-          echo "===== All Files ====="
-          find . -type f | sort
-
-          echo ""
-          echo "===== Reports Folder ====="
-          ls -R reports || true
-
-          echo ""
-          echo "===== Root JSON Files ====="
-          find . -maxdepth 1 -name "*.json"
-
-          echo ""
-          echo "===== Reports JSON Files ====="
-          find reports -name "*.json" || true
+          ls -la reports || true
+          ls -la allure-results | head -20 || true
 
       - name: Upload API Test Results
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: ${{ matrix.environment }}-results
-
           path: |
-
             reports/${{ matrix.environment }}-report.json
-
             allure-results
-
           if-no-files-found: warn
-
           retention-days: 30
 
   ########################################################
   # PUBLISH REPORTS
   ########################################################
-
   publish-report:
     name: Generate Reports & Publish
-
     needs:
       - smoke-tests
-
       - regression-tests
-
       - api-tests
-
-    if: always()
-
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-
         uses: actions/checkout@v4
 
-      ########################################################
-      # DOWNLOAD ARTIFACTS
-      ########################################################
+      # ---------- Download artifacts ----------
+      # continue-on-error: if one job crashed before uploading anything,
+      # the remaining reports are still published (the email flags the missing one).
 
       - name: Download Smoke Results
-
         uses: actions/download-artifact@v4
-
+        continue-on-error: true
         with:
           name: smoke-results
-
           path: reports/smoke
 
       - name: Download Regression Results
-
         uses: actions/download-artifact@v4
-
+        continue-on-error: true
         with:
           name: regression-results
-
           path: reports/regression
 
       - name: Download QA Results
-
         uses: actions/download-artifact@v4
-
+        continue-on-error: true
         with:
           name: qa-results
-
           path: reports/qa
 
       - name: Download Staging Results
-
         uses: actions/download-artifact@v4
-
+        continue-on-error: true
         with:
           name: staging-results
-
           path: reports/staging
 
-      ########################################################
-      # VERIFY DOWNLOADED ARTIFACT FILES
-      ########################################################
+      # ---------- Collect files ----------
 
-      - name: Verify Downloaded Reports
-
+      - name: Prepare Report Directories
         run: |
-
-          echo "================================="
-          echo "Current Directory"
-          echo "================================="
-
-          pwd
-
-
-          echo ""
-          echo "================================="
-          echo "Reports Folder Structure"
-          echo "================================="
-
-          find reports -type f | sort || true
-
-
-          echo ""
-          echo "================================="
-          echo "JSON Report Files"
-          echo "================================="
-
-          find reports -name "*.json" -type f | sort || true
-
-
-          echo ""
-          echo "================================="
-          echo "JSON File Sizes"
-          echo "================================="
-
-          find reports -name "*.json" -type f -exec ls -lh {} \;
-
-
-          echo ""
-          echo "================================="
-          echo "QA Report Preview"
-          echo "================================="
-
-          if [ -f reports/qa/qa-report.json ]; then
-            head -c 500 reports/qa/qa-report.json
-            echo
-          else
-            echo "QA report not found"
-          fi
-
-
-          echo ""
-          echo "================================="
-          echo "Staging Report Preview"
-          echo "================================="
-
-          if [ -f reports/staging/staging-report.json ]; then
-            head -c 500 reports/staging/staging-report.json
-            echo
-          else
-            echo "Staging report not found"
-          fi
-          
-
-      ########################################################
-      # PREPARE REPORT DIRECTORIES
-      ########################################################
-
-      - name: Prepare Report Directory
-
-        run: |
-
-
           mkdir -p reports/allure-results
-
           mkdir -p reports/json
 
-          mkdir -p reports/output
-
-      ########################################################
-      # COLLECT ALLURE RESULTS
-      ########################################################
-
+      # NOTE: `find -exec` does not run a shell, so a `*` glob is never expanded.
+      # Using `{}/.` copies the directory contents without needing a glob.
       - name: Collect Allure Results
-
+        id: allure
         run: |
-
-
-          find reports -type d -name "allure-results" \
-          -exec cp -r {}/* reports/allure-results/ \;
-
-      ########################################################
-      # COLLECT JSON REPORTS
-      ########################################################
-
-      - name: Collect JSON Reports
-
-        run: |
-
-          mkdir -p reports/json
-
-          find reports -name "*.json" \
-          ! -name "summary.json" \
-          ! -name "package-lock.json" \
-          -exec cp {} reports/json/ \;
-
-
-          echo "Collected JSON reports"
-
-          ls -la reports/json
-
-      ########################################################
-      # INSTALL NODE DEPENDENCIES
-      ########################################################
-
-      - name: Install Dependencies
-
-        run: npm ci
-
-      ########################################################
-      # GENERATE SUMMARY REPORT
-      ########################################################
-
-      - name: Debug Report Files
-
-        run: |
-
-          echo "=============================="
-
-          echo "All JSON files"
-
-          find reports -name "*.json" -type f
-
-          echo "=============================="
-
-          echo "JSON content preview"
-
-          for file in $(find reports -name "*.json" -type f)
-          do
-            echo "-----------"
-            echo $file
-            cat $file
-            echo
+          # Only qa + staging feed the Allure report. smoke/regression run the same
+          # tests again, which would show up as duplicate "retries" in Allure.
+          for name in qa staging; do
+            if [ -d "reports/$name" ]; then
+              find "reports/$name" -type d -name "allure-results" \
+                -exec cp -r {}/. reports/allure-results/ \;
+            else
+              echo "WARNING: reports/$name not found"
+            fi
           done
 
-      - name: Verify Final Report Files
+          count=$(find reports/allure-results -type f | wc -l)
+          echo "Allure files collected: $count"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
 
+      # Only real Playwright reports (*-report.json), never Allure JSON files.
+      - name: Collect JSON Reports
         run: |
+          find reports -type f -name "*-report.json" \
+            -not -path "reports/json/*" \
+            -not -path "*/allure-results/*" \
+            -exec cp {} reports/json/ \;
 
-          echo "===================="
-
-          find reports -type f
-
-          echo "===================="
-
+          echo "Collected JSON reports:"
           ls -la reports/json
 
-          echo "===================="
+      # ---------- Generate summary / email / PDF ----------
 
-          cat reports/json/*.json
-          
-      ########################################################
-      # GENERATE REPORTS
-      ########################################################
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Generate Reports
+        run: npm run generate-report
 
-        run: |
-
-          npm run generate-report
-
-      ########################################################
-      # INSTALL ALLURE
+      # ---------- Allure ----------
 
       - name: Install Allure Commandline
-
-        run: |
-
-
-          npm install -g allure-commandline
-
-      ########################################################
-      # GENERATE ALLURE REPORT
-      ########################################################
+        if: steps.allure.outputs.count != '0'
+        run: npm install -g allure-commandline
 
       - name: Generate Allure HTML Report
-
+        if: steps.allure.outputs.count != '0'
         run: |
-
-
           allure generate reports/allure-results \
-          -o allure-report \
-          --clean
-
-      ########################################################
-      # UPLOAD ALL REPORTS
-      ########################################################
+            -o allure-report \
+            --clean
 
       - name: Upload Generated Reports
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: final-api-reports
-
           path: |
-
-
             reports
-
             allure-report
-
+          if-no-files-found: warn
           retention-days: 30
 
-      ########################################################
-      # DEPLOY ALLURE TO GITHUB PAGES
-      ########################################################
-
+      # Deploy only from main, and only if Allure actually has results,
+      # so a bad run never overwrites a good published report.
       - name: Deploy Allure Report
-
+        if: github.ref == 'refs/heads/main' && steps.allure.outputs.count != '0'
         uses: peaceiris/actions-gh-pages@v4
-
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
           publish_dir: ./allure-report
-
           publish_branch: gh-pages
 
-      ########################################################
-      # CREATE EMAIL SUBJECT
-      ########################################################
+      # ---------- Email ----------
 
       - name: Create Email Subject
-
         id: subject
-
-        run: |
-
-          TOTAL=$(node -e "const s=require('./reports/summary.json'); console.log(s.total)")
-
-          FAILED=$(node -e "const s=require('./reports/summary.json'); console.log(s.failed)")
-
-
-          if [ "$FAILED" -eq "0" ]
-
-          then
-
-            echo "subject=✅ API Automation Pipeline PASSED | $TOTAL Tests Passed" >> $GITHUB_OUTPUT
-
-
-          else
-
-            echo "subject=❌ API Automation Pipeline FAILED | $FAILED Tests Failed" >> $GITHUB_OUTPUT
-
-
-          fi
-
-      ########################################################
-      # SEND EMAIL
-      ########################################################
+        if: ${{ !cancelled() && hashFiles('reports/email.txt') != '' }}
+        run: echo "subject=$(cat reports/email-subject.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Send Email Notification
-
+        if: ${{ !cancelled() && hashFiles('reports/email.txt') != '' }}
         uses: dawidd6/action-send-mail@v3
-
         with:
           server_address: smtp.gmail.com
-
           server_port: 465
-
           username: ${{ secrets.EMAIL_USERNAME }}
-
           password: ${{ secrets.EMAIL_PASSWORD }}
-
           subject: ${{ steps.subject.outputs.subject }}
-
           to: ${{ secrets.EMAIL_TO }}
-
           from: ${{ secrets.EMAIL_USERNAME }}
-
           body: file://reports/email.txt
-
           attachments: |
             reports/API_Test_Report.pdf

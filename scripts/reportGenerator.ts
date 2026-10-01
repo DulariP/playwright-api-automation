@@ -2,50 +2,68 @@ import fs from "fs";
 import path from "path";
 import PDFDocument from "pdfkit";
 
-interface Summary {
-  total: number;
-
-  passed: number;
-
-  failed: number;
-
-  skipped: number;
-
-  failures: {
-    title: string;
-    reason: string;
-    environment: string;
-  }[];
-}
+/* ------------------------------------------------------------------ */
+/* Config                                                              */
+/* ------------------------------------------------------------------ */
 
 const REPORT_DIR = path.join(process.cwd(), "reports/json");
-
 const OUTPUT_DIR = path.join(process.cwd(), "reports");
+const REPORT_URL = "https://dularip.github.io/playwright-api-automation/";
+
+// Reports that make up the headline totals. qa + staging run the full suite,
+// so adding smoke/regression here would count the same tests again.
+const COUNTED_REPORTS = ["qa", "staging"];
+
+// Every report the pipeline is supposed to produce (used to flag crashed jobs).
+const EXPECTED_REPORTS = ["smoke", "regression", "qa", "staging"];
+
+/* ------------------------------------------------------------------ */
+/* Types                                                               */
+/* ------------------------------------------------------------------ */
+
+type Outcome = "passed" | "failed" | "skipped";
+
+interface Counts {
+  total: number;
+  passed: number;
+  failed: number;
+  skipped: number;
+  flaky: number; // already included in "passed" (passed after a retry)
+}
+
+interface Failure {
+  title: string;
+  reason: string;
+  reports: string[];
+}
+
+interface Summary extends Counts {
+  byReport: Record<string, Counts>;
+  failures: Failure[];
+  missingReports: string[];
+}
+
+interface LoadedReport {
+  name: string;
+  data: any;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reading reports                                                     */
+/* ------------------------------------------------------------------ */
 
 if (!fs.existsSync(OUTPUT_DIR)) {
-  fs.mkdirSync(OUTPUT_DIR, {
-    recursive: true,
-  });
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
 /**
- * Find JSON Playwright reports recursively
- *
- * Expected structure:
- *
- * reports/
- *   smoke/
- *       smoke-report.json
- *   regression/
- *       regression-report.json
- *   qa/
- *       qa-report.json
- *   staging/
- *       staging-report.json
+ * Find Playwright JSON reports (*-report.json) recursively under reports/json.
+ * File names look like: smoke-report.json, regression-report.json,
+ * qa-report.json, staging-report.json
  */
 function getReportFiles(directory: string = REPORT_DIR): string[] {
   if (!fs.existsSync(directory)) {
-    throw new Error("reports folder not found");
+    throw new Error(`reports folder not found: ${directory}`);
   }
 
   let files: string[] = [];
@@ -53,14 +71,9 @@ function getReportFiles(directory: string = REPORT_DIR): string[] {
   fs.readdirSync(directory).forEach((file) => {
     const fullPath = path.join(directory, file);
 
-    const stat = fs.statSync(fullPath);
-
-    if (stat.isDirectory()) {
+    if (fs.statSync(fullPath).isDirectory()) {
       files = files.concat(getReportFiles(fullPath));
-    } else if (
-      file.endsWith(".json") &&
-      !["summary.json", "package-lock.json", "email-subject.txt"].includes(file)
-    ) {
+    } else if (file.endsWith("-report.json")) {
       files.push(fullPath);
     }
   });
@@ -68,218 +81,231 @@ function getReportFiles(directory: string = REPORT_DIR): string[] {
   return files;
 }
 
-function readReports() {
+function readReports(): LoadedReport[] {
   const files = getReportFiles();
 
   if (files.length === 0) {
     throw new Error("No JSON reports found");
   }
 
-  return files.map((filePath) => {
-    const fileName = path.basename(filePath);
+  const reports: LoadedReport[] = [];
 
-    const environment = fileName.replace("-report.json", "");
-
-    return {
-      environment,
-
-      data: JSON.parse(fs.readFileSync(filePath, "utf-8")),
-    };
+  files.forEach((filePath) => {
+    try {
+      reports.push({
+        name: path.basename(filePath).replace("-report.json", ""),
+        data: JSON.parse(fs.readFileSync(filePath, "utf-8")),
+      });
+    } catch (error) {
+      console.warn(`Skipping unreadable report: ${filePath}`, error);
+    }
   });
+
+  if (reports.length === 0) {
+    throw new Error("No valid JSON reports could be parsed");
+  }
+
+  return reports;
 }
 
-function analyseTests(reports: any[]): Summary {
+/* ------------------------------------------------------------------ */
+/* Analysis                                                            */
+/* ------------------------------------------------------------------ */
+
+const emptyCounts = (): Counts => ({
+  total: 0,
+  passed: 0,
+  failed: 0,
+  skipped: 0,
+  flaky: 0,
+});
+
+function record(counts: Counts, outcome: Outcome, flaky: boolean) {
+  counts.total++;
+  counts[outcome]++;
+  if (flaky) counts.flaky++;
+}
+
+// Playwright JSON test.status: expected | unexpected | flaky | skipped
+// ("unexpected" also covers timedOut / interrupted tests)
+function classify(status: string): { outcome: Outcome; flaky: boolean } {
+  switch (status) {
+    case "expected":
+      return { outcome: "passed", flaky: false };
+    case "flaky":
+      return { outcome: "passed", flaky: true };
+    case "unexpected":
+      return { outcome: "failed", flaky: false };
+    default:
+      return { outcome: "skipped", flaky: false };
+  }
+}
+
+// Playwright error messages contain terminal colour codes
+function stripAnsi(text: string): string {
+  return text.replace(/\u001b\[[0-9;]*m/g, "");
+}
+
+function analyseTests(reports: LoadedReport[]): Summary {
   const summary: Summary = {
-    total: 0,
-    passed: 0,
-    failed: 0,
-    skipped: 0,
+    ...emptyCounts(),
+    byReport: {},
     failures: [],
+    missingReports: EXPECTED_REPORTS.filter(
+      (name) => !reports.some((r) => r.name === name),
+    ),
   };
 
-  function processSuite(suite: any, environment: string) {
-    if (suite.specs) {
-      suite.specs.forEach((spec: any) => {
-        spec.tests.forEach((test: any) => {
-          summary.total++;
+  // One entry per failing test, listing every report it failed in
+  const failureMap = new Map<string, Failure>();
 
-          const result = test.results?.[test.results.length - 1];
+  reports.forEach((report) => {
+    const perReport = emptyCounts();
+    summary.byReport[report.name] = perReport;
 
-          if (!result) {
-            summary.skipped++;
-            return;
-          }
+    const isCounted = COUNTED_REPORTS.includes(report.name);
 
-          switch (result.status) {
-            case "passed":
-              summary.passed++;
-              break;
+    const processSuite = (suite: any) => {
+      suite.specs?.forEach((spec: any) => {
+        spec.tests?.forEach((test: any) => {
+          const { outcome, flaky } = classify(test.status);
 
-            case "failed":
-              summary.failed++;
+          record(perReport, outcome, flaky);
+          if (isCounted) record(summary, outcome, flaky);
 
-              summary.failures.push({
+          if (outcome === "failed") {
+            const last = test.results?.[test.results.length - 1];
+            const reason = stripAnsi(last?.error?.message || "Unknown error");
+
+            const existing = failureMap.get(spec.title);
+            if (existing) {
+              if (!existing.reports.includes(report.name)) {
+                existing.reports.push(report.name);
+              }
+            } else {
+              failureMap.set(spec.title, {
                 title: spec.title,
-
-                reason: result.error?.message || "Unknown error",
-
-                environment,
+                reason,
+                reports: [report.name],
               });
-
-              break;
-
-            default:
-              summary.skipped++;
+            }
           }
         });
       });
-    }
 
-    if (suite.suites) {
-      suite.suites.forEach((child: any) => processSuite(child, environment));
-    }
-  }
+      suite.suites?.forEach(processSuite);
+    };
 
-  reports.forEach((report) => {
-    report.data.suites?.forEach((suite: any) =>
-      processSuite(suite, report.environment),
-    );
+    report.data.suites?.forEach(processSuite);
   });
+
+  summary.failures = Array.from(failureMap.values());
 
   return summary;
 }
 
-function createEmailBody(summary: Summary) {
-  const status = summary.failed > 0 ? "FAILED" : "PASSED";
+function getStatus(summary: Summary): "PASSED" | "FAILED" | "INCOMPLETE" {
+  const anyFailed = Object.values(summary.byReport).some((c) => c.failed > 0);
 
-  let body = `
+  if (anyFailed) return "FAILED";
+  if (summary.missingReports.length > 0 || summary.total === 0) {
+    return "INCOMPLETE";
+  }
+  return "PASSED";
+}
 
-Playwright API Automation Report
+/* ------------------------------------------------------------------ */
+/* Output                                                              */
+/* ------------------------------------------------------------------ */
 
-=================================
+function createReportText(summary: Summary): string {
+  const hr = "=================================";
+  const lines: string[] = [];
 
-Execution Status:
-${status}
+  lines.push(`Execution Status: ${getStatus(summary)}`, "");
 
+  lines.push(`Test Summary (${COUNTED_REPORTS.join(" + ")})`, hr);
+  lines.push(`Total Tests : ${summary.total}`);
+  lines.push(
+    `Passed      : ${summary.passed}` +
+      (summary.flaky > 0
+        ? ` (${summary.flaky} flaky, passed on retry)`
+        : ""),
+  );
+  lines.push(`Failed      : ${summary.failed}`);
+  lines.push(`Skipped     : ${summary.skipped}`, "");
 
-Test Summary
-=================================
+  lines.push("Breakdown by report", hr);
+  Object.entries(summary.byReport).forEach(([name, c]) => {
+    lines.push(
+      `${name.padEnd(12)} total ${c.total} | passed ${c.passed} | failed ${c.failed} | skipped ${c.skipped}`,
+    );
+  });
+  lines.push("");
 
-Total Tests : ${summary.total}
+  if (summary.missingReports.length > 0) {
+    lines.push("Missing reports (the job may have crashed)", hr);
+    lines.push(summary.missingReports.join(", "), "");
+  }
 
-Passed      : ${summary.passed}
-
-Failed      : ${summary.failed}
-
-Skipped     : ${summary.skipped}
-
-
-`;
-
-  if (summary.failed > 0) {
-    body += `
-
-Failed Tests
-
-=================================
-
-`;
-
+  if (summary.failures.length > 0) {
+    lines.push("Failed Tests", hr, "");
     summary.failures.forEach((failure, index) => {
-      body += `
-
-${index + 1}. ${failure.title}
-
-Environment:
-${failure.environment}
-
-Reason:
-${failure.reason}
-
-
-`;
+      lines.push(`${index + 1}. ${failure.title}`);
+      lines.push(`Reports: ${failure.reports.join(", ")}`);
+      lines.push(`Reason: ${failure.reason.slice(0, 600)}`, "");
     });
   }
 
-  body += `
+  lines.push("Reports", hr, REPORT_URL, "");
 
-Reports
-=================================
+  return lines.join("\n");
+}
 
-GitHub Pages:
-
-https://dularip.github.io/playwright-api-automation/
-
-`;
-
-  return body;
+function createEmailBody(summary: Summary): string {
+  return `Playwright API Automation Report\n=================================\n\n${createReportText(summary)}`;
 }
 
 function createPdf(summary: Summary) {
   const pdfPath = path.join(OUTPUT_DIR, "API_Test_Report.pdf");
 
-  const doc = new PDFDocument();
-
+  const doc = new PDFDocument({ margin: 50 });
   doc.pipe(fs.createWriteStream(pdfPath));
 
-  doc.fontSize(18).text("Playwright API Automation Report");
-
+  doc
+    .font("Helvetica-Bold")
+    .fontSize(18)
+    .text("Playwright API Automation Report");
   doc.moveDown();
-
-  doc.fontSize(12).text(
-    `
-Total Tests : ${summary.total}
-
-Passed      : ${summary.passed}
-
-Failed      : ${summary.failed}
-
-Skipped     : ${summary.skipped}
-`,
-  );
-
-  if (summary.failed > 0) {
-    doc.moveDown();
-
-    doc.text("Failed Tests");
-
-    summary.failures.forEach((failure, index) => {
-      doc.moveDown();
-
-      doc.text(
-        `
-${index + 1}. ${failure.title}
-
-Environment:
-${failure.environment}
-
-Reason:
-${failure.reason}
-`,
-      );
-    });
-  }
+  doc.font("Courier").fontSize(9).text(createReportText(summary));
 
   doc.end();
 
   console.log(`PDF created: ${pdfPath}`);
 }
 
-function createSubject(summary: Summary) {
-  if (summary.failed > 0) {
-    return `❌ API Automation Pipeline FAILED | ${summary.failed} Failed`;
+function createSubject(summary: Summary): string {
+  switch (getStatus(summary)) {
+    case "FAILED":
+      return `❌ API Automation Pipeline FAILED | ${summary.failures.length} Failed`;
+    case "INCOMPLETE":
+      return `⚠️ API Automation Pipeline INCOMPLETE | Missing: ${
+        summary.missingReports.join(", ") || "no tests found"
+      }`;
+    default:
+      return `✅ API Automation Pipeline PASSED | ${summary.passed} Passed`;
   }
-
-  return `✅ API Automation Pipeline PASSED | ${summary.passed} Passed`;
 }
 
-// MAIN EXECUTION
+/* ------------------------------------------------------------------ */
+/* Main                                                                */
+/* ------------------------------------------------------------------ */
 
 const reports = readReports();
 
 console.log(
   "Reports found:",
-  reports.map((r) => r.environment),
+  reports.map((r) => r.name),
 );
 
 const summary = analyseTests(reports);
