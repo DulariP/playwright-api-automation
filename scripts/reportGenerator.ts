@@ -59,7 +59,7 @@ function getReportFiles(directory: string = REPORT_DIR): string[] {
       files = files.concat(getReportFiles(fullPath));
     } else if (
       file.endsWith(".json") &&
-      !["summary.json", "package-lock.json"].includes(file)
+      !["summary.json", "package-lock.json", "email-subject.txt"].includes(file)
     ) {
       files.push(fullPath);
     }
@@ -91,61 +91,57 @@ function readReports() {
 function analyseTests(reports: any[]): Summary {
   const summary: Summary = {
     total: 0,
-
     passed: 0,
-
     failed: 0,
-
     skipped: 0,
-
     failures: [],
   };
 
   function processSuite(suite: any, environment: string) {
-    if (!suite.specs) {
-      return;
+    if (suite.specs) {
+      suite.specs.forEach((spec: any) => {
+        spec.tests.forEach((test: any) => {
+          summary.total++;
+
+          const result = test.results?.[test.results.length - 1];
+
+          if (!result) {
+            summary.skipped++;
+            return;
+          }
+
+          switch (result.status) {
+            case "passed":
+              summary.passed++;
+              break;
+
+            case "failed":
+              summary.failed++;
+
+              summary.failures.push({
+                title: spec.title,
+
+                reason: result.error?.message || "Unknown error",
+
+                environment,
+              });
+
+              break;
+
+            default:
+              summary.skipped++;
+          }
+        });
+      });
     }
 
-    suite.specs.forEach((spec: any) => {
-      spec.tests.forEach((test: any) => {
-        summary.total++;
-
-        const result = test.results?.[test.results.length - 1];
-
-        if (!result) {
-          summary.skipped++;
-          return;
-        }
-
-        if (result.status === "passed") {
-          summary.passed++;
-        } else if (result.status === "failed") {
-          summary.failed++;
-
-          summary.failures.push({
-            title: spec.title,
-
-            reason: result.error?.message || "Unknown error",
-
-            environment,
-          });
-        } else {
-          summary.skipped++;
-        }
-      });
-    });
+    if (suite.suites) {
+      suite.suites.forEach((child: any) => processSuite(child, environment));
+    }
   }
 
   reports.forEach((report) => {
-    console.log(`Processing ${report.environment}`);
-
-    if (!report.data.suites) {
-      console.log(`No suites found for ${report.environment}`);
-
-      return;
-    }
-
-    report.data.suites.forEach((suite: any) =>
+    report.data.suites?.forEach((suite: any) =>
       processSuite(suite, report.environment),
     );
   });

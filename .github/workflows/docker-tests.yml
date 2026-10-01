@@ -80,9 +80,9 @@ jobs:
           path: |
 
 
-            allure-results
-
             reports/smoke-report.json
+
+            allure-results
 
           retention-days: 30
 
@@ -147,9 +147,9 @@ jobs:
           path: |
 
 
-            allure-results
-
             reports/regression-report.json
+
+            allure-results
 
           retention-days: 30
 
@@ -209,6 +209,29 @@ jobs:
            -e BOOKER_PASSWORD=$BOOKER_PASSWORD \
            api-tests
 
+      - name: Debug QA Job Files
+
+        run: |
+
+          echo "===== Current Directory ====="
+          pwd
+
+          echo ""
+          echo "===== All Files ====="
+          find . -type f | sort
+
+          echo ""
+          echo "===== Reports Folder ====="
+          ls -R reports || true
+
+          echo ""
+          echo "===== Root JSON Files ====="
+          find . -maxdepth 1 -name "*.json"
+
+          echo ""
+          echo "===== Reports JSON Files ====="
+          find reports -name "*.json" || true
+
       - name: Upload API Test Results
 
         if: always()
@@ -220,9 +243,9 @@ jobs:
 
           path: |
 
-            allure-results
-
             reports/${{ matrix.environment }}-report.json
+
+            allure-results
 
           if-no-files-found: warn
 
@@ -291,7 +314,72 @@ jobs:
 
           path: reports/staging
 
-          ########################################################
+      ########################################################
+      # VERIFY DOWNLOADED ARTIFACT FILES
+      ########################################################
+
+      - name: Verify Downloaded Reports
+
+        run: |
+
+          echo "================================="
+          echo "Current Directory"
+          echo "================================="
+
+          pwd
+
+
+          echo ""
+          echo "================================="
+          echo "Reports Folder Structure"
+          echo "================================="
+
+          find reports -type f | sort || true
+
+
+          echo ""
+          echo "================================="
+          echo "JSON Report Files"
+          echo "================================="
+
+          find reports -name "*.json" -type f | sort || true
+
+
+          echo ""
+          echo "================================="
+          echo "JSON File Sizes"
+          echo "================================="
+
+          find reports -name "*.json" -type f -exec ls -lh {} \;
+
+
+          echo ""
+          echo "================================="
+          echo "QA Report Preview"
+          echo "================================="
+
+          if [ -f reports/qa/qa-report.json ]; then
+            head -c 500 reports/qa/qa-report.json
+            echo
+          else
+            echo "QA report not found"
+          fi
+
+
+          echo ""
+          echo "================================="
+          echo "Staging Report Preview"
+          echo "================================="
+
+          if [ -f reports/staging/staging-report.json ]; then
+            head -c 500 reports/staging/staging-report.json
+            echo
+          else
+            echo "Staging report not found"
+          fi
+          
+
+      ########################################################
       # PREPARE REPORT DIRECTORIES
       ########################################################
 
@@ -347,12 +435,6 @@ jobs:
       # GENERATE SUMMARY REPORT
       ########################################################
 
-      - name: Generate Test Summary
-
-        run: |
-
-
-          npm run generate-report
       - name: Debug Report Files
 
         run: |
@@ -371,7 +453,7 @@ jobs:
           do
             echo "-----------"
             echo $file
-            head -c 500 $file
+            cat $file
             echo
           done
 
