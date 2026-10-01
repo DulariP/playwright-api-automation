@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Orville",
+    "lastname": "Botsford",
+    "totalprice": 558,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-09",
+      "checkout": "2027-01-28"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

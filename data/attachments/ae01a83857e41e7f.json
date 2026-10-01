@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Brittany",
+    "lastname": "Goodwin",
+    "totalprice": 861,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-30",
+      "checkout": "2028-03-07"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

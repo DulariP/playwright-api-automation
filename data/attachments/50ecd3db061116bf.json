@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1612,
+    "booking": {
+      "firstname": "Hellen",
+      "lastname": "Funk",
+      "totalprice": 482,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-11-17",
+        "checkout": "2027-10-03"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
