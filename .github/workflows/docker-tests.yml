@@ -414,14 +414,17 @@ jobs:
 
         run: |
 
+          mkdir -p reports/json
 
-          cp reports/smoke/smoke-report.json reports/json/ || true
+          find reports -name "*.json" \
+          ! -name "summary.json" \
+          ! -name "package-lock.json" \
+          -exec cp {} reports/json/ \;
 
-          cp reports/regression/regression-report.json reports/json/ || true
 
-          cp reports/qa/qa-report.json reports/json/ || true
+          echo "Collected JSON reports"
 
-          cp reports/staging/staging-report.json reports/json/ || true
+          ls -la reports/json
 
       ########################################################
       # INSTALL NODE DEPENDENCIES
@@ -457,6 +460,22 @@ jobs:
             echo
           done
 
+      - name: Verify Final Report Files
+
+        run: |
+
+          echo "===================="
+
+          find reports -type f
+
+          echo "===================="
+
+          ls -la reports/json
+
+          echo "===================="
+
+          cat reports/json/*.json
+          
       ########################################################
       # GENERATE REPORTS
       ########################################################

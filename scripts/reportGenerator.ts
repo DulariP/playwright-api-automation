@@ -18,7 +18,7 @@ interface Summary {
   }[];
 }
 
-const REPORT_DIR = path.join(process.cwd(), "reports");
+const REPORT_DIR = path.join(process.cwd(), "reports/json");
 
 const OUTPUT_DIR = path.join(process.cwd(), "reports");
 

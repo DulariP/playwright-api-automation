@@ -47,7 +47,9 @@ export default defineConfig({
     [
       "json",
       {
-        outputFile: `reports/${process.env.REPORT_FILE || "json-test-report.json"}`,
+        outputFile: process.env.REPORT_FILE
+          ? `reports/${process.env.REPORT_FILE}`
+          : "reports/json-test-report.json",
       },
     ],
 
