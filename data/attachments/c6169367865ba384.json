@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1354,
+    "booking": {
+      "firstname": "Tod",
+      "lastname": "Hauck",
+      "totalprice": 737,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-11-09",
+        "checkout": "2027-01-09"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
