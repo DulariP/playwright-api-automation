@@ -91,9 +91,17 @@ function readReports(): LoadedReport[] {
   const reports: LoadedReport[] = [];
 
   files.forEach((filePath) => {
+    const name = path.basename(filePath).replace("-report.json", "");
+
+    // Ignore stray files (e.g. a committed json-test-report.json)
+    if (!EXPECTED_REPORTS.includes(name)) {
+      console.log(`Ignoring unexpected report file: ${filePath}`);
+      return;
+    }
+
     try {
       reports.push({
-        name: path.basename(filePath).replace("-report.json", ""),
+        name,
         data: JSON.parse(fs.readFileSync(filePath, "utf-8")),
       });
     } catch (error) {
@@ -228,9 +236,7 @@ function createReportText(summary: Summary): string {
   lines.push(`Total Tests : ${summary.total}`);
   lines.push(
     `Passed      : ${summary.passed}` +
-      (summary.flaky > 0
-        ? ` (${summary.flaky} flaky, passed on retry)`
-        : ""),
+      (summary.flaky > 0 ? ` (${summary.flaky} flaky, passed on retry)` : ""),
   );
   lines.push(`Failed      : ${summary.failed}`);
   lines.push(`Skipped     : ${summary.skipped}`, "");

@@ -16,48 +16,34 @@ services:
       - ./test-results:/app/test-results
       - ./reports:/app/reports
 
-    command: >
+    # IMPORTANT: use $$ for variables that must be read INSIDE the container.
+    # A single $ is replaced by docker compose on the host at parse time. TEST_ARGS
+    # is only passed to the container with `-e`, so on the host it is empty and
+    # the --grep filter was silently dropped (every job ran the full suite).
+    command:
+      - sh
+      - -c
+      - |
+        echo "================================="
+        echo "Running $$TEST_ENV Tests"
+        echo "Report File: $$REPORT_FILE"
+        echo "Test Args: $$TEST_ARGS"
+        echo "================================="
 
-      sh -c '
+        npx playwright test $$TEST_ARGS
+        status=$$?
 
-      echo "================================="
+        echo ""
+        echo "Generated Allure Results"
+        ls -la /app/allure-results || true
 
-      echo "Running $TEST_ENV Tests"
+        echo ""
+        echo "Generated Playwright Report"
+        ls -la /app/playwright-report || true
 
-      echo "Report File: $REPORT_FILE"
+        echo ""
+        echo "Generated Reports Folder"
+        ls -la /app/reports || true
 
-      echo "================================="
-
-
-      REPORT_FILE=$REPORT_FILE npx playwright test $TEST_ARGS
-
-
-      echo ""
-
-      echo "Generated Allure Results"
-
-      ls -la /app/allure-results || true
-
-
-      echo ""
-
-      echo "Generated Playwright Report"
-
-      ls -la /app/playwright-report || true
-
-
-      echo ""
-
-      echo ""
-
-      echo "Generated Reports Folder"
-
-      ls -la /app/reports || true
-
-      echo ""
-
-      echo "Generated Allure Results"
-
-      ls -la /app/allure-results || true
-
-      '
+        # Keep the real test exit code so failed tests fail the job
+        exit $$status
