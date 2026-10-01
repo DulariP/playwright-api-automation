@@ -1,0 +1,1251 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Dulari\\API Automation\\Api Automation\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/api"
+    ],
+    "configFile": "D:\\Dulari\\API Automation\\Api Automation\\playwright.config.ts",
+    "rootDir": "D:/Dulari/API Automation/Api Automation/tests/api",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Dulari/API Automation/Api Automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "D:/Dulari/API Automation/Api Automation/tests/api",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report",
+          "open": "never"
+        }
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/json-test-report.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "json-test-report.xml"
+        }
+      ],
+      [
+        "D:\\Dulari\\API Automation\\Api Automation\\node_modules\\allure-playwright\\dist\\cjs\\index.js",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.spec.ts",
+      "file": "auth.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Authentication API",
+          "file": "auth.spec.ts",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@smoke Generate authentication token",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1785,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : POST\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/auth\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{ username: \u001b[32m'admin'\u001b[39m, password: \u001b[32m'password123'\u001b[39m }\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{ token: \u001b[32m'27647dbcff6c37c'\u001b[39m }\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "Response Status: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "Response Body: {\n  \"token\": \"27647dbcff6c37c\"\n}\n"
+                        },
+                        {
+                          "text": "Token generated successfully\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Prepare authentication credentials",
+                          "duration": 8
+                        },
+                        {
+                          "title": "Generate authentication token",
+                          "duration": 1624
+                        },
+                        {
+                          "title": "Validate authentication contract",
+                          "duration": 10
+                        },
+                        {
+                          "title": "Verify generated token",
+                          "duration": 3
+                        }
+                      ],
+                      "startTime": "2026-09-30T13:58:33.411Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYXV0aCIsCiAgImJvZHkiOiB7CiAgICAidXNlcm5hbWUiOiAiYWRtaW4iLAogICAgInBhc3N3b3JkIjogInBhc3N3b3JkMTIzIgogIH0KfQ=="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAidG9rZW4iOiAiMjc2NDdkYmNmZjZjMzdjIgogIH0KfQ=="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-7ed8592b25a99eec1855",
+              "file": "auth.spec.ts",
+              "line": 10,
+              "column": 7
+            },
+            {
+              "title": "@regression Login with invalid credentials",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1206,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : POST\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/auth\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{ username: \u001b[32m'invalid_user'\u001b[39m, password: \u001b[32m'wrong_password'\u001b[39m }\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{ reason: \u001b[32m'Bad credentials'\u001b[39m }\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "Response Status: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "Response Body: {\n  \"reason\": \"Bad credentials\"\n}\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Send login request with invalid credentials",
+                          "duration": 1190
+                        },
+                        {
+                          "title": "Validate authentication error contract",
+                          "duration": 2
+                        },
+                        {
+                          "title": "Verify authentication failure response",
+                          "duration": 3
+                        }
+                      ],
+                      "startTime": "2026-09-30T13:58:35.286Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYXV0aCIsCiAgImJvZHkiOiB7CiAgICAidXNlcm5hbWUiOiAiaW52YWxpZF91c2VyIiwKICAgICJwYXNzd29yZCI6ICJ3cm9uZ19wYXNzd29yZCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAicmVhc29uIjogIkJhZCBjcmVkZW50aWFscyIKICB9Cn0="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d748ac400d08b85935ef-d64758354227f35fbb4f",
+              "file": "auth.spec.ts",
+              "line": 41,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "createBooking.spec.ts",
+      "file": "createBooking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Booking API - Create Booking",
+          "file": "createBooking.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@smoke Create booking and verify details",
+              "ok": true,
+              "tags": [
+                "smoke"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1749,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : POST\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Rollin'\u001b[39m,\n  lastname: \u001b[32m'Heller'\u001b[39m,\n  totalprice: \u001b[33m695\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-16'\u001b[39m, checkout: \u001b[32m'2027-12-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  bookingid: \u001b[33m4118\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Rollin'\u001b[39m,\n    lastname: \u001b[32m'Heller'\u001b[39m,\n    totalprice: \u001b[33m695\u001b[39m,\n    depositpaid: \u001b[33mfalse\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-05-16'\u001b[39m, checkout: \u001b[32m'2027-12-16'\u001b[39m },\n    additionalneeds: \u001b[32m'Lunch'\u001b[39m\n  }\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "Created Booking ID: 4118\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : GET\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4118\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Rollin'\u001b[39m,\n  lastname: \u001b[32m'Heller'\u001b[39m,\n  totalprice: \u001b[33m695\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-05-16'\u001b[39m, checkout: \u001b[32m'2027-12-16'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Validate booking request payload",
+                          "duration": 0
+                        },
+                        {
+                          "title": "Create new booking",
+                          "duration": 1338
+                        },
+                        {
+                          "title": "Verify created booking using GET",
+                          "duration": 311
+                        }
+                      ],
+                      "startTime": "2026-09-30T13:58:33.870Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIlJvbGxpbiIsCiAgICAibGFzdG5hbWUiOiAiSGVsbGVyIiwKICAgICJ0b3RhbHByaWNlIjogNjk1LAogICAgImRlcG9zaXRwYWlkIjogZmFsc2UsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTE2IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMTItMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogNDExOCwKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIlJvbGxpbiIsCiAgICAgICJsYXN0bmFtZSI6ICJIZWxsZXIiLAogICAgICAidG90YWxwcmljZSI6IDY5NSwKICAgICAgImRlcG9zaXRwYWlkIjogZmFsc2UsCiAgICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICAgImNoZWNraW4iOiAiMjAyNy0wNS0xNiIsCiAgICAgICAgImNoZWNrb3V0IjogIjIwMjctMTItMTYiCiAgICAgIH0sCiAgICAgICJhZGRpdGlvbmFsbmVlZHMiOiAiTHVuY2giCiAgICB9CiAgfQp9"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMTgiCn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIlJvbGxpbiIsCiAgICAibGFzdG5hbWUiOiAiSGVsbGVyIiwKICAgICJ0b3RhbHByaWNlIjogNjk1LAogICAgImRlcG9zaXRwYWlkIjogZmFsc2UsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA1LTE2IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMTItMTYiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "103c1ef8d8fd522f564a-260465686ec8463561cc",
+              "file": "createBooking.spec.ts",
+              "line": 15,
+              "column": 7
+            },
+            {
+              "title": "@regression Should fail when total price is not a number",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Request Payload validation failed\n"
+                        },
+                        {
+                          "text": "[\n  {\n    instancePath: \u001b[32m'/totalprice'\u001b[39m,\n    schemaPath: \u001b[32m'#/properties/totalprice/type'\u001b[39m,\n    keyword: \u001b[32m'type'\u001b[39m,\n    params: { type: \u001b[32m'number'\u001b[39m },\n    message: \u001b[32m'must be number'\u001b[39m\n  }\n]\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-30T13:58:35.710Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "103c1ef8d8fd522f564a-e0fdc6c6b0ddc8e4faf6",
+              "file": "createBooking.spec.ts",
+              "line": 48,
+              "column": 7
+            },
+            {
+              "title": "@regression Should fail when depositpaid is invalid",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 8,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Request Payload validation failed\n"
+                        },
+                        {
+                          "text": "[\n  {\n    instancePath: \u001b[32m'/depositpaid'\u001b[39m,\n    schemaPath: \u001b[32m'#/properties/depositpaid/type'\u001b[39m,\n    keyword: \u001b[32m'type'\u001b[39m,\n    params: { type: \u001b[32m'boolean'\u001b[39m },\n    message: \u001b[32m'must be boolean'\u001b[39m\n  }\n]\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-30T13:58:35.734Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "103c1ef8d8fd522f564a-1d0c6951e88b4761097a",
+              "file": "createBooking.spec.ts",
+              "line": 58,
+              "column": 7
+            },
+            {
+              "title": "@regression Should fail when payload contains unknown fields",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 7,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [
+                        {
+                          "text": "Request Payload validation failed\n"
+                        },
+                        {
+                          "text": "[\n  {\n    instancePath: \u001b[32m''\u001b[39m,\n    schemaPath: \u001b[32m'#/additionalProperties'\u001b[39m,\n    keyword: \u001b[32m'additionalProperties'\u001b[39m,\n    params: { additionalProperty: \u001b[32m'unexpectedField'\u001b[39m },\n    message: \u001b[32m'must NOT have additional properties'\u001b[39m\n  }\n]\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2026-09-30T13:58:35.758Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "103c1ef8d8fd522f564a-216b6ca24592aa1e9863",
+              "file": "createBooking.spec.ts",
+              "line": 68,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "getBooking.spec.ts",
+      "file": "getBooking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Booking API - Get Booking",
+          "file": "getBooking.spec.ts",
+          "line": 12,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@regression Get booking with invalid ID",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1706,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : GET\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/99999999\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 404\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "\u001b[32m'Not Found'\u001b[39m\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "Invalid Booking Response: Not Found\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Request booking with invalid ID",
+                          "duration": 1601
+                        }
+                      ],
+                      "startTime": "2026-09-30T13:58:33.465Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzk5OTk5OTk5Igp9"
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiA0MDQsCiAgImJvZHkiOiAiTm90IEZvdW5kIgp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "38819a9441ad562445e3-971442eef8b4c5045143",
+              "file": "getBooking.spec.ts",
+              "line": 42,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "updateBooking.spec.ts",
+      "file": "updateBooking.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Booking API - Complete CRUD Lifecycle",
+          "file": "updateBooking.spec.ts",
+          "line": 22,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@regression Create, Update, Patch and Delete booking flow",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 3647,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : POST\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Geneva'\u001b[39m,\n  lastname: \u001b[32m'Zemlak'\u001b[39m,\n  totalprice: \u001b[33m630\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-30'\u001b[39m, checkout: \u001b[32m'2027-12-03'\u001b[39m },\n  additionalneeds: \u001b[32m'Dinner'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  bookingid: \u001b[33m4120\u001b[39m,\n  booking: {\n    firstname: \u001b[32m'Geneva'\u001b[39m,\n    lastname: \u001b[32m'Zemlak'\u001b[39m,\n    totalprice: \u001b[33m630\u001b[39m,\n    depositpaid: \u001b[33mtrue\u001b[39m,\n    bookingdates: { checkin: \u001b[32m'2027-08-30'\u001b[39m, checkout: \u001b[32m'2027-12-03'\u001b[39m },\n    additionalneeds: \u001b[32m'Dinner'\u001b[39m\n  }\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "Created Booking ID: 4120\n"
+                        },
+                        {
+                          "text": "🔑 Generating new authentication token\n"
+                        },
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : PUT\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Donnie'\u001b[39m,\n  lastname: \u001b[32m'Boyer'\u001b[39m,\n  totalprice: \u001b[33m502\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-15'\u001b[39m, checkout: \u001b[32m'2028-03-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Donnie'\u001b[39m,\n  lastname: \u001b[32m'Boyer'\u001b[39m,\n  totalprice: \u001b[33m502\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-15'\u001b[39m, checkout: \u001b[32m'2028-03-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : GET\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Donnie'\u001b[39m,\n  lastname: \u001b[32m'Boyer'\u001b[39m,\n  totalprice: \u001b[33m502\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-15'\u001b[39m, checkout: \u001b[32m'2028-03-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "♻️ Using cached authentication token\n"
+                        },
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : PATCH\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{ firstname: \u001b[32m'Coty'\u001b[39m, lastname: \u001b[32m'Carroll'\u001b[39m }\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Coty'\u001b[39m,\n  lastname: \u001b[32m'Carroll'\u001b[39m,\n  totalprice: \u001b[33m502\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-15'\u001b[39m, checkout: \u001b[32m'2028-03-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : GET\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 200\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Coty'\u001b[39m,\n  lastname: \u001b[32m'Carroll'\u001b[39m,\n  totalprice: \u001b[33m502\u001b[39m,\n  depositpaid: \u001b[33mfalse\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2027-08-15'\u001b[39m, checkout: \u001b[32m'2028-03-05'\u001b[39m },\n  additionalneeds: \u001b[32m'Breakfast'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "♻️ Using cached authentication token\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : DELETE\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "Response Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 201\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "\u001b[32m'Created'\u001b[39m\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : GET\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/4120\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 404\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "\u001b[32m'Not Found'\u001b[39m\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Create booking",
+                          "duration": 1432
+                        },
+                        {
+                          "title": "Update booking using PUT",
+                          "duration": 608
+                        },
+                        {
+                          "title": "Verify updated booking using GET",
+                          "duration": 292
+                        },
+                        {
+                          "title": "Partial update booking using PATCH",
+                          "duration": 292
+                        },
+                        {
+                          "title": "Verify PATCH changes are persisted",
+                          "duration": 304
+                        },
+                        {
+                          "title": "Delete booking",
+                          "duration": 304
+                        },
+                        {
+                          "title": "Verify deleted booking cannot be retrieved",
+                          "duration": 313
+                        }
+                      ],
+                      "startTime": "2026-09-30T13:58:33.885Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUE9TVCIsCiAgInVybCI6ICJodHRwczovL3Jlc3RmdWwtYm9va2VyLmhlcm9rdWFwcC5jb20vYm9va2luZyIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkdlbmV2YSIsCiAgICAibGFzdG5hbWUiOiAiWmVtbGFrIiwKICAgICJ0b3RhbHByaWNlIjogNjMwLAogICAgImRlcG9zaXRwYWlkIjogdHJ1ZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDgtMzAiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyNy0xMi0wMyIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkRpbm5lciIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiYm9va2luZ2lkIjogNDEyMCwKICAgICJib29raW5nIjogewogICAgICAiZmlyc3RuYW1lIjogIkdlbmV2YSIsCiAgICAgICJsYXN0bmFtZSI6ICJaZW1sYWsiLAogICAgICAidG90YWxwcmljZSI6IDYzMCwKICAgICAgImRlcG9zaXRwYWlkIjogdHJ1ZSwKICAgICAgImJvb2tpbmdkYXRlcyI6IHsKICAgICAgICAiY2hlY2tpbiI6ICIyMDI3LTA4LTMwIiwKICAgICAgICAiY2hlY2tvdXQiOiAiMjAyNy0xMi0wMyIKICAgICAgfSwKICAgICAgImFkZGl0aW9uYWxuZWVkcyI6ICJEaW5uZXIiCiAgICB9CiAgfQp9"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMjAiLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJEb25uaWUiLAogICAgImxhc3RuYW1lIjogIkJveWVyIiwKICAgICJ0b3RhbHByaWNlIjogNTAyLAogICAgImRlcG9zaXRwYWlkIjogZmFsc2UsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI3LTA4LTE1IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjgtMDMtMDUiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJCcmVha2Zhc3QiCiAgfQp9"
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkRvbm5pZSIsCiAgICAibGFzdG5hbWUiOiAiQm95ZXIiLAogICAgInRvdGFscHJpY2UiOiA1MDIsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDgtMTUiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyOC0wMy0wNSIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkJyZWFrZmFzdCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMjAiCn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkRvbm5pZSIsCiAgICAibGFzdG5hbWUiOiAiQm95ZXIiLAogICAgInRvdGFscHJpY2UiOiA1MDIsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDgtMTUiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyOC0wMy0wNSIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkJyZWFrZmFzdCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUEFUQ0giLAogICJ1cmwiOiAiaHR0cHM6Ly9yZXN0ZnVsLWJvb2tlci5oZXJva3VhcHAuY29tL2Jvb2tpbmcvNDEyMCIsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNvdHkiLAogICAgImxhc3RuYW1lIjogIkNhcnJvbGwiCiAgfQp9"
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNvdHkiLAogICAgImxhc3RuYW1lIjogIkNhcnJvbGwiLAogICAgInRvdGFscHJpY2UiOiA1MDIsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDgtMTUiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyOC0wMy0wNSIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkJyZWFrZmFzdCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMjAiCn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDAsCiAgImJvZHkiOiB7CiAgICAiZmlyc3RuYW1lIjogIkNvdHkiLAogICAgImxhc3RuYW1lIjogIkNhcnJvbGwiLAogICAgInRvdGFscHJpY2UiOiA1MDIsCiAgICAiZGVwb3NpdHBhaWQiOiBmYWxzZSwKICAgICJib29raW5nZGF0ZXMiOiB7CiAgICAgICJjaGVja2luIjogIjIwMjctMDgtMTUiLAogICAgICAiY2hlY2tvdXQiOiAiMjAyOC0wMy0wNSIKICAgIH0sCiAgICAiYWRkaXRpb25hbG5lZWRzIjogIkJyZWFrZmFzdCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiREVMRVRFIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMjAiCn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiAyMDEsCiAgImJvZHkiOiAiQ3JlYXRlZCIKfQ=="
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiR0VUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzQxMjAiCn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiA0MDQsCiAgImJvZHkiOiAiTm90IEZvdW5kIgp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "aac9a8b1cf955f707e47-ccf9ee4233179f285734",
+              "file": "updateBooking.spec.ts",
+              "line": 23,
+              "column": 7
+            },
+            {
+              "title": "@regression Update booking without authentication",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1150,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Request Payload validation passed\n"
+                        },
+                        {
+                          "text": "\n========== API REQUEST ==========\n"
+                        },
+                        {
+                          "text": "Method : PUT\n"
+                        },
+                        {
+                          "text": "URL    : https://restful-booker.herokuapp.com/booking/1\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "{\n  firstname: \u001b[32m'Green'\u001b[39m,\n  lastname: \u001b[32m'Torp'\u001b[39m,\n  totalprice: \u001b[33m179\u001b[39m,\n  depositpaid: \u001b[33mtrue\u001b[39m,\n  bookingdates: { checkin: \u001b[32m'2026-12-24'\u001b[39m, checkout: \u001b[32m'2027-06-15'\u001b[39m },\n  additionalneeds: \u001b[32m'Lunch'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "=================================\n\n"
+                        },
+                        {
+                          "text": "\n========== API RESPONSE ==========\n"
+                        },
+                        {
+                          "text": "Status : 403\n"
+                        },
+                        {
+                          "text": "Body:\n"
+                        },
+                        {
+                          "text": "\u001b[32m'Forbidden'\u001b[39m\n"
+                        },
+                        {
+                          "text": "==================================\n\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-30T13:58:37.616Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Allure Metadata (metadata)",
+                          "contentType": "application/vnd.allure.message+json",
+                          "body": "eyJ0eXBlIjoibWV0YWRhdGEiLCJkYXRhIjp7ImxhYmVscyI6W3sibmFtZSI6IkVudmlyb25tZW50IiwidmFsdWUiOiJxYSJ9XX19"
+                        },
+                        {
+                          "name": "API Request",
+                          "contentType": "application/json",
+                          "body": "ewogICJtZXRob2QiOiAiUFVUIiwKICAidXJsIjogImh0dHBzOi8vcmVzdGZ1bC1ib29rZXIuaGVyb2t1YXBwLmNvbS9ib29raW5nLzEiLAogICJib2R5IjogewogICAgImZpcnN0bmFtZSI6ICJHcmVlbiIsCiAgICAibGFzdG5hbWUiOiAiVG9ycCIsCiAgICAidG90YWxwcmljZSI6IDE3OSwKICAgICJkZXBvc2l0cGFpZCI6IHRydWUsCiAgICAiYm9va2luZ2RhdGVzIjogewogICAgICAiY2hlY2tpbiI6ICIyMDI2LTEyLTI0IiwKICAgICAgImNoZWNrb3V0IjogIjIwMjctMDYtMTUiCiAgICB9LAogICAgImFkZGl0aW9uYWxuZWVkcyI6ICJMdW5jaCIKICB9Cn0="
+                        },
+                        {
+                          "name": "API Response",
+                          "contentType": "application/json",
+                          "body": "ewogICJzdGF0dXMiOiA0MDMsCiAgImJvZHkiOiAiRm9yYmlkZGVuIgp9"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "aac9a8b1cf955f707e47-3d78369975563d9a852a",
+              "file": "updateBooking.spec.ts",
+              "line": 106,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-30T13:58:31.673Z",
+    "duration": 7242.534,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

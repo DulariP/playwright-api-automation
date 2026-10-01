@@ -353,7 +353,27 @@ jobs:
 
 
           npm run generate-report
+      - name: Debug Report Files
 
+        run: |
+
+          echo "=============================="
+
+          echo "All JSON files"
+
+          find reports -name "*.json" -type f
+
+          echo "=============================="
+
+          echo "JSON content preview"
+
+          for file in $(find reports -name "*.json" -type f)
+          do
+            echo "-----------"
+            echo $file
+            head -c 500 $file
+            echo
+          done
 
       ########################################################
       # GENERATE REPORTS

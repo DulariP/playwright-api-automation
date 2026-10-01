@@ -102,39 +102,50 @@ function analyseTests(reports: any[]): Summary {
   };
 
   function processSuite(suite: any, environment: string) {
-    if (suite.specs) {
-      suite.specs.forEach((spec: any) => {
-        spec.tests.forEach((test: any) => {
-          summary.total++;
+    if (!suite.specs) {
+      return;
+    }
 
-          const result = test.results[test.results.length - 1];
+    suite.specs.forEach((spec: any) => {
+      spec.tests.forEach((test: any) => {
+        summary.total++;
 
-          if (result.status === "passed") {
-            summary.passed++;
-          } else if (result.status === "failed") {
-            summary.failed++;
+        const result = test.results?.[test.results.length - 1];
 
-            summary.failures.push({
-              title: spec.title,
+        if (!result) {
+          summary.skipped++;
+          return;
+        }
 
-              reason: result.error?.message || "Unknown error",
+        if (result.status === "passed") {
+          summary.passed++;
+        } else if (result.status === "failed") {
+          summary.failed++;
 
-              environment,
-            });
-          } else {
-            summary.skipped++;
-          }
-        });
+          summary.failures.push({
+            title: spec.title,
+
+            reason: result.error?.message || "Unknown error",
+
+            environment,
+          });
+        } else {
+          summary.skipped++;
+        }
       });
-    }
-
-    if (suite.suites) {
-      suite.suites.forEach((child: any) => processSuite(child, environment));
-    }
+    });
   }
 
   reports.forEach((report) => {
-    report.data.suites?.forEach((suite: any) =>
+    console.log(`Processing ${report.environment}`);
+
+    if (!report.data.suites) {
+      console.log(`No suites found for ${report.environment}`);
+
+      return;
+    }
+
+    report.data.suites.forEach((suite: any) =>
       processSuite(suite, report.environment),
     );
   });
@@ -269,6 +280,11 @@ function createSubject(summary: Summary) {
 // MAIN EXECUTION
 
 const reports = readReports();
+
+console.log(
+  "Reports found:",
+  reports.map((r) => r.environment),
+);
 
 const summary = analyseTests(reports);
 
