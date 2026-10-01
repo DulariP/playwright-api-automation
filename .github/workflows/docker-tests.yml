@@ -57,14 +57,13 @@ jobs:
             -e TEST_ARGS="--grep @smoke" \
             api-tests
 
+      # JSON only: smoke/regression do not feed the Allure report
       - name: Upload Smoke Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: smoke-results
-          path: |
-            reports/smoke-report.json
-            allure-results
+          path: reports/smoke-report.json
           if-no-files-found: warn
           retention-days: 30
 
@@ -110,9 +109,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: regression-results
-          path: |
-            reports/regression-report.json
-            allure-results
+          path: reports/regression-report.json
           if-no-files-found: warn
           retention-days: 30
 
@@ -161,20 +158,39 @@ jobs:
             -e BOOKER_PASSWORD="$BOOKER_PASSWORD" \
             api-tests
 
-      - name: List generated files
+      # Tells you right away whether Allure results exist on the runner
+      - name: Check generated files
         if: always()
         run: |
+          echo "--- reports ---"
           ls -la reports || true
-          ls -la allure-results | head -20 || true
 
-      - name: Upload API Test Results
+          echo "--- allure-results (first 10) ---"
+          ls allure-results 2>/dev/null | head -10 || true
+
+          count=$(find allure-results -type f 2>/dev/null | wc -l)
+          echo "allure-results files: $count"
+
+          if [ "$count" -eq 0 ]; then
+            echo "::error title=No Allure results::allure-results is empty after the test run (${{ matrix.environment }})"
+          fi
+
+      - name: Upload API Test Results (JSON)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.environment }}-results
-          path: |
-            reports/${{ matrix.environment }}-report.json
-            allure-results
+          path: reports/${{ matrix.environment }}-report.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      # Separate artifact, so the files always land at the artifact root
+      - name: Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-${{ matrix.environment }}
+          path: allure-results
           if-no-files-found: warn
           retention-days: 30
 
@@ -193,6 +209,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Prepare Report Directories
+        run: |
+          mkdir -p reports/allure-results
+          mkdir -p reports/json
 
       # ---------- Download artifacts ----------
       # continue-on-error: if one job crashed before uploading anything,
@@ -226,31 +247,30 @@ jobs:
           name: staging-results
           path: reports/staging
 
-      # ---------- Collect files ----------
+      # Allure results from qa + staging are merged into one folder
+      # (file names are unique UUIDs, so nothing is overwritten).
+      - name: Download QA Allure Results
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: allure-qa
+          path: reports/allure-results
 
-      - name: Prepare Report Directories
-        run: |
-          mkdir -p reports/allure-results
-          mkdir -p reports/json
+      - name: Download Staging Allure Results
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: allure-staging
+          path: reports/allure-results
 
-      # NOTE: `find -exec` does not run a shell, so a `*` glob is never expanded.
-      # Using `{}/.` copies the directory contents without needing a glob.
-      - name: Collect Allure Results
+      # ---------- Collect / verify ----------
+
+      - name: Count Allure Results
         id: allure
         run: |
-          # Only qa + staging feed the Allure report. smoke/regression run the same
-          # tests again, which would show up as duplicate "retries" in Allure.
-          for name in qa staging; do
-            if [ -d "reports/$name" ]; then
-              find "reports/$name" -type d -name "allure-results" \
-                -exec cp -r {}/. reports/allure-results/ \;
-            else
-              echo "WARNING: reports/$name not found"
-            fi
-          done
-
           count=$(find reports/allure-results -type f | wc -l)
           echo "Allure files collected: $count"
+          ls reports/allure-results | head -10
           echo "count=$count" >> "$GITHUB_OUTPUT"
 
       # Only real Playwright reports (*-report.json), never Allure JSON files.
@@ -302,10 +322,10 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      # Deploy only from main, and only if Allure actually has results,
-      # so a bad run never overwrites a good published report.
+      # Deploys from any branch except pull requests, and only if Allure
+      # actually has results, so a bad run never overwrites a good report.
       - name: Deploy Allure Report
-        if: github.ref == 'refs/heads/main' && steps.allure.outputs.count != '0'
+        if: github.event_name != 'pull_request' && steps.allure.outputs.count != '0'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
