@@ -247,27 +247,35 @@ jobs:
           name: staging-results
           path: reports/staging
 
-      # Allure results from qa + staging are merged into one folder
-      # (file names are unique UUIDs, so nothing is overwritten).
+      # Kept in separate folders per environment: the PDF reads them per
+      # environment, and they are merged below for the HTML Allure report.
       - name: Download QA Allure Results
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: allure-qa
-          path: reports/allure-results
+          path: reports/allure/qa
 
       - name: Download Staging Allure Results
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: allure-staging
-          path: reports/allure-results
+          path: reports/allure/staging
 
       # ---------- Collect / verify ----------
 
-      - name: Count Allure Results
+      - name: Collect Allure Results
         id: allure
         run: |
+          for name in qa staging; do
+            if [ -d "reports/allure/$name" ]; then
+              cp -r "reports/allure/$name/." reports/allure-results/
+            else
+              echo "WARNING: reports/allure/$name not found"
+            fi
+          done
+
           count=$(find reports/allure-results -type f | wc -l)
           echo "Allure files collected: $count"
           ls reports/allure-results | head -10
@@ -278,6 +286,7 @@ jobs:
         run: |
           find reports -type f -name "*-report.json" \
             -not -path "reports/json/*" \
+            -not -path "reports/allure/*" \
             -not -path "*/allure-results/*" \
             -exec cp {} reports/json/ \;
 
