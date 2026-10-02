@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 276,
+    "booking": {
+      "firstname": "Ethan",
+      "lastname": "Yost",
+      "totalprice": 936,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-04-06",
+        "checkout": "2027-11-04"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

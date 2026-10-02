@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Dorothea",
+    "lastname": "Batz",
+    "totalprice": 431,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-08-18",
+      "checkout": "2028-04-28"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

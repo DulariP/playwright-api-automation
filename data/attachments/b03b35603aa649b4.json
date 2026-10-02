@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jalon",
+    "lastname": "Christiansen",
+    "totalprice": 760,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-22",
+      "checkout": "2027-01-30"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

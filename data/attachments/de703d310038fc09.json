@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 295,
+    "booking": {
+      "firstname": "Leone",
+      "lastname": "Roberts",
+      "totalprice": 577,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-23",
+        "checkout": "2027-07-06"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
