@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Patricia",
+    "lastname": "Powlowski",
+    "totalprice": 918,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-27",
+      "checkout": "2027-10-13"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
