@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 3711,
+    "booking": {
+      "firstname": "Tania",
+      "lastname": "Pfeffer",
+      "totalprice": 909,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-10-10",
+        "checkout": "2026-11-04"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

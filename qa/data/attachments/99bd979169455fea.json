@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Enid",
+    "lastname": "Welch",
+    "totalprice": 234,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-05-03",
+      "checkout": "2027-12-07"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

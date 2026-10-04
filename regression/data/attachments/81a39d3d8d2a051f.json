@@ -1,0 +1,8 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/auth",
+  "body": {
+    "username": "invalid_user",
+    "password": "wrong_password"
+  }
+}

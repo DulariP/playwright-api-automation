@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 3838,
+    "booking": {
+      "firstname": "Gregoria",
+      "lastname": "Heidenreich",
+      "totalprice": 775,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-10-24",
+        "checkout": "2027-02-08"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

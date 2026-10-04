@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","363","@smoke Generate authentication token","chromium","2026-10-04","passed","2026-10-04","Authentication API","auth.spec.ts","",""
+"","415","@smoke Create booking and verify details","chromium","2026-10-04","passed","2026-10-04","Booking API - Create Booking","createBooking.spec.ts","",""

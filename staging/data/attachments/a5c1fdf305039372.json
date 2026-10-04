@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Elwyn",
+    "lastname": "Schiller",
+    "totalprice": 495,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-05-19",
+      "checkout": "2028-05-17"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

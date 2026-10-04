@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jeremie",
+    "lastname": "Yundt",
+    "totalprice": 846,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-11-16",
+      "checkout": "2027-03-16"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

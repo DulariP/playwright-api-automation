@@ -1,0 +1,10 @@
+Request Payload validation failed
+[
+  {
+    instancePath: '',
+    schemaPath: '#/additionalProperties',
+    keyword: 'additionalProperties',
+    params: { additionalProperty: 'unexpectedField' },
+    message: 'must NOT have additional properties'
+  }
+]

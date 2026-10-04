@@ -1,0 +1,23 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : PUT
+URL    : https://restful-booker.herokuapp.com/booking/1
+Body:
+{
+  firstname: 'Bertram',
+  lastname: 'McLaughlin',
+  totalprice: 768,
+  depositpaid: true,
+  bookingdates: { checkin: '2027-05-03', checkout: '2028-01-26' },
+  additionalneeds: 'Breakfast'
+}
+=================================
+
+
+========== API RESPONSE ==========
+Status : 403
+Body:
+'Forbidden'
+==================================
+

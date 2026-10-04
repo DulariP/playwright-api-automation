@@ -1,0 +1,20 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/auth
+Body:
+{ username: 'invalid_user', password: 'wrong_password' }
+=================================
+
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{ reason: 'Bad credentials' }
+==================================
+
+Response Status: 200
+Response Body: {
+  "reason": "Bad credentials"
+}

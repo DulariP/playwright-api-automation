@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Dylan",
+    "lastname": "Mosciski",
+    "totalprice": 817,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-19",
+      "checkout": "2028-01-29"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

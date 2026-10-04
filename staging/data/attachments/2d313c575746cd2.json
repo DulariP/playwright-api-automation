@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jocelyn",
+    "lastname": "Deckow",
+    "totalprice": 419,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-09-12",
+      "checkout": "2028-06-24"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
