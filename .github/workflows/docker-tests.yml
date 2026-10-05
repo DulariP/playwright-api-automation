@@ -11,8 +11,8 @@ on:
       - main
 
   schedule:
-    # 5:00 PM Sri Lanka time (UTC+5:30) = 11:30 UTC
-    - cron: "30 11 * * *"
+    # 11:00 AM Sri Lanka time (UTC+5:30) = 05:30 UTC
+    - cron: "30 5 * * *"
 
   workflow_dispatch:
 
