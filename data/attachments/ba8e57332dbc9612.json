@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jairo",
+    "lastname": "Upton",
+    "totalprice": 112,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-06-11",
+      "checkout": "2027-06-25"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

@@ -1,8 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","23","@regression Should fail when depositpaid is invalid","chromium","2026-10-04","passed","2026-10-04","Booking API - Create Booking","createBooking.spec.ts","",""
-"","18","@regression Should fail when payload contains unknown fields","chromium","2026-10-04","passed","2026-10-04","Booking API - Create Booking","createBooking.spec.ts","",""
-"","391","@regression Login with invalid credentials","chromium","2026-10-04","passed","2026-10-04","Authentication API","auth.spec.ts","",""
-"","82","@regression Should fail when total price is not a number","chromium","2026-10-04","passed","2026-10-04","Booking API - Create Booking","createBooking.spec.ts","",""
-"","357","@regression Get booking with invalid ID","chromium","2026-10-04","passed","2026-10-04","Booking API - Get Booking","getBooking.spec.ts","",""
-"","213","@regression Update booking without authentication","chromium","2026-10-04","passed","2026-10-04","Booking API - Complete CRUD Lifecycle","updateBooking.spec.ts","",""
-"","831","@regression Create, Update, Patch and Delete booking flow","chromium","2026-10-04","passed","2026-10-04","Booking API - Complete CRUD Lifecycle","updateBooking.spec.ts","",""

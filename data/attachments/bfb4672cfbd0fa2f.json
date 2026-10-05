@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Shawna",
+    "lastname": "Parker",
+    "totalprice": 115,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-05-12",
+      "checkout": "2028-02-08"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

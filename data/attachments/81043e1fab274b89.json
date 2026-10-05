@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Nikolas",
+    "lastname": "Pacocha",
+    "totalprice": 531,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-11",
+      "checkout": "2028-04-13"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
