@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1902,
+    "booking": {
+      "firstname": "Velda",
+      "lastname": "Mueller",
+      "totalprice": 416,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-22",
+        "checkout": "2027-08-12"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}

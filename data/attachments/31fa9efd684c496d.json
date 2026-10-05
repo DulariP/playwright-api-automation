@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Anika",
+    "lastname": "Ortiz",
+    "totalprice": 850,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-07-21",
+      "checkout": "2027-10-23"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

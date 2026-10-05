@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Onie",
+    "lastname": "Rowe",
+    "totalprice": 395,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-06-19",
+      "checkout": "2028-03-14"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
