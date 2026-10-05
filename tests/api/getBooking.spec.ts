@@ -18,11 +18,8 @@ test.describe("Booking API - Get Booking", () => {
 
     await test.step("Send GET request to retrieve booking", async () => {
       result = await bookingApi.getBooking(bookingId);
-
       verifyStatusCode(result.status, 200);
-
       expect(result.ok).toBeTruthy();
-
       validateContract(result, getBookingContract);
 
       booking = result.body;
@@ -35,13 +32,9 @@ test.describe("Booking API - Get Booking", () => {
 
     await test.step("Validate booking response fields", async () => {
       verifyResponseContains(booking, "firstname");
-
       verifyResponseContains(booking, "lastname");
-
       verifyResponseContains(booking, "bookingdates");
-
       expect(booking.bookingdates).toHaveProperty("checkin");
-
       expect(booking.bookingdates).toHaveProperty("checkout");
     });
   }); */
@@ -58,9 +51,7 @@ test.describe("Booking API - Get Booking", () => {
       });
 
       verifyStatusCode(result.status, 404);
-
       expect(result.body).toBeTruthy();
-
       console.log("Invalid Booking Response:", result.body);
     });
   });
