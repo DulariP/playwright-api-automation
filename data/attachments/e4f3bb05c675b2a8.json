@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Ned",
+    "lastname": "Langworth",
+    "totalprice": 105,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-10-19",
+      "checkout": "2026-11-05"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

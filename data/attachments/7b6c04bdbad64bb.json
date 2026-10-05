@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Sherman",
+    "lastname": "Beer-Rogahn",
+    "totalprice": 369,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-05-27",
+      "checkout": "2027-10-27"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

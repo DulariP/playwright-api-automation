@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Della",
+    "lastname": "Schultz",
+    "totalprice": 223,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-08-16",
+      "checkout": "2027-09-08"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
