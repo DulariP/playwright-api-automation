@@ -1,0 +1,8 @@
+{
+  "method": "PATCH",
+  "url": "https://restful-booker.herokuapp.com/booking/4116",
+  "body": {
+    "firstname": "Baby",
+    "lastname": "Nikolaus"
+  }
+}
