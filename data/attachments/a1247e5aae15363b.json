@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Jacob",
+    "lastname": "Hansen",
+    "totalprice": 1000,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-09-01",
+      "checkout": "2028-04-30"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
