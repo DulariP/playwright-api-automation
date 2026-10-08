@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Aliza",
+    "lastname": "Monahan",
+    "totalprice": 238,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-03",
+      "checkout": "2028-01-08"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

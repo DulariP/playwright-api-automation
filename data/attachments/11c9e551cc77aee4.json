@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5706,
+    "booking": {
+      "firstname": "Ira",
+      "lastname": "Stamm",
+      "totalprice": 360,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-05-11",
+        "checkout": "2027-10-17"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
