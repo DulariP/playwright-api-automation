@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5383,
+    "booking": {
+      "firstname": "Ryann",
+      "lastname": "White",
+      "totalprice": 457,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-10-30",
+        "checkout": "2027-03-25"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

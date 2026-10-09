@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5395,
+    "booking": {
+      "firstname": "Greta",
+      "lastname": "MacGyver",
+      "totalprice": 629,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-07-10",
+        "checkout": "2028-04-14"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
