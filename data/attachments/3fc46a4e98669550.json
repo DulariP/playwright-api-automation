@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Rosemary",
+    "lastname": "Dicki",
+    "totalprice": 955,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-10-16",
+      "checkout": "2027-07-04"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

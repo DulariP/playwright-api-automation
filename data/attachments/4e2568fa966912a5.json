@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Edyth",
+    "lastname": "Osinski",
+    "totalprice": 941,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-06-09",
+      "checkout": "2027-09-12"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
