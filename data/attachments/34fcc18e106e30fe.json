@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Thurman",
+    "lastname": "McDermott",
+    "totalprice": 451,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-11-11",
+      "checkout": "2027-09-18"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

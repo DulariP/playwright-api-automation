@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 170,
+    "booking": {
+      "firstname": "Vita",
+      "lastname": "Hirthe",
+      "totalprice": 361,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-01-26",
+        "checkout": "2028-01-08"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}
