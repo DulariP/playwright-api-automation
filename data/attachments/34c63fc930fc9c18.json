@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1334,
+    "booking": {
+      "firstname": "Mason",
+      "lastname": "Kihn",
+      "totalprice": 895,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-11-11",
+        "checkout": "2026-12-20"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

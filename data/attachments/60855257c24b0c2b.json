@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Missouri",
+    "lastname": "Ryan",
+    "totalprice": 813,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-04-05",
+      "checkout": "2028-03-28"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

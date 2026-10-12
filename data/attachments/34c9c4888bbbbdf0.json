@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1211,
+    "booking": {
+      "firstname": "Uriel",
+      "lastname": "West",
+      "totalprice": 273,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-03-02",
+        "checkout": "2027-09-15"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
