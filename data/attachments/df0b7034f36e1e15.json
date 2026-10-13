@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Alvena",
+    "lastname": "Aufderhar",
+    "totalprice": 744,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-12-30",
+      "checkout": "2027-10-04"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
