@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jett",
+    "lastname": "Kemmer",
+    "totalprice": 944,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-09-26",
+      "checkout": "2028-03-03"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
