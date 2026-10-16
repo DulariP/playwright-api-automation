@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Joel",
+    "lastname": "Waelchi",
+    "totalprice": 621,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-06-05",
+      "checkout": "2028-05-13"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

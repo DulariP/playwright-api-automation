@@ -1,0 +1,56 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: 'Elza',
+  lastname: 'Ritchie',
+  totalprice: 1000,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-05-23', checkout: '2027-05-26' },
+  additionalneeds: 'Extra Bed'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: 4494,
+  booking: {
+    firstname: 'Elza',
+    lastname: 'Ritchie',
+    totalprice: 1000,
+    depositpaid: false,
+    bookingdates: { checkin: '2027-05-23', checkout: '2027-05-26' },
+    additionalneeds: 'Extra Bed'
+  }
+}
+==================================
+
+Created Booking ID: 4494
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/4494
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Elza',
+  lastname: 'Ritchie',
+  totalprice: 1000,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-05-23', checkout: '2027-05-26' },
+  additionalneeds: 'Extra Bed'
+}
+==================================
+
