@@ -1,9 +1,8 @@
 import { APIRequestContext } from "@playwright/test";
 import { TokenInfo } from "../models/TokenInfo";
-import { AuthResponse } from "../models/Responses";
+import { AuthSuccessResponse } from "../models/Responses";
 import { API_ENDPOINTS } from "../constants/apiEndpoints";
 import { AuthFactory } from "../src/factories/AuthFactory";
-
 export class AuthManager {
   private static tokenInfo: TokenInfo | null = null;
 
@@ -28,7 +27,7 @@ export class AuthManager {
       throw new Error(`Authentication failed: ${response.status()}`);
     }
 
-    const body = (await response.json()) as AuthResponse;
+    const body = (await response.json()) as AuthSuccessResponse;
 
     if (!body.token) {
       throw new Error("Token was not returned from authentication API");
