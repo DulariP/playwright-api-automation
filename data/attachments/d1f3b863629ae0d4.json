@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Issac",
+    "lastname": "Aufderhar",
+    "totalprice": 642,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-04-18",
+      "checkout": "2027-05-12"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
