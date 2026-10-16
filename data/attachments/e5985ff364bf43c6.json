@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 4460,
+    "booking": {
+      "firstname": "Dedric",
+      "lastname": "Cummings",
+      "totalprice": 942,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-08-06",
+        "checkout": "2027-11-29"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 4608,
+    "booking": {
+      "firstname": "Danial",
+      "lastname": "Kreiger",
+      "totalprice": 248,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-07-17",
+        "checkout": "2027-08-03"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

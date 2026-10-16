@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Otto",
+    "lastname": "Hintz",
+    "totalprice": 176,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-14",
+      "checkout": "2028-06-29"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
