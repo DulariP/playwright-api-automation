@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Tommie",
+    "lastname": "Botsford",
+    "totalprice": 650,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-15",
+      "checkout": "2027-09-10"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

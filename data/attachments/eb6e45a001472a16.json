@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 272,
+    "booking": {
+      "firstname": "Lucia",
+      "lastname": "Hettinger-Gottlieb",
+      "totalprice": 915,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-02-22",
+        "checkout": "2027-11-26"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}

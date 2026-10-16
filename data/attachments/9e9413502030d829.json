@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 278,
+    "booking": {
+      "firstname": "Alvah",
+      "lastname": "Hermann",
+      "totalprice": 387,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-03-10",
+        "checkout": "2027-04-28"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
