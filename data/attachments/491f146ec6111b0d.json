@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/2273",
+  "body": {
+    "firstname": "Davon",
+    "lastname": "Bogan",
+    "totalprice": 988,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-06-08",
+      "checkout": "2028-04-23"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

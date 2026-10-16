@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Omari",
+    "lastname": "Kozey",
+    "totalprice": 910,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-07-18",
+      "checkout": "2028-04-30"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

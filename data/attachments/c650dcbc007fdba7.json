@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Kaitlin",
+    "lastname": "Hills",
+    "totalprice": 224,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-03-22",
+      "checkout": "2027-11-07"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
