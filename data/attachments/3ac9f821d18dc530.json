@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1254,
+    "booking": {
+      "firstname": "Evan",
+      "lastname": "Schroeder",
+      "totalprice": 181,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-10-21",
+        "checkout": "2026-12-17"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

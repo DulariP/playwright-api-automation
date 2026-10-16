@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Mariam",
+    "lastname": "Waters",
+    "totalprice": 614,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-10-16",
+      "checkout": "2026-11-13"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

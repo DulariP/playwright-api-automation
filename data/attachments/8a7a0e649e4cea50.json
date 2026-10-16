@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1236,
+    "booking": {
+      "firstname": "Giles",
+      "lastname": "Bayer",
+      "totalprice": 886,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-25",
+        "checkout": "2027-09-24"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
