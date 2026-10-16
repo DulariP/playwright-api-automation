@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5241,
+    "booking": {
+      "firstname": "Roselyn",
+      "lastname": "Kirlin",
+      "totalprice": 270,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-10-06",
+        "checkout": "2028-05-26"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

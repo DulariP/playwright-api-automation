@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Muriel",
+    "lastname": "O'Hara",
+    "totalprice": 237,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-05-07",
+      "checkout": "2027-07-09"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

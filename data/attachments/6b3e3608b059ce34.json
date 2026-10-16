@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 5242,
+    "booking": {
+      "firstname": "Duncan",
+      "lastname": "Beier",
+      "totalprice": 399,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-10-13",
+        "checkout": "2028-06-29"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
