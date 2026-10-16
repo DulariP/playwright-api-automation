@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 9461,
+    "booking": {
+      "firstname": "Kailyn",
+      "lastname": "Hackett-Windler",
+      "totalprice": 699,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-05-23",
+        "checkout": "2027-06-14"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
