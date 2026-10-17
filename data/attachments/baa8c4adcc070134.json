@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Camryn",
+    "lastname": "Gottlieb",
+    "totalprice": 251,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-04-07",
+      "checkout": "2028-02-27"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

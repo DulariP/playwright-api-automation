@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Sammy",
+    "lastname": "Ryan",
+    "totalprice": 729,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-06-24",
+      "checkout": "2028-02-24"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
