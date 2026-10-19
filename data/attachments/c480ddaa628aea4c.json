@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1206,
+    "booking": {
+      "firstname": "Aniyah",
+      "lastname": "Ondricka",
+      "totalprice": 666,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-01-23",
+        "checkout": "2027-12-17"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

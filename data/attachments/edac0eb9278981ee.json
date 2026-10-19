@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Hilda",
+    "lastname": "Conn",
+    "totalprice": 308,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-11-13",
+      "checkout": "2027-02-15"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
