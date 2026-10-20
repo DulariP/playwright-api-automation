@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2625,
+    "booking": {
+      "firstname": "Dexter",
+      "lastname": "Miller",
+      "totalprice": 647,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-10-01",
+        "checkout": "2028-06-05"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

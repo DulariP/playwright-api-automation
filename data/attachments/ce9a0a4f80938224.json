@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2611,
+    "booking": {
+      "firstname": "Mina",
+      "lastname": "Rowe",
+      "totalprice": 752,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-12-03",
+        "checkout": "2027-09-12"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}

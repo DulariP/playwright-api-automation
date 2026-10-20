@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Esta",
+    "lastname": "Trantow",
+    "totalprice": 135,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-26",
+      "checkout": "2028-02-28"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
