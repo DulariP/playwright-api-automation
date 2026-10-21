@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Isom",
+    "lastname": "Bins",
+    "totalprice": 663,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-02",
+      "checkout": "2027-09-24"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
