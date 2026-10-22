@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Rosa",
+    "lastname": "Altenwerth",
+    "totalprice": 676,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-11-25",
+      "checkout": "2026-12-05"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

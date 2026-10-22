@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Teagan",
+    "lastname": "Turcotte",
+    "totalprice": 752,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-26",
+      "checkout": "2028-08-25"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

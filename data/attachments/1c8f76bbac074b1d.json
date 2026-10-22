@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Roger",
+    "lastname": "Gottlieb",
+    "totalprice": 979,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-03-25",
+      "checkout": "2027-12-09"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
