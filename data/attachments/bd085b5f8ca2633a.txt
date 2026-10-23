@@ -1,0 +1,56 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: 'Palma',
+  lastname: 'Leffler',
+  totalprice: 827,
+  depositpaid: false,
+  bookingdates: { checkin: '2026-11-05', checkout: '2026-11-12' },
+  additionalneeds: 'Extra Bed'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: 432,
+  booking: {
+    firstname: 'Palma',
+    lastname: 'Leffler',
+    totalprice: 827,
+    depositpaid: false,
+    bookingdates: { checkin: '2026-11-05', checkout: '2026-11-12' },
+    additionalneeds: 'Extra Bed'
+  }
+}
+==================================
+
+Created Booking ID: 432
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/432
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Palma',
+  lastname: 'Leffler',
+  totalprice: 827,
+  depositpaid: false,
+  bookingdates: { checkin: '2026-11-05', checkout: '2026-11-12' },
+  additionalneeds: 'Extra Bed'
+}
+==================================
+

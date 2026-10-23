@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 432,
+    "booking": {
+      "firstname": "Palma",
+      "lastname": "Leffler",
+      "totalprice": 827,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-11-05",
+        "checkout": "2026-11-12"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}
