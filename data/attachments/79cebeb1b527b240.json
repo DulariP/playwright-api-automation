@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Delta",
+    "lastname": "Botsford",
+    "totalprice": 977,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-07-12",
+      "checkout": "2027-10-09"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
