@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 4510,
+    "booking": {
+      "firstname": "Justin",
+      "lastname": "Balistreri",
+      "totalprice": 380,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-11-13",
+        "checkout": "2027-08-29"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}
