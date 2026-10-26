@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 759,
+    "booking": {
+      "firstname": "Pablo",
+      "lastname": "Witting",
+      "totalprice": 205,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-04-14",
+        "checkout": "2027-06-15"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}
