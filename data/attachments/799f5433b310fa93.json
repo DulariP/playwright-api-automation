@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Liana",
+    "lastname": "Rowe",
+    "totalprice": 749,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-15",
+      "checkout": "2027-12-03"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
