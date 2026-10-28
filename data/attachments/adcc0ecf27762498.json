@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Lon",
+    "lastname": "Lindgren",
+    "totalprice": 716,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-30",
+      "checkout": "2028-08-30"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

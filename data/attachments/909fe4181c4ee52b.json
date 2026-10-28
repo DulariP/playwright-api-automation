@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Kiara",
+    "lastname": "Howe",
+    "totalprice": 958,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-09-06",
+      "checkout": "2028-01-14"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
