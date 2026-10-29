@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/4584",
+  "body": {
+    "firstname": "Blaze",
+    "lastname": "Veum-Goyette",
+    "totalprice": 209,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-02-09",
+      "checkout": "2027-07-26"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

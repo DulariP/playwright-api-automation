@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Juanita",
+    "lastname": "Berge",
+    "totalprice": 863,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-03-15",
+      "checkout": "2027-05-28"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

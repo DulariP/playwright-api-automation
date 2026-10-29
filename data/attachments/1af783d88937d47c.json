@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Kale",
+    "lastname": "Breitenberg",
+    "totalprice": 246,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-02",
+      "checkout": "2028-04-18"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
