@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Dianna",
+    "lastname": "Connelly",
+    "totalprice": 794,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-31",
+      "checkout": "2027-10-07"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

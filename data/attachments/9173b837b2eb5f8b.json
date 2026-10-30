@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Itzel",
+    "lastname": "Hegmann",
+    "totalprice": 686,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-10-04",
+      "checkout": "2028-07-19"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

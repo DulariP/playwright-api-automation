@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Clement",
+    "lastname": "Moen",
+    "totalprice": 121,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-11-21",
+      "checkout": "2027-06-20"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
