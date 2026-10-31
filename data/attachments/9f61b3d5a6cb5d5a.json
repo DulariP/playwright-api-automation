@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 825,
+    "booking": {
+      "firstname": "Thora",
+      "lastname": "Brown",
+      "totalprice": 620,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-08-25",
+        "checkout": "2028-05-08"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Leora",
+    "lastname": "Nitzsche",
+    "totalprice": 289,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-01-31",
+      "checkout": "2028-01-21"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

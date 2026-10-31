@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "August",
+    "lastname": "MacGyver",
+    "totalprice": 304,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-10-16",
+      "checkout": "2028-08-16"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Sid",
+    "lastname": "Fadel-Dooley",
+    "totalprice": 597,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-12-21",
+      "checkout": "2027-04-07"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 869,
+    "booking": {
+      "firstname": "Zechariah",
+      "lastname": "Hammes",
+      "totalprice": 518,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-10-07",
+        "checkout": "2028-04-07"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}
