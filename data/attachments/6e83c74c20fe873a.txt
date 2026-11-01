@@ -1,0 +1,56 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: 'Stephon',
+  lastname: 'Senger',
+  totalprice: 863,
+  depositpaid: false,
+  bookingdates: { checkin: '2026-12-03', checkout: '2027-08-27' },
+  additionalneeds: 'Dinner'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: 3339,
+  booking: {
+    firstname: 'Stephon',
+    lastname: 'Senger',
+    totalprice: 863,
+    depositpaid: false,
+    bookingdates: { checkin: '2026-12-03', checkout: '2027-08-27' },
+    additionalneeds: 'Dinner'
+  }
+}
+==================================
+
+Created Booking ID: 3339
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/3339
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Stephon',
+  lastname: 'Senger',
+  totalprice: 863,
+  depositpaid: false,
+  bookingdates: { checkin: '2026-12-03', checkout: '2027-08-27' },
+  additionalneeds: 'Dinner'
+}
+==================================
+

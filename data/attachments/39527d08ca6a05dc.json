@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Florence",
+    "lastname": "Bernier",
+    "totalprice": 890,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-01-13",
+      "checkout": "2027-10-19"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
