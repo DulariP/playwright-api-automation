@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1403,
+    "booking": {
+      "firstname": "Joshua",
+      "lastname": "Cartwright",
+      "totalprice": 292,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-06-14",
+        "checkout": "2028-01-13"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
