@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Velda",
+    "lastname": "Herzog",
+    "totalprice": 515,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-28",
+      "checkout": "2028-02-09"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

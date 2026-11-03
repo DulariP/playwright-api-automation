@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Joel",
+    "lastname": "Feil",
+    "totalprice": 550,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-12-11",
+      "checkout": "2027-09-15"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

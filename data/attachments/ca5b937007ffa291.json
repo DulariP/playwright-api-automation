@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2846,
+    "booking": {
+      "firstname": "Johnnie",
+      "lastname": "Johnston-Heidenreich",
+      "totalprice": 590,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-11-17",
+        "checkout": "2027-01-28"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
