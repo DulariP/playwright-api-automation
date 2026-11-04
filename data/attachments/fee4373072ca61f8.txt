@@ -1,0 +1,21 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/auth
+Body:
+{ username: 'admin', password: 'password123' }
+=================================
+
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{ token: '73dc4cb3cfee07e' }
+==================================
+
+Response Status: 200
+Response Body: {
+  "token": "73dc4cb3cfee07e"
+}
+Token generated successfully
