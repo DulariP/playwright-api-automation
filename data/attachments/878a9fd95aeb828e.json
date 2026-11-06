@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Roy",
+    "lastname": "Breitenberg",
+    "totalprice": 143,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-10-21",
+      "checkout": "2028-04-13"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

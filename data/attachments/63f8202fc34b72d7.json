@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Ramon",
+    "lastname": "Ondricka",
+    "totalprice": 647,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-30",
+      "checkout": "2028-08-27"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
