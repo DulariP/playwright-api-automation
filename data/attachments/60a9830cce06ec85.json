@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Amalia",
+    "lastname": "Hermiston",
+    "totalprice": 306,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-08-04",
+      "checkout": "2027-12-01"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
