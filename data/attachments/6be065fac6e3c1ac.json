@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1668,
+    "booking": {
+      "firstname": "Rylee",
+      "lastname": "Langworth",
+      "totalprice": 889,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-07-29",
+        "checkout": "2028-02-02"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
