@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jess",
+    "lastname": "Goldner",
+    "totalprice": 760,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-16",
+      "checkout": "2028-01-08"
+    },
+    "additionalneeds": "Lunch"
+  }
+}
