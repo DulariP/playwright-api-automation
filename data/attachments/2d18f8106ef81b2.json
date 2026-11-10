@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Katie",
+    "lastname": "Beier",
+    "totalprice": 997,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-04-08",
+      "checkout": "2027-05-25"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
