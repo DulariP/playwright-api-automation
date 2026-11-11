@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Angelica",
+    "lastname": "Brekke",
+    "totalprice": 485,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-12-20",
+      "checkout": "2027-10-16"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
