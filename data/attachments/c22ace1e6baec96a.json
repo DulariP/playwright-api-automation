@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Felipe",
+    "lastname": "Parisian",
+    "totalprice": 675,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-04-21",
+      "checkout": "2027-10-05"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
