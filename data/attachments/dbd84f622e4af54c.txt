@@ -1,0 +1,162 @@
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : POST
+URL    : https://restful-booker.herokuapp.com/booking
+Body:
+{
+  firstname: 'Estel',
+  lastname: 'Blanda',
+  totalprice: 132,
+  depositpaid: true,
+  bookingdates: { checkin: '2027-01-16', checkout: '2027-09-26' },
+  additionalneeds: 'Dinner'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  bookingid: 1478,
+  booking: {
+    firstname: 'Estel',
+    lastname: 'Blanda',
+    totalprice: 132,
+    depositpaid: true,
+    bookingdates: { checkin: '2027-01-16', checkout: '2027-09-26' },
+    additionalneeds: 'Dinner'
+  }
+}
+==================================
+
+Created Booking ID: 1478
+🔑 Generating new authentication token
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : PUT
+URL    : https://restful-booker.herokuapp.com/booking/1478
+Body:
+{
+  firstname: 'Serena',
+  lastname: 'Nienow-Nienow',
+  totalprice: 995,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-03-20', checkout: '2027-06-09' },
+  additionalneeds: 'Breakfast'
+}
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Serena',
+  lastname: 'Nienow-Nienow',
+  totalprice: 995,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-03-20', checkout: '2027-06-09' },
+  additionalneeds: 'Breakfast'
+}
+==================================
+
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/1478
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Serena',
+  lastname: 'Nienow-Nienow',
+  totalprice: 995,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-03-20', checkout: '2027-06-09' },
+  additionalneeds: 'Breakfast'
+}
+==================================
+
+♻️ Using cached authentication token
+Request Payload validation passed
+
+========== API REQUEST ==========
+Method : PATCH
+URL    : https://restful-booker.herokuapp.com/booking/1478
+Body:
+{ firstname: 'Jaqueline', lastname: 'Maggio' }
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Jaqueline',
+  lastname: 'Maggio',
+  totalprice: 995,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-03-20', checkout: '2027-06-09' },
+  additionalneeds: 'Breakfast'
+}
+==================================
+
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/1478
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 200
+Body:
+{
+  firstname: 'Jaqueline',
+  lastname: 'Maggio',
+  totalprice: 995,
+  depositpaid: false,
+  bookingdates: { checkin: '2027-03-20', checkout: '2027-06-09' },
+  additionalneeds: 'Breakfast'
+}
+==================================
+
+♻️ Using cached authentication token
+
+========== API REQUEST ==========
+Method : DELETE
+URL    : https://restful-booker.herokuapp.com/booking/1478
+=================================
+
+Response Payload validation passed
+
+========== API RESPONSE ==========
+Status : 201
+Body:
+'Created'
+==================================
+
+
+========== API REQUEST ==========
+Method : GET
+URL    : https://restful-booker.herokuapp.com/booking/1478
+=================================
+
+
+========== API RESPONSE ==========
+Status : 404
+Body:
+'Not Found'
+==================================
+

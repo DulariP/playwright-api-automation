@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1",
+  "body": {
+    "firstname": "Geneva",
+    "lastname": "Toy",
+    "totalprice": 921,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-03-16",
+      "checkout": "2027-12-13"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

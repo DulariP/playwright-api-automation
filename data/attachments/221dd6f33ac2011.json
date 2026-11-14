@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1478,
+    "booking": {
+      "firstname": "Estel",
+      "lastname": "Blanda",
+      "totalprice": 132,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-01-16",
+        "checkout": "2027-09-26"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}

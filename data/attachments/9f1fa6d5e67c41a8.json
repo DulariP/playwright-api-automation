@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Murphy",
+    "lastname": "Ferry",
+    "totalprice": 664,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-11-21",
+      "checkout": "2027-09-28"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
