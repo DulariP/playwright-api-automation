@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Robert",
+    "lastname": "Effertz",
+    "totalprice": 706,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-10-29",
+      "checkout": "2028-03-15"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

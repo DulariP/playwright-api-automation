@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1395,
+    "booking": {
+      "firstname": "Tyree",
+      "lastname": "Wyman",
+      "totalprice": 471,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-01-09",
+        "checkout": "2027-04-04"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}
