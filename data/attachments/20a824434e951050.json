@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2776,
+    "booking": {
+      "firstname": "Alba",
+      "lastname": "Herman",
+      "totalprice": 965,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-15",
+        "checkout": "2027-09-01"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

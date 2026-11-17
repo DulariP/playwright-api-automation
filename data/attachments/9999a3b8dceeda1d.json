@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2729,
+    "booking": {
+      "firstname": "Jennings",
+      "lastname": "Lueilwitz",
+      "totalprice": 727,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-10-25",
+        "checkout": "2028-09-04"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
