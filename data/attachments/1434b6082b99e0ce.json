@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2134,
+    "booking": {
+      "firstname": "Adolphus",
+      "lastname": "O'Connell",
+      "totalprice": 982,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-05-30",
+        "checkout": "2028-02-12"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}

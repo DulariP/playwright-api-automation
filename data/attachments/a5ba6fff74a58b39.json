@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2232,
+    "booking": {
+      "firstname": "Carolyn",
+      "lastname": "Becker",
+      "totalprice": 851,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-08-12",
+        "checkout": "2028-07-04"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}
