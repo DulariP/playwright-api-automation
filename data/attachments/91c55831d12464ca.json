@@ -1,0 +1,15 @@
+{
+  "method": "POST",
+  "url": "https://restful-booker.herokuapp.com/booking",
+  "body": {
+    "firstname": "Vena",
+    "lastname": "Tremblay",
+    "totalprice": 848,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-08-28",
+      "checkout": "2028-07-05"
+    },
+    "additionalneeds": "Dinner"
+  }
+}
