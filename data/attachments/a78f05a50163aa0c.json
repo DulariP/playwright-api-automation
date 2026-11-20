@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Orval",
+    "lastname": "Towne",
+    "totalprice": 210,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-06-26",
+      "checkout": "2028-01-08"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

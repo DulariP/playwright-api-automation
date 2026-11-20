@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 2015,
+    "booking": {
+      "firstname": "Laverna",
+      "lastname": "Hilpert",
+      "totalprice": 926,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2026-12-23",
+        "checkout": "2027-11-21"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}
