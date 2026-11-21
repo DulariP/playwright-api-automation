@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 4119,
+    "booking": {
+      "firstname": "Chad",
+      "lastname": "Hamill",
+      "totalprice": 964,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-11-14",
+        "checkout": "2028-04-04"
+      },
+      "additionalneeds": "Breakfast"
+    }
+  }
+}

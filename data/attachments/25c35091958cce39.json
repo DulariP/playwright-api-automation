@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 4121,
+    "booking": {
+      "firstname": "Santa",
+      "lastname": "Blick",
+      "totalprice": 179,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2026-11-26",
+        "checkout": "2027-09-28"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}
