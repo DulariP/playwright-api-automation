@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Linnea",
+    "lastname": "Marquardt",
+    "totalprice": 787,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-02-05",
+      "checkout": "2027-09-15"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}

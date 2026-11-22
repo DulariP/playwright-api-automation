@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Damon",
+    "lastname": "Cormier",
+    "totalprice": 666,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-12-28",
+      "checkout": "2027-10-08"
+    },
+    "additionalneeds": "Breakfast"
+  }
+}
