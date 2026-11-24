@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Shakira",
+    "lastname": "Huel",
+    "totalprice": 421,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-07-27",
+      "checkout": "2027-12-23"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
