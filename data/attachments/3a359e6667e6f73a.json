@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Maverick",
+    "lastname": "Ankunding",
+    "totalprice": 935,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-03-25",
+      "checkout": "2028-03-05"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}

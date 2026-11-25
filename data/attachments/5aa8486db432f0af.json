@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1575,
+    "booking": {
+      "firstname": "Ronnie",
+      "lastname": "Mueller",
+      "totalprice": 642,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-06-02",
+        "checkout": "2028-05-20"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}

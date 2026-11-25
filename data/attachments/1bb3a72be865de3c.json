@@ -1,0 +1,15 @@
+{
+  "method": "PUT",
+  "url": "https://restful-booker.herokuapp.com/booking/1658",
+  "body": {
+    "firstname": "Addison",
+    "lastname": "Romaguera",
+    "totalprice": 209,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2027-03-29",
+      "checkout": "2027-09-10"
+    },
+    "additionalneeds": "Dinner"
+  }
+}

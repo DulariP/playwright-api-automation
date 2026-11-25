@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 1577,
+    "booking": {
+      "firstname": "Dillan",
+      "lastname": "Fadel",
+      "totalprice": 733,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-07-08",
+        "checkout": "2027-10-25"
+      },
+      "additionalneeds": "Lunch"
+    }
+  }
+}
