@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 3117,
+    "booking": {
+      "firstname": "Rogers",
+      "lastname": "Schinner",
+      "totalprice": 764,
+      "depositpaid": false,
+      "bookingdates": {
+        "checkin": "2027-08-19",
+        "checkout": "2028-02-25"
+      },
+      "additionalneeds": "Extra Bed"
+    }
+  }
+}

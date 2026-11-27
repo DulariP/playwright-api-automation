@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Heaven",
+    "lastname": "Cremin",
+    "totalprice": 836,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2026-12-21",
+      "checkout": "2027-09-03"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

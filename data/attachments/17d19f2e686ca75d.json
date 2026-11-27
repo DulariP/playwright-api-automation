@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "body": {
+    "bookingid": 3093,
+    "booking": {
+      "firstname": "Francesco",
+      "lastname": "Schmitt",
+      "totalprice": 266,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2027-02-25",
+        "checkout": "2027-07-21"
+      },
+      "additionalneeds": "Dinner"
+    }
+  }
+}
