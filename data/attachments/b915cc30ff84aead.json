@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Lacey",
+    "lastname": "Harris",
+    "totalprice": 899,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-10-09",
+      "checkout": "2028-03-18"
+    },
+    "additionalneeds": "Lunch"
+  }
+}

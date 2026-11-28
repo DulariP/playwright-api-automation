@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "body": {
+    "firstname": "Jermey",
+    "lastname": "Doyle",
+    "totalprice": 584,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2027-06-30",
+      "checkout": "2028-04-18"
+    },
+    "additionalneeds": "Extra Bed"
+  }
+}
